@@ -1,0 +1,72 @@
+name: Validate
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check repository structure
+        run: |
+          required_dirs=(
+            hardware/kicad
+            hardware/exports
+            hardware/manufacturing/gerbers
+            hardware/manufacturing/drill
+            hardware/bom
+            hardware/ibom
+            hardware/images
+            scripts
+            docs
+          )
+          missing=0
+          for d in "${required_dirs[@]}"; do
+            if [[ ! -d "$d" ]]; then
+              echo "MISSING directory: $d"
+              missing=1
+            fi
+          done
+          required_files=(
+            README.md
+            LICENSE
+            CHANGELOG.md
+            .gitignore
+            scripts/export-kicad.sh
+            scripts/generate-bom.sh
+            scripts/generate-ibom.sh
+            scripts/package-release.sh
+          )
+          for f in "${required_files[@]}"; do
+            if [[ ! -f "$f" ]]; then
+              echo "MISSING file: $f"
+              missing=1
+            fi
+          done
+          if [[ $missing -eq 1 ]]; then
+            echo "Repository structure check failed."
+            exit 1
+          fi
+          echo "Repository structure OK."
+
+      - name: Check shell scripts (syntax)
+        run: |
+          for script in scripts/*.sh; do
+            echo "Checking $script..."
+            bash -n "$script"
+          done
+          echo "All scripts pass syntax check."
+
+      - name: Shellcheck (if available)
+        run: |
+          if command -v shellcheck &>/dev/null; then
+            shellcheck scripts/*.sh
+          else
+            # Install shellcheck
+            sudo apt-get install -y shellcheck
+            shellcheck scripts/*.sh
+          fi

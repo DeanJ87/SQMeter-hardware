@@ -1,0 +1,55 @@
+# KiCad temporary and generated files
+*.bak
+*.kicad_prl
+*-backups/
+_autosave-*
+fp-info-cache
+*.lck
+
+# KiCad simulation outputs
+*.cir
+*.raw
+
+# KiCad BOM plugin intermediates
+*.xml.bak
+
+# Do NOT ignore real KiCad project files:
+# *.kicad_pro
+# *.kicad_sch
+# *.kicad_pcb
+# *.kicad_sym
+# *.kicad_mod
+# *.kicad_wks
+
+# Generated export/build artifacts (checked in only when intentional)
+dist/
+*.tmp
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Shell script generated output (not committed, produced by scripts)
+# hardware/exports/ and hardware/manufacturing/ ARE committed when generated intentionally
+# Transient build working dirs:
+build/
+tmp/

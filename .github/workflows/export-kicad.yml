@@ -1,0 +1,72 @@
+name: Export KiCad
+
+# Run manually or on pushes to main once KiCad project files are committed.
+# KiCad CLI in headless mode on Linux requires additional setup — see TODOs below.
+
+on:
+  workflow_dispatch:
+  # TODO: uncomment once KiCad project files are committed and CI export is validated:
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - "hardware/kicad/**"
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for KiCad project files
+        run: |
+          if [[ ! -f hardware/kicad/SQMeter-Hardware.kicad_sch ]]; then
+            echo "KiCad project files not yet committed. Skipping export."
+            exit 0
+          fi
+
+      # TODO: Installing KiCad on GitHub Actions runners is non-trivial.
+      # Options:
+      #
+      # Option A — Official KiCad PPA (Ubuntu):
+      #   sudo add-apt-repository --yes ppa:kicad/kicad-8.0-releases
+      #   sudo apt-get update
+      #   sudo apt-get install -y kicad
+      #
+      # Option B — Docker image with KiCad pre-installed:
+      #   Use a container like productize/kicad or a custom image.
+      #   container: productize/kicad:8.0
+      #
+      # Option C — Pre-built kicad-cli binary (faster):
+      #   Download from KiCad nightlies if a standalone CLI build is available.
+      #
+      # For now this job is manual-only. Uncomment one of the above when ready.
+
+      - name: Install KiCad
+        run: |
+          # TODO: choose install method — see comments above
+          echo "TODO: install kicad-cli here"
+          # sudo add-apt-repository --yes ppa:kicad/kicad-8.0-releases
+          # sudo apt-get update
+          # sudo apt-get install -y kicad
+          exit 0  # remove this line once install is implemented
+
+      - name: Export schematic and PCB
+        run: ./scripts/export-kicad.sh
+
+      - name: Generate BOM
+        run: ./scripts/generate-bom.sh
+
+      - name: Generate InteractiveHtmlBom
+        run: ./scripts/generate-ibom.sh
+        continue-on-error: true  # iBOM is optional in CI for now
+
+      - name: Upload exports
+        uses: actions/upload-artifact@v4
+        with:
+          name: kicad-exports
+          path: |
+            hardware/exports/
+            hardware/manufacturing/
+            hardware/bom/
+            hardware/ibom/
+          retention-days: 30

@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for KiCad project files
+        run: |
+          if [[ ! -f hardware/kicad/SQMeter-Hardware.kicad_sch ]]; then
+            echo "ERROR: KiCad project files not committed. Cannot build a release."
+            exit 1
+          fi
+
+      # TODO: install KiCad — see comments in export-kicad.yml
+      - name: Install KiCad
+        run: |
+          echo "TODO: install kicad-cli here"
+          # sudo add-apt-repository --yes ppa:kicad/kicad-8.0-releases
+          # sudo apt-get update
+          # sudo apt-get install -y kicad
+          exit 0  # remove once install is implemented
+
+      - name: Export KiCad outputs
+        run: ./scripts/export-kicad.sh
+
+      - name: Generate BOM
+        run: ./scripts/generate-bom.sh
+
+      - name: Generate InteractiveHtmlBom
+        run: ./scripts/generate-ibom.sh
+        continue-on-error: true
+
+      - name: Package release
+        env:
+          RELEASE_VERSION: ${{ github.ref_name }}
+        run: ./scripts/package-release.sh
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: SQMeter Hardware ${{ github.ref_name }}
+          draft: true
+          generate_release_notes: true
+          files: |
+            dist/SQMeter-Hardware-${{ github.ref_name }}.zip
+            dist/SQMeter-Hardware-${{ github.ref_name }}/schematic.pdf
+            dist/SQMeter-Hardware-${{ github.ref_name }}/schematic.svg
+            dist/SQMeter-Hardware-${{ github.ref_name }}/bom.csv
+            dist/SQMeter-Hardware-${{ github.ref_name }}/gerbers.zip
+            dist/SQMeter-Hardware-${{ github.ref_name }}/ibom.html
