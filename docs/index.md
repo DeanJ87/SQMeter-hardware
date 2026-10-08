@@ -2,7 +2,7 @@
 
 This repository is the canonical source of truth for SQMeter electronics design and manufacturing files.
 
-The main SQMeter documentation site at <https://deanj87.github.io/SQMeter/> covers firmware, the web interface, and sensor integration. Hardware-specific assets (schematic, PCB renders, BOM, gerbers, iBOM) are generated from this repo and linked from the main docs.
+The main SQMeter documentation site at <https://sqmeter.dev/> covers firmware, the web interface, and sensor integration. Hardware-specific assets (schematic, PCB renders, BOM, gerbers, iBOM) are generated from this repo and linked from the main docs.
 
 ## What lives here
 
