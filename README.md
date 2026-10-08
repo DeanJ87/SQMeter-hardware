@@ -24,7 +24,7 @@ The main firmware, web UI, and documentation live in the **[SQMeter repo](https:
 
 | | |
 |--|--|
-| Main docs site | <https://deanj87.github.io/SQMeter/> |
+| Main docs site | <https://sqmeter.dev/> |
 | Main repo | <https://github.com/DeanJ87/SQMeter> |
 | Hardware releases | [Releases](../../releases) |
 | Schematic PDF | TODO: link once first release is published |
