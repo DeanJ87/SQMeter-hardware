@@ -159,7 +159,7 @@ def remove_stubs(board, max_len=1.0):
         gone = []
         for t in items:
             if isinstance(t, pcbnew.PCB_VIA) or t.GetLength() > mm(max_len):
-                continue
+                continue  # includes genpcb's pre-routed fan-out stubs, if the router didn't use them
             for end in (t.GetStart(), t.GetEnd()):
                 hit = any(p.GetNetCode() == t.GetNetCode() and p.HitTest(end) for p in pads) or any(
                     o is not t and o.GetNetCode() == t.GetNetCode() and
@@ -171,7 +171,7 @@ def remove_stubs(board, max_len=1.0):
         if not gone:
             return removed
         for t in gone:
-            board.Remove(t); removed += 1
+            board.Delete(t); removed += 1
 
 
 def center(board, page=(297.0, 210.0)):

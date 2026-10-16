@@ -9,7 +9,7 @@ def cls(name, width, clearance, via=0.8, drill=0.4):
     return c
 import design
 # Travel: VBUS carries <= 500 mA and has to reach the MCP73871's 0.5 mm-pitch QFN pins, so 0.25 mm.
-usb_w = 0.25 if design.TRAVEL else 0.35
+usb_w = 0.4 if design.TRAVEL else 0.35   # travel: 1.65 A adapter input; QFN pins reached via stubs (genpcb)
 ns['classes'] = [base, cls('Power', 0.6, 0.2), cls('Supply3V3', 0.4, 0.2, 0.6, 0.3), cls('USB', 0.2, 0.15, 0.6, 0.3),
                  cls('USBPower', usb_w, 0.15, 0.6, 0.3)]
 ns['netclass_patterns'] = [{'netclass': 'Power', 'pattern': p} for p in ('+12V', '/VIN_RAW', '/VIN_F', '/RG_PWR', '/SW', '+5V', '/DK_5V')] + \
@@ -18,5 +18,8 @@ ns['netclass_patterns'] = [{'netclass': 'Power', 'pattern': p} for p in ('+12V',
 # KiCad's TrueType stroke check flags every size of the variable Inter font; stroke widths were measured
 # on the plotted gerbers instead (see genpcb.py, FONT).
 d['board']['design_settings'].setdefault('rule_severities', {})['text_thickness'] = 'ignore'
+if design.TRAVEL:  # battery and system paths carry ~1 A
+    ns['classes'].append(cls('Battery', 0.5, 0.2))
+    ns['netclass_patterns'] += [{'netclass': 'Battery', 'pattern': p} for p in ('/SYS', '/SYS_SW', '/VBAT', '/BAT_N', '/BAT_FD')]
 json.dump(d, open(f, 'w'), indent=2)
 print('classes:', [c['name'] for c in ns['classes']])

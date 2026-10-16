@@ -13,6 +13,254 @@
   )
   (lib_symbols
     (symbol
+      "Battery_Management:DW01A"
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property
+        "Reference"
+        "U"
+        (at -6.604 6.35 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property
+        "Value"
+        "DW01A"
+        (at 4.318 6.604 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property
+        "Footprint"
+        "Package_TO_SOT_SMD:SOT-23-6"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property
+        "Datasheet"
+        "https://hmsemi.com/downfile/DW01A.PDF"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property
+        "Description"
+        "Overcharge, overcurrent and overdischarge protection IC for single cell lithium-ion/polymer battery"
+        (at 0.254 1.524 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property
+        "ki_keywords"
+        "battery protection li-ion lipo overcurrent overdischarge overcharge"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property
+        "ki_fp_filters"
+        "SOT?23*"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (symbol
+        "DW01A_0_1"
+        (pin
+          output
+          line
+          (at -2.54 -7.62 90)
+          (length 2.54)
+          (name
+            "OD"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          input
+          line
+          (at 10.16 -2.54 180)
+          (length 2.54)
+          (name
+            "CS"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          output
+          line
+          (at 2.54 -7.62 90)
+          (length 2.54)
+          (name
+            "OC"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          power_in
+          line
+          (at -10.16 2.54 0)
+          (length 2.54)
+          (name
+            "VCC"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "5"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          power_in
+          line
+          (at -10.16 -2.54 0)
+          (length 2.54)
+          (name
+            "GND"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "6"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+      (symbol
+        "DW01A_1_1"
+        (rectangle
+          (start -7.62 5.08)
+          (end 7.62 -5.08)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type background)
+          )
+        )
+        (pin
+          no_connect
+          line
+          (at 10.16 2.54 180)
+          (length 2.54)
+          (hide yes)
+          (name
+            "TD"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "4"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+      (embedded_fonts no)
+    )
+    (symbol
       "Battery_Management:MCP73871-2CA"
       (exclude_from_sim no)
       (in_bom yes)
@@ -3764,6 +4012,280 @@
       (embedded_fonts no)
     )
     (symbol
+      "SQMeter:MAX17048"
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (property
+        "Reference"
+        "U"
+        (at 0 8.89 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property
+        "Value"
+        "MAX17048"
+        (at 0 -11.43 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property
+        "Footprint"
+        "Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (hide yes)
+        )
+      )
+      (property
+        "Datasheet"
+        "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (hide yes)
+        )
+      )
+      (property
+        "Description"
+        "1-cell Li-ion ModelGauge fuel gauge, I2C address 0x36, TDFN-8 2x2"
+        (at 0 0 0)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (hide yes)
+        )
+      )
+      (symbol
+        "MAX17048_0_1"
+        (rectangle
+          (start -7.62 6.35)
+          (end 7.62 -6.35)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type background)
+          )
+        )
+      )
+      (symbol
+        "MAX17048_1_1"
+        (pin
+          passive
+          line
+          (at -10.16 3.81 0)
+          (length 2.54)
+          (name
+            "VDD"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          passive
+          line
+          (at -10.16 1.27 0)
+          (length 2.54)
+          (name
+            "CELL"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          input
+          line
+          (at -10.16 -1.27 0)
+          (length 2.54)
+          (name
+            "CTG"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          input
+          line
+          (at -10.16 -3.81 0)
+          (length 2.54)
+          (name
+            "QSTRT"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "6"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          bidirectional
+          line
+          (at 10.16 3.81 180)
+          (length 2.54)
+          (name
+            "SDA"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "8"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          input
+          line
+          (at 10.16 1.27 180)
+          (length 2.54)
+          (name
+            "SCL"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "7"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          open_collector
+          line
+          (at 10.16 -1.27 180)
+          (length 2.54)
+          (name
+            "~{ALRT}"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "5"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          power_in
+          line
+          (at -1.27 -8.89 90)
+          (length 2.54)
+          (name
+            "GND"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "4"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          passive
+          line
+          (at 1.27 -8.89 90)
+          (length 2.54)
+          (name
+            "EP"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "9"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+    )
+    (symbol
       "Switch:SW_SPDT"
       (pin_names
         (offset 0)
@@ -3976,6 +4498,368 @@
                 (size 1.27 1.27)
               )
             )
+          )
+        )
+      )
+      (embedded_fonts no)
+    )
+    (symbol
+      "Transistor_FET:AO3400A"
+      (pin_names
+        (offset 0)
+        (hide yes)
+      )
+      (exclude_from_sim no)
+      (in_bom yes)
+      (on_board yes)
+      (in_pos_files yes)
+      (duplicate_pin_numbers_are_jumpers no)
+      (property
+        "Reference"
+        "Q"
+        (at 5.08 1.905 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property
+        "Value"
+        "AO3400A"
+        (at 5.08 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property
+        "Footprint"
+        "Package_TO_SOT_SMD:SOT-23"
+        (at 5.08 -1.905 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27)
+            (italic yes)
+          )
+          (justify left)
+        )
+      )
+      (property
+        "Datasheet"
+        "http://www.aosmd.com/pdfs/datasheet/AO3400A.pdf"
+        (at 5.08 -3.81 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+          (justify left)
+        )
+      )
+      (property
+        "Description"
+        "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (property
+        "ki_keywords"
+        "N-Channel MOSFET"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27)
+          )
+        )
+      )
+      (symbol
+        "AO3400A_0_1"
+        (polyline
+          (pts
+            (xy 0.254 1.905)
+            (xy 0.254 -1.905)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.254 0)
+            (xy -2.54 0)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.762 2.286)
+            (xy 0.762 1.27)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.762 0.508)
+            (xy 0.762 -0.508)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.762 -1.27)
+            (xy 0.762 -2.286)
+          )
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 0.762 -1.778)
+            (xy 3.302 -1.778)
+            (xy 3.302 1.778)
+            (xy 0.762 1.778)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 1.016 0)
+            (xy 2.032 0.381)
+            (xy 2.032 -0.381)
+            (xy 1.016 0)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (circle
+          (center 1.651 0)
+          (radius 2.794)
+          (stroke
+            (width 0.254)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.54 2.54)
+            (xy 2.54 1.778)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (circle
+          (center 2.54 1.778)
+          (radius 0.254)
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (circle
+          (center 2.54 -1.778)
+          (radius 0.254)
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type outline)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.54 -2.54)
+            (xy 2.54 0)
+            (xy 0.762 0)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 2.921 0.381)
+            (xy 3.683 0.381)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+        (polyline
+          (pts
+            (xy 3.302 0.381)
+            (xy 2.921 -0.254)
+            (xy 3.683 -0.254)
+            (xy 3.302 0.381)
+          )
+          (stroke
+            (width 0)
+            (type default)
+          )
+          (fill
+            (type none)
+          )
+        )
+      )
+      (symbol
+        "AO3400A_1_1"
+        (pin
+          input
+          line
+          (at -5.08 0 0)
+          (length 2.54)
+          (name
+            "G"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "1"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          passive
+          line
+          (at 2.54 -5.08 90)
+          (length 2.54)
+          (name
+            "S"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "2"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+        (pin
+          passive
+          line
+          (at 2.54 5.08 270)
+          (length 2.54)
+          (name
+            "D"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+          (number
+            "3"
+            (effects
+              (font
+                (size 1.27 1.27)
+              )
+            )
+          )
+        )
+      )
+      (property
+        "ki_fp_filters"
+        "SOT?23*"
+        (at 0 0 0)
+        (show_name no)
+        (do_not_autoplace no)
+        (hide yes)
+        (effects
+          (font
+            (size 1.27 1.27)
           )
         )
       )
@@ -5559,7 +6443,7 @@
     (uuid "b80a3713-c974-54b5-8203-c8096a4d1510")
   )
   (global_label
-    "GND"
+    "VBUS"
     (shape passive)
     (at 162.56 63.5 180)
     (effects
@@ -5649,7 +6533,7 @@
     (uuid "12081b8f-5bb8-516a-b7aa-526d98a2a10f")
   )
   (global_label
-    "GND"
+    "VBUS"
     (shape passive)
     (at 162.56 83.82 180)
     (effects
@@ -5909,7 +6793,7 @@
     )
     (property
       "Footprint"
-      "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm"
+      "Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm_ThermalVias"
       (at 180.34 73.66 0)
       (effects
         (font
@@ -5931,7 +6815,7 @@
     )
     (property
       "Description"
-      "4.20 V, 6 h timer. SEL low + PROG2 high: 500 mA USB limit. CE tied to IN."
+      "4.20 V. SEL high (adapter, 1.65 A in), TE high (timer off), CE tied to IN."
       (at 180.34 73.66 0)
       (effects
         (font
@@ -6496,7 +7380,7 @@
     )
     (property
       "Value"
-      "2k"
+      "1.2k"
       (at 76.2 125.095 0)
       (effects
         (font
@@ -6540,7 +7424,7 @@
     )
     (property
       "LCSC"
-      "C22975"
+      "C22765"
       (at 73.66 125.73 0)
       (effects
         (font
@@ -6670,7 +7554,7 @@
     )
     (property
       "Value"
-      "20k"
+      "10k"
       (at 105.41 125.095 0)
       (effects
         (font
@@ -6714,7 +7598,7 @@
     )
     (property
       "LCSC"
-      "C4184"
+      "C25804"
       (at 102.87 125.73 0)
       (effects
         (font
@@ -7275,28 +8159,16 @@
     )
     (uuid "ba597dee-aac8-5ef1-9806-c25139432b03")
   )
-  (global_label
-    "GND"
-    (shape passive)
+  (label
+    "BAT_N"
     (at 31.75 147.32 180)
     (effects
       (font
         (size 1.27 1.27)
       )
-      (justify right)
+      (justify right bottom)
     )
     (uuid "a9a731d7-87f0-531e-874a-3aedb2f501cb")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 31.75 147.32 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
   )
   (symbol
     (lib_id "Connector_Generic:Conn_01x02")
@@ -7353,7 +8225,7 @@
     )
     (property
       "Description"
-      "JST-PH: 1 = BAT+, 2 = GND. 1S Li-ion with its own protection circuit; check lead polarity"
+      "JST-PH: 1 = BAT+, 2 = BAT-. 1S only (cells in parallel must be matched). Check lead polarity"
       (at 36.83 144.78 0)
       (effects
         (font
@@ -7393,8 +8265,8 @@
     )
   )
   (label
-    "SYS"
-    (at 86.36 152.4 0)
+    "VBAT"
+    (at 59.69 154.94 90)
     (effects
       (font
         (size 1.27 1.27)
@@ -7404,8 +8276,8 @@
     (uuid "bd84c377-0895-5cd0-bac1-14749f9d5c95")
   )
   (label
-    "SYS_SW"
-    (at 76.2 154.94 180)
+    "DW_VCC"
+    (at 59.69 162.56 270)
     (effects
       (font
         (size 1.27 1.27)
@@ -7414,23 +8286,19 @@
     )
     (uuid "cc81ddb8-a17c-57b6-b078-10f39dd4b910")
   )
-  (no_connect
-    (at 86.36 157.48)
-    (uuid "0f265b10-cde4-57d1-bd54-f727c42ce86d")
-  )
   (symbol
-    (lib_id "Switch:SW_SPDT")
-    (at 81.28 154.94 0)
+    (lib_id "Device:R")
+    (at 59.69 158.75 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "f3a95428-891c-5444-8280-606d9e0dd183")
+    (uuid "0f265b10-cde4-57d1-bd54-f727c42ce86d")
     (property
       "Reference"
-      "SW3"
-      (at 76.28 137.13 0)
+      "R33"
+      (at 62.23 155.575 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7440,8 +8308,8 @@
     )
     (property
       "Value"
-      "POWER"
-      (at 76.28 139.67 0)
+      "100"
+      (at 62.23 158.115 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7451,8 +8319,8 @@
     )
     (property
       "Footprint"
-      "Button_Switch_SMD:SW_SPDT_Shouhan_MSK12C02"
-      (at 81.28 154.94 0)
+      "Resistor_SMD:R_0603_1608Metric"
+      (at 59.69 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7463,7 +8331,7 @@
     (property
       "Datasheet"
       ""
-      (at 81.28 154.94 0)
+      (at 59.69 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7473,8 +8341,8 @@
     )
     (property
       "Description"
-      "Power switch; charging still works when off"
-      (at 81.28 154.94 0)
+      ""
+      (at 59.69 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7484,8 +8352,8 @@
     )
     (property
       "LCSC"
-      "C431540"
-      (at 81.28 154.94 0)
+      "C22775"
+      (at 59.69 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7495,62 +8363,58 @@
     )
     (pin
       "1"
-      (uuid "d4c1764d-51e2-5d46-8ca6-cc8072160b97")
+      (uuid "f3a95428-891c-5444-8280-606d9e0dd183")
     )
     (pin
       "2"
-      (uuid "2831f67c-101e-5d75-97c7-89e1bde2d0ab")
-    )
-    (pin
-      "3"
-      (uuid "f1854f83-b116-5e90-adaa-8ceea986d487")
+      (uuid "d4c1764d-51e2-5d46-8ca6-cc8072160b97")
     )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "SW3")
+          (reference "R33")
           (unit 1)
         )
       )
     )
   )
   (label
-    "DK_5V"
-    (at 123.19 152.4 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "3eb6442d-e5e8-57bd-8f15-7b096345f0f9")
-  )
-  (label
-    "SYS_SW"
-    (at 130.81 152.4 0)
+    "DW_VCC"
+    (at 88.9 154.94 90)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify left bottom)
     )
-    (uuid "7a417ad5-f6fc-5197-b384-eddd450f5f2d")
+    (uuid "2831f67c-101e-5d75-97c7-89e1bde2d0ab")
+  )
+  (label
+    "BAT_N"
+    (at 88.9 162.56 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "f1854f83-b116-5e90-adaa-8ceea986d487")
   )
   (symbol
-    (lib_id "Device:D_Schottky")
-    (at 127 152.4 0)
+    (lib_id "Device:C")
+    (at 88.9 158.75 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "f3d0c895-8071-5eb5-9ce5-f8a6aecde949")
+    (uuid "3eb6442d-e5e8-57bd-8f15-7b096345f0f9")
     (property
       "Reference"
-      "D3"
-      (at 122 137.13 0)
+      "C21"
+      (at 91.44 155.575 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7560,8 +8424,8 @@
     )
     (property
       "Value"
-      "SS34"
-      (at 122 139.67 0)
+      "100n"
+      (at 91.44 158.115 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7571,8 +8435,8 @@
     )
     (property
       "Footprint"
-      "Diode_SMD:D_SMA"
-      (at 127 152.4 0)
+      "Capacitor_SMD:C_0603_1608Metric"
+      (at 88.9 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7583,7 +8447,7 @@
     (property
       "Datasheet"
       ""
-      (at 127 152.4 0)
+      (at 88.9 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7593,8 +8457,8 @@
     )
     (property
       "Description"
-      "Into the Zero 5V pin; stops a PC on the Zero USB-C pushing into SYS"
-      (at 127 152.4 0)
+      ""
+      (at 88.9 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7604,8 +8468,8 @@
     )
     (property
       "LCSC"
-      "C8678"
-      (at 127 152.4 0)
+      "C14663"
+      (at 88.9 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7615,95 +8479,70 @@
     )
     (pin
       "1"
-      (uuid "d3a389f0-4211-5200-85f9-010005e17ab7")
+      (uuid "7a417ad5-f6fc-5197-b384-eddd450f5f2d")
     )
     (pin
       "2"
-      (uuid "530387cd-5541-520d-a272-229ab795bf6c")
+      (uuid "f3d0c895-8071-5eb5-9ce5-f8a6aecde949")
     )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "D3")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (symbol
-    (lib_id "power:+3V3")
-    (at 152.4 154.94 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom no)
-    (on_board no)
-    (dnp no)
-    (uuid "fe7021c8-2b0d-5894-9ba8-93cff8923294")
-    (property
-      "Reference"
-      "#PWR016"
-      (at 152.4 154.94 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-        (hide yes)
-      )
-    )
-    (property
-      "Value"
-      "+3V3"
-      (at 152.4 149.94 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      ""
-      (at 152.4 154.94 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 152.4 154.94 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "25ddb12c-1e36-59c3-8171-d961f68d5e91")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR016")
+          (reference "C21")
           (unit 1)
         )
       )
     )
   )
   (label
-    "CHG_STAT1"
-    (at 152.4 162.56 270)
+    "DW_OD"
+    (at 142.24 162.56 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "d3a389f0-4211-5200-85f9-010005e17ab7")
+  )
+  (label
+    "DW_CS"
+    (at 154.94 157.48 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "530387cd-5541-520d-a272-229ab795bf6c")
+  )
+  (label
+    "DW_OC"
+    (at 147.32 162.56 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "fe7021c8-2b0d-5894-9ba8-93cff8923294")
+  )
+  (label
+    "DW_VCC"
+    (at 134.62 152.4 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "25ddb12c-1e36-59c3-8171-d961f68d5e91")
+  )
+  (label
+    "BAT_N"
+    (at 134.62 157.48 180)
     (effects
       (font
         (size 1.27 1.27)
@@ -7712,19 +8551,23 @@
     )
     (uuid "89c75e3d-3b0d-5612-b378-af516722ce31")
   )
+  (no_connect
+    (at 154.94 152.4)
+    (uuid "4a8b52cf-2590-56c1-9b94-b280922e099b")
+  )
   (symbol
-    (lib_id "Device:R")
-    (at 152.4 158.75 0)
+    (lib_id "Battery_Management:DW01A")
+    (at 144.78 154.94 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "4a8b52cf-2590-56c1-9b94-b280922e099b")
+    (uuid "cbe61a19-bb87-5157-9f18-12d09c19a1d9")
     (property
       "Reference"
-      "R28"
-      (at 154.94 155.575 0)
+      "U10"
+      (at 139.78 137.13 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7734,8 +8577,8 @@
     )
     (property
       "Value"
-      "10k"
-      (at 154.94 158.115 0)
+      "DW01A"
+      (at 139.78 139.67 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7745,8 +8588,8 @@
     )
     (property
       "Footprint"
-      "Resistor_SMD:R_0603_1608Metric"
-      (at 152.4 158.75 0)
+      "Package_TO_SOT_SMD:SOT-23-6"
+      (at 144.78 154.94 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7757,7 +8600,7 @@
     (property
       "Datasheet"
       ""
-      (at 152.4 158.75 0)
+      (at 144.78 154.94 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7767,8 +8610,8 @@
     )
     (property
       "Description"
-      ""
-      (at 152.4 158.75 0)
+      "1S Li-ion protection"
+      (at 144.78 154.94 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7778,8 +8621,8 @@
     )
     (property
       "LCSC"
-      "C25804"
-      (at 152.4 158.75 0)
+      "C351410"
+      (at 144.78 154.94 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -7789,200 +8632,53 @@
     )
     (pin
       "1"
-      (uuid "cbe61a19-bb87-5157-9f18-12d09c19a1d9")
+      (uuid "fd0225c5-e441-5f4c-b12d-b9f2cd4b24ef")
     )
     (pin
       "2"
-      (uuid "fd0225c5-e441-5f4c-b12d-b9f2cd4b24ef")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "R28")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (symbol
-    (lib_id "power:+3V3")
-    (at 181.61 154.94 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom no)
-    (on_board no)
-    (dnp no)
-    (uuid "be99aab1-8f8a-5c78-a64a-236274e4e8f1")
-    (property
-      "Reference"
-      "#PWR017"
-      (at 181.61 154.94 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-        (hide yes)
-      )
-    )
-    (property
-      "Value"
-      "+3V3"
-      (at 181.61 149.94 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      ""
-      (at 181.61 154.94 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 181.61 154.94 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
+      (uuid "be99aab1-8f8a-5c78-a64a-236274e4e8f1")
     )
     (pin
-      "1"
+      "3"
       (uuid "15ba7a45-86f1-5ed6-bd3f-3833a226c1ac")
+    )
+    (pin
+      "4"
+      (uuid "973c6341-af06-5358-bc92-7437bb9c7deb")
+    )
+    (pin
+      "5"
+      (uuid "ad90fb14-2601-5eb1-8997-febe18dec7ee")
+    )
+    (pin
+      "6"
+      (uuid "c1b12d15-46d2-5a36-bf51-8309fee7cd48")
     )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR017")
+          (reference "U10")
           (unit 1)
         )
       )
     )
   )
   (label
-    "CHG_STAT2"
-    (at 181.61 162.56 270)
+    "DW_CS"
+    (at 175.26 154.94 90)
     (effects
       (font
         (size 1.27 1.27)
       )
-      (justify right bottom)
+      (justify left bottom)
     )
-    (uuid "973c6341-af06-5358-bc92-7437bb9c7deb")
+    (uuid "2652cef8-2162-5363-bcea-c52f965e12fb")
   )
   (symbol
-    (lib_id "Device:R")
-    (at 181.61 158.75 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid "ad90fb14-2601-5eb1-8997-febe18dec7ee")
-    (property
-      "Reference"
-      "R29"
-      (at 184.15 155.575 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Value"
-      "10k"
-      (at 184.15 158.115 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      "Resistor_SMD:R_0603_1608Metric"
-      (at 181.61 158.75 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 181.61 158.75 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Description"
-      ""
-      (at 181.61 158.75 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "LCSC"
-      "C25804"
-      (at 181.61 158.75 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "c1b12d15-46d2-5a36-bf51-8309fee7cd48")
-    )
-    (pin
-      "2"
-      (uuid "2652cef8-2162-5363-bcea-c52f965e12fb")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "R29")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (symbol
-    (lib_id "power:+3V3")
-    (at 15.24 187.96 0)
+    (lib_id "power:GND")
+    (at 175.26 162.56 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom no)
@@ -7991,8 +8687,8 @@
     (uuid "9070c056-db58-565c-9b93-063113989fff")
     (property
       "Reference"
-      "#PWR018"
-      (at 15.24 187.96 0)
+      "#PWR016"
+      (at 175.26 162.56 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8003,8 +8699,8 @@
     )
     (property
       "Value"
-      "+3V3"
-      (at 15.24 182.96 0)
+      "GND"
+      (at 175.26 167.56 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8015,7 +8711,7 @@
     (property
       "Footprint"
       ""
-      (at 15.24 187.96 0)
+      (at 175.26 162.56 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8026,7 +8722,7 @@
     (property
       "Datasheet"
       ""
-      (at 15.24 187.96 0)
+      (at 175.26 162.56 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8043,36 +8739,25 @@
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR018")
+          (reference "#PWR016")
           (unit 1)
         )
       )
     )
   )
-  (label
-    "CHG_PG"
-    (at 15.24 195.58 270)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "b4dba08b-4c0d-5a81-8046-f81886c9b5de")
-  )
   (symbol
     (lib_id "Device:R")
-    (at 15.24 191.77 0)
+    (at 175.26 158.75 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "a68329d2-bd1f-5a08-b538-1a3a376423ac")
+    (uuid "b4dba08b-4c0d-5a81-8046-f81886c9b5de")
     (property
       "Reference"
-      "R30"
-      (at 17.78 188.595 0)
+      "R34"
+      (at 177.8 155.575 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8082,8 +8767,8 @@
     )
     (property
       "Value"
-      "10k"
-      (at 17.78 191.135 0)
+      "1k"
+      (at 177.8 158.115 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8094,7 +8779,7 @@
     (property
       "Footprint"
       "Resistor_SMD:R_0603_1608Metric"
-      (at 15.24 191.77 0)
+      (at 175.26 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8105,7 +8790,7 @@
     (property
       "Datasheet"
       ""
-      (at 15.24 191.77 0)
+      (at 175.26 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8116,7 +8801,7 @@
     (property
       "Description"
       ""
-      (at 15.24 191.77 0)
+      (at 175.26 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8126,8 +8811,8 @@
     )
     (property
       "LCSC"
-      "C25804"
-      (at 15.24 191.77 0)
+      "C21190"
+      (at 175.26 158.75 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8137,48 +8822,59 @@
     )
     (pin
       "1"
-      (uuid "7ce64f0e-4312-5fe5-afd2-1fdbc67a7a71")
+      (uuid "a68329d2-bd1f-5a08-b538-1a3a376423ac")
     )
     (pin
       "2"
-      (uuid "7acc61c9-6cef-5a73-b25d-9a2ba500bea9")
+      (uuid "7ce64f0e-4312-5fe5-afd2-1fdbc67a7a71")
     )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "R30")
+          (reference "R34")
           (unit 1)
         )
       )
     )
   )
   (label
-    "VBAT"
-    (at 44.45 187.96 90)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify left bottom)
-    )
-    (uuid "64114f57-e371-5d8a-8786-fb2599745a2d")
-  )
-  (label
-    "VBAT_ADC"
-    (at 44.45 195.58 270)
+    "DW_OD"
+    (at 31.75 193.04 180)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify right bottom)
     )
+    (uuid "7acc61c9-6cef-5a73-b25d-9a2ba500bea9")
+  )
+  (label
+    "BAT_N"
+    (at 39.37 198.12 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "64114f57-e371-5d8a-8786-fb2599745a2d")
+  )
+  (label
+    "BAT_FD"
+    (at 39.37 187.96 90)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
     (uuid "656f406b-1371-5f50-aef5-800c6514613d")
   )
   (symbol
-    (lib_id "Device:R")
-    (at 44.45 191.77 0)
+    (lib_id "Transistor_FET:AO3400A")
+    (at 36.83 193.04 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
@@ -8187,8 +8883,8 @@
     (uuid "63ef2d0c-d147-529e-9bf5-2826b8b978bb")
     (property
       "Reference"
-      "R31"
-      (at 46.99 188.595 0)
+      "Q2"
+      (at 41.91 189.23 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8198,8 +8894,8 @@
     )
     (property
       "Value"
-      "100k"
-      (at 46.99 191.135 0)
+      "AO3400A"
+      (at 41.91 191.77 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8209,8 +8905,8 @@
     )
     (property
       "Footprint"
-      "Resistor_SMD:R_0603_1608Metric"
-      (at 44.45 191.77 0)
+      "Package_TO_SOT_SMD:SOT-23"
+      (at 36.83 193.04 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8221,7 +8917,7 @@
     (property
       "Datasheet"
       ""
-      (at 44.45 191.77 0)
+      (at 36.83 193.04 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8231,8 +8927,8 @@
     )
     (property
       "Description"
-      ""
-      (at 44.45 191.77 0)
+      "Discharge switch"
+      (at 36.83 193.04 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8242,8 +8938,8 @@
     )
     (property
       "LCSC"
-      "C25803"
-      (at 44.45 191.77 0)
+      "C20917"
+      (at 36.83 193.04 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8259,41 +8955,45 @@
       "2"
       (uuid "7f9a0410-b88b-5bd7-ab96-946d6ca061b6")
     )
+    (pin
+      "3"
+      (uuid "4ad0cad7-6389-5481-93ff-16673a88dcad")
+    )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "R31")
+          (reference "Q2")
           (unit 1)
         )
       )
     )
   )
   (label
-    "VBAT_ADC"
-    (at 73.66 187.96 90)
+    "DW_OC"
+    (at 83.82 193.04 180)
     (effects
       (font
         (size 1.27 1.27)
       )
-      (justify left bottom)
+      (justify right bottom)
     )
-    (uuid "4ad0cad7-6389-5481-93ff-16673a88dcad")
+    (uuid "8e7d010b-02b8-5479-8d42-fec3187ac62a")
   )
   (symbol
     (lib_id "power:GND")
-    (at 73.66 195.58 0)
+    (at 91.44 198.12 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom no)
     (on_board no)
     (dnp no)
-    (uuid "8e7d010b-02b8-5479-8d42-fec3187ac62a")
+    (uuid "b2758884-e8dc-53ad-98f6-48388703fc21")
     (property
       "Reference"
-      "#PWR019"
-      (at 73.66 195.58 0)
+      "#PWR017"
+      (at 91.44 198.12 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8305,7 +9005,7 @@
     (property
       "Value"
       "GND"
-      (at 73.66 200.58 0)
+      (at 91.44 203.12 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8316,7 +9016,7 @@
     (property
       "Footprint"
       ""
-      (at 73.66 195.58 0)
+      (at 91.44 198.12 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8327,7 +9027,7 @@
     (property
       "Datasheet"
       ""
-      (at 73.66 195.58 0)
+      (at 91.44 198.12 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8337,7 +9037,355 @@
     )
     (pin
       "1"
-      (uuid "b2758884-e8dc-53ad-98f6-48388703fc21")
+      (uuid "b76336e5-e8d9-502a-acc3-7208324a81b5")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR017")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "BAT_FD"
+    (at 91.44 187.96 90)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "5ed2d797-6a89-53cd-ace8-42fc6dc35789")
+  )
+  (symbol
+    (lib_id "Transistor_FET:AO3400A")
+    (at 88.9 193.04 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "a69f4299-c43e-5836-9706-be358bb1485d")
+    (property
+      "Reference"
+      "Q3"
+      (at 93.98 189.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "AO3400A"
+      (at 93.98 191.77 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Package_TO_SOT_SMD:SOT-23"
+      (at 88.9 193.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 88.9 193.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "Charge switch"
+      (at 88.9 193.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C20917"
+      (at 88.9 193.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "b3c16dae-3e1e-5e41-9779-960a8f56c497")
+    )
+    (pin
+      "2"
+      (uuid "d3ccbb44-64cf-51f2-b5d7-453676d6574b")
+    )
+    (pin
+      "3"
+      (uuid "3a62aa73-622f-54fb-a1ed-a0f434996491")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "Q3")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "GAUGE_V"
+    (at 135.89 185.42 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "075a320c-e129-56dc-b5dd-f5f54eff9444")
+  )
+  (label
+    "GAUGE_V"
+    (at 135.89 187.96 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "dd2031e6-3c83-5c9b-a42d-f2c453d4b9b6")
+  )
+  (global_label
+    "GND"
+    (shape passive)
+    (at 135.89 190.5 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "4b368bff-cab2-543f-9aad-6f38c4c2f14b")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 135.89 190.5 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (global_label
+    "GND"
+    (shape passive)
+    (at 135.89 193.04 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "09b4290b-ffac-5ea3-a4db-49338d2b6441")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 135.89 193.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (label
+    "SDA"
+    (at 156.21 185.42 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "cb340b49-009d-5d93-abb6-244554d978a6")
+  )
+  (label
+    "SCL"
+    (at 156.21 187.96 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "1c17b34d-238a-5dc0-92e2-c668854ca323")
+  )
+  (label
+    "BAT_ALRT"
+    (at 156.21 190.5 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "22c9636c-e671-5d3c-be7c-892c57e89ec5")
+  )
+  (symbol
+    (lib_id "power:GND")
+    (at 144.78 198.12 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "2864c01d-b212-597d-8ef6-65f6f3656846")
+    (property
+      "Reference"
+      "#PWR018"
+      (at 144.78 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "GND"
+      (at 144.78 203.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 144.78 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 144.78 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "94be75df-ac33-5387-8abe-ad426270398f")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR018")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol
+    (lib_id "power:GND")
+    (at 147.32 198.12 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "3bc7b626-f3a7-5c8d-8f23-829eb80f53ab")
+    (property
+      "Reference"
+      "#PWR019"
+      (at 147.32 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "GND"
+      (at 147.32 203.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 147.32 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 147.32 198.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "98d9b77b-53b2-5635-b94f-ec91cc156ee2")
     )
     (instances
       (project
@@ -8351,18 +9399,18 @@
     )
   )
   (symbol
-    (lib_id "Device:R")
-    (at 73.66 191.77 0)
+    (lib_id "SQMeter:MAX17048")
+    (at 146.05 189.23 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "b76336e5-e8d9-502a-acc3-7208324a81b5")
+    (uuid "f3cb8cc7-c186-518f-b04b-4f8b66225ab7")
     (property
       "Reference"
-      "R32"
-      (at 76.2 188.595 0)
+      "U11"
+      (at 141.05 170.15 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8372,8 +9420,8 @@
     )
     (property
       "Value"
-      "100k"
-      (at 76.2 191.135 0)
+      "MAX17048"
+      (at 141.05 172.69 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8383,8 +9431,8 @@
     )
     (property
       "Footprint"
-      "Resistor_SMD:R_0603_1608Metric"
-      (at 73.66 191.77 0)
+      "Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm"
+      (at 146.05 189.23 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8395,7 +9443,151 @@
     (property
       "Datasheet"
       ""
-      (at 73.66 191.77 0)
+      (at 146.05 189.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "MAX17048G+T10 fuel gauge"
+      (at 146.05 189.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C2682616"
+      (at 146.05 189.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "0d1a8180-35e2-5b76-9e36-c7707b3f59f9")
+    )
+    (pin
+      "2"
+      (uuid "f53e8949-2a00-5c71-ace7-4a8538931fa1")
+    )
+    (pin
+      "3"
+      (uuid "018958e7-9618-57e6-8008-90541d8ae155")
+    )
+    (pin
+      "4"
+      (uuid "f26b44b9-604e-5f56-a339-c9d84dd239ca")
+    )
+    (pin
+      "5"
+      (uuid "8d1124a3-741b-598c-be66-6d3397d8084f")
+    )
+    (pin
+      "6"
+      (uuid "2a1253e4-f756-5be3-afa7-b5813b94de92")
+    )
+    (pin
+      "7"
+      (uuid "b7cfa1aa-2ca2-5fb9-8e99-d9194e64a237")
+    )
+    (pin
+      "8"
+      (uuid "44da991c-a860-5822-aa4e-9e61498c3874")
+    )
+    (pin
+      "9"
+      (uuid "8f2ae09f-b24c-5102-9ff6-c6dc8e869d63")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "U11")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "VBAT"
+    (at 177.8 187.96 90)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "96592177-a7d5-5512-8655-b4248589eebc")
+  )
+  (label
+    "GAUGE_V"
+    (at 177.8 195.58 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "ee0258a2-470a-5385-b0d4-452b937101b2")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 177.8 191.77 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "13d1df0a-cd8d-5524-a049-3b8f33eedb34")
+    (property
+      "Reference"
+      "R36"
+      (at 180.34 188.595 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "0"
+      (at 180.34 191.135 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Resistor_SMD:R_0603_1608Metric"
+      (at 177.8 191.77 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 177.8 191.77 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8406,7 +9598,7 @@
     (property
       "Description"
       ""
-      (at 73.66 191.77 0)
+      (at 177.8 191.77 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8416,8 +9608,8 @@
     )
     (property
       "LCSC"
-      "C25803"
-      (at 73.66 191.77 0)
+      "C21189"
+      (at 177.8 191.77 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8427,47 +9619,47 @@
     )
     (pin
       "1"
-      (uuid "5ed2d797-6a89-53cd-ace8-42fc6dc35789")
+      (uuid "8326e6c9-df04-5c00-9dc5-f14098ec317b")
     )
     (pin
       "2"
-      (uuid "a69f4299-c43e-5836-9706-be358bb1485d")
+      (uuid "e7f60bb6-69fc-5f3a-b073-3b1537899069")
     )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "R32")
+          (reference "R36")
           (unit 1)
         )
       )
     )
   )
   (label
-    "VBAT_ADC"
-    (at 102.87 187.96 90)
+    "GAUGE_V"
+    (at 15.24 223.52 90)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify left bottom)
     )
-    (uuid "b3c16dae-3e1e-5e41-9779-960a8f56c497")
+    (uuid "50529c7c-1954-57f7-9202-367f2de9ccd8")
   )
   (symbol
     (lib_id "power:GND")
-    (at 102.87 195.58 0)
+    (at 15.24 231.14 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom no)
     (on_board no)
     (dnp no)
-    (uuid "d3ccbb44-64cf-51f2-b5d7-453676d6574b")
+    (uuid "debca97c-6c7d-5ba1-9ba2-fa220fee72c1")
     (property
       "Reference"
       "#PWR020"
-      (at 102.87 195.58 0)
+      (at 15.24 231.14 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8479,7 +9671,7 @@
     (property
       "Value"
       "GND"
-      (at 102.87 200.58 0)
+      (at 15.24 236.14 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8490,7 +9682,7 @@
     (property
       "Footprint"
       ""
-      (at 102.87 195.58 0)
+      (at 15.24 231.14 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8501,7 +9693,7 @@
     (property
       "Datasheet"
       ""
-      (at 102.87 195.58 0)
+      (at 15.24 231.14 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8511,7 +9703,7 @@
     )
     (pin
       "1"
-      (uuid "3a62aa73-622f-54fb-a1ed-a0f434996491")
+      (uuid "44cb8848-c0e2-53f6-b21d-2de3010574e5")
     )
     (instances
       (project
@@ -8526,17 +9718,17 @@
   )
   (symbol
     (lib_id "Device:C")
-    (at 102.87 191.77 0)
+    (at 15.24 227.33 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "075a320c-e129-56dc-b5dd-f5f54eff9444")
+    (uuid "55961f38-ff48-5a89-bf63-21c1c862ef0b")
     (property
       "Reference"
-      "C18"
-      (at 105.41 188.595 0)
+      "C22"
+      (at 17.78 224.155 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8547,7 +9739,7 @@
     (property
       "Value"
       "100n"
-      (at 105.41 191.135 0)
+      (at 17.78 226.695 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8558,7 +9750,7 @@
     (property
       "Footprint"
       "Capacitor_SMD:C_0603_1608Metric"
-      (at 102.87 191.77 0)
+      (at 15.24 227.33 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8569,7 +9761,7 @@
     (property
       "Datasheet"
       ""
-      (at 102.87 191.77 0)
+      (at 15.24 227.33 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8580,7 +9772,7 @@
     (property
       "Description"
       ""
-      (at 102.87 191.77 0)
+      (at 15.24 227.33 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8591,7 +9783,7 @@
     (property
       "LCSC"
       "C14663"
-      (at 102.87 191.77 0)
+      (at 15.24 227.33 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8601,383 +9793,48 @@
     )
     (pin
       "1"
-      (uuid "dd2031e6-3c83-5c9b-a42d-f2c453d4b9b6")
+      (uuid "2cb56d42-cae4-5702-8796-928b79b36ab7")
     )
     (pin
       "2"
-      (uuid "4b368bff-cab2-543f-9aad-6f38c4c2f14b")
+      (uuid "75bb10ea-4f78-5fee-bdef-a6a8e417a3a0")
     )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "C18")
+          (reference "C22")
           (unit 1)
         )
       )
     )
   )
-  (text
-    "Waveshare ESP32-S3-Zero-M sockets"
-    (exclude_from_sim no)
-    (at 15.24 219.71 0)
-    (effects
-      (font
-        (size 2.54 2.54)
-        (bold yes)
-      )
-      (justify left bottom)
-    )
-    (uuid "09b4290b-ffac-5ea3-a4db-49338d2b6441")
-  )
-  (label
-    "DK_5V"
-    (at 31.75 228.6 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "cb340b49-009d-5d93-abb6-244554d978a6")
-  )
-  (global_label
-    "GND"
-    (shape passive)
-    (at 31.75 231.14 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right)
-    )
-    (uuid "1c17b34d-238a-5dc0-92e2-c668854ca323")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 31.75 231.14 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-  )
-  (global_label
-    "+3V3"
-    (shape passive)
-    (at 31.75 233.68 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right)
-    )
-    (uuid "22c9636c-e671-5d3c-be7c-892c57e89ec5")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 31.75 233.68 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-  )
-  (label
-    "VBAT_ADC"
-    (at 31.75 236.22 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "2864c01d-b212-597d-8ef6-65f6f3656846")
-  )
-  (label
-    "CHG_STAT1"
-    (at 31.75 238.76 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "94be75df-ac33-5387-8abe-ad426270398f")
-  )
-  (no_connect
-    (at 31.75 241.3)
-    (uuid "3bc7b626-f3a7-5c8d-8f23-829eb80f53ab")
-  )
-  (label
-    "CHG_STAT2"
-    (at 31.75 243.84 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "98d9b77b-53b2-5635-b94f-ec91cc156ee2")
-  )
-  (label
-    "CHG_PG"
-    (at 31.75 246.38 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "f3cb8cc7-c186-518f-b04b-4f8b66225ab7")
-  )
-  (label
-    "AUX1"
-    (at 31.75 248.92 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "0d1a8180-35e2-5b76-9e36-c7707b3f59f9")
-  )
   (symbol
-    (lib_id "Connector_Generic:Conn_01x09")
-    (at 36.83 238.76 0)
+    (lib_id "power:+3V3")
+    (at 44.45 223.52 0)
     (unit 1)
     (exclude_from_sim no)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid "f53e8949-2a00-5c71-ace7-4a8538931fa1")
-    (property
-      "Reference"
-      "J11"
-      (at 39.37 232.41 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Value"
-      "Zero left"
-      (at 39.37 234.95 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      "Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical"
-      (at 36.83 238.76 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 36.83 238.76 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Description"
-      "Female 1x9 socket: Zero left column (5V, GND, 3V3, GP1-GP6), pin 1 at the USB end"
-      (at 36.83 238.76 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "LCSC"
-      "C22438159"
-      (at 36.83 238.76 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "018958e7-9618-57e6-8008-90541d8ae155")
-    )
-    (pin
-      "2"
-      (uuid "f26b44b9-604e-5f56-a339-c9d84dd239ca")
-    )
-    (pin
-      "3"
-      (uuid "8d1124a3-741b-598c-be66-6d3397d8084f")
-    )
-    (pin
-      "4"
-      (uuid "2a1253e4-f756-5be3-afa7-b5813b94de92")
-    )
-    (pin
-      "5"
-      (uuid "b7cfa1aa-2ca2-5fb9-8e99-d9194e64a237")
-    )
-    (pin
-      "6"
-      (uuid "44da991c-a860-5822-aa4e-9e61498c3874")
-    )
-    (pin
-      "7"
-      (uuid "8f2ae09f-b24c-5102-9ff6-c6dc8e869d63")
-    )
-    (pin
-      "8"
-      (uuid "96592177-a7d5-5512-8655-b4248589eebc")
-    )
-    (pin
-      "9"
-      (uuid "ee0258a2-470a-5385-b0d4-452b937101b2")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "J11")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (no_connect
-    (at 76.2 228.6)
-    (uuid "13d1df0a-cd8d-5524-a049-3b8f33eedb34")
-  )
-  (no_connect
-    (at 76.2 231.14)
-    (uuid "8326e6c9-df04-5c00-9dc5-f14098ec317b")
-  )
-  (label
-    "GPS_RX"
-    (at 76.2 233.68 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "e7f60bb6-69fc-5f3a-b073-3b1537899069")
-  )
-  (label
-    "GPS_TX"
-    (at 76.2 236.22 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "50529c7c-1954-57f7-9202-367f2de9ccd8")
-  )
-  (label
-    "SCL2"
-    (at 76.2 238.76 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "debca97c-6c7d-5ba1-9ba2-fa220fee72c1")
-  )
-  (label
-    "SDA2"
-    (at 76.2 241.3 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "44cb8848-c0e2-53f6-b21d-2de3010574e5")
-  )
-  (label
-    "SCL"
-    (at 76.2 243.84 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "55961f38-ff48-5a89-bf63-21c1c862ef0b")
-  )
-  (label
-    "SDA"
-    (at 76.2 246.38 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "2cb56d42-cae4-5702-8796-928b79b36ab7")
-  )
-  (label
-    "AUX2"
-    (at 76.2 248.92 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "75bb10ea-4f78-5fee-bdef-a6a8e417a3a0")
-  )
-  (symbol
-    (lib_id "Connector_Generic:Conn_01x09")
-    (at 81.28 238.76 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom yes)
-    (on_board yes)
+    (in_bom no)
+    (on_board no)
     (dnp no)
     (uuid "5797b7f9-815e-5d03-bdae-de80d987c496")
     (property
       "Reference"
-      "J12"
-      (at 83.82 232.41 0)
+      "#PWR021"
+      (at 44.45 223.52 0)
       (effects
         (font
           (size 1.27 1.27)
         )
         (justify left)
+        (hide yes)
       )
     )
     (property
       "Value"
-      "Zero right"
-      (at 83.82 234.95 0)
+      "+3V3"
+      (at 44.45 218.52 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8987,8 +9844,8 @@
     )
     (property
       "Footprint"
-      "Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical"
-      (at 81.28 238.76 0)
+      ""
+      (at 44.45 223.52 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -8999,29 +9856,7 @@
     (property
       "Datasheet"
       ""
-      (at 81.28 238.76 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Description"
-      "Female 1x9 socket: Zero right column (TX, RX, GP13-GP7), pin 1 at the USB end"
-      (at 81.28 238.76 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "LCSC"
-      "C22438159"
-      (at 81.28 238.76 0)
+      (at 44.45 223.52 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9033,143 +9868,41 @@
       "1"
       (uuid "3c223929-6b11-5725-98af-9f58881fb039")
     )
-    (pin
-      "2"
-      (uuid "7e05a84e-b1fc-5ff7-bdc2-e4c3d7d37065")
-    )
-    (pin
-      "3"
-      (uuid "c55aec1c-ab76-51a5-9fbf-c0e220bd97b6")
-    )
-    (pin
-      "4"
-      (uuid "ae3f1e29-c3f7-5ff5-9545-482f50de2e50")
-    )
-    (pin
-      "5"
-      (uuid "bd3690cd-eb8a-5980-af08-a90fb14e3057")
-    )
-    (pin
-      "6"
-      (uuid "07532b51-a315-525c-99c8-f503746b892a")
-    )
-    (pin
-      "7"
-      (uuid "b5239451-1e27-5f7a-bf8c-8e1a1e2c864f")
-    )
-    (pin
-      "8"
-      (uuid "13976ec6-bd29-5d39-8b7e-9f1899b24dc9")
-    )
-    (pin
-      "9"
-      (uuid "0711148f-0751-5c96-91fc-1570c7d81c9a")
-    )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "J12")
+          (reference "#PWR021")
           (unit 1)
         )
       )
     )
   )
-  (text
-    "I2C sensor ports (identical pinout)"
-    (exclude_from_sim no)
-    (at 15.24 262.89 0)
-    (effects
-      (font
-        (size 2.54 2.54)
-        (bold yes)
-      )
-      (justify left bottom)
-    )
-    (uuid "38801efc-8452-5ff1-830f-8066e1570957")
-  )
-  (global_label
-    "GND"
-    (shape passive)
-    (at 31.75 271.78 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right)
-    )
-    (uuid "2be4acc4-c521-518b-a158-79541066be0c")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 31.75 271.78 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-  )
-  (global_label
-    "+3V3"
-    (shape passive)
-    (at 31.75 274.32 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right)
-    )
-    (uuid "3c5d2eaf-afb7-5dc5-8838-2fd8b92ca3db")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 31.75 274.32 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-  )
   (label
-    "SDA"
-    (at 31.75 276.86 180)
+    "BAT_ALRT"
+    (at 44.45 231.14 270)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify right bottom)
     )
-    (uuid "fdc6bfae-789b-5b02-bfb8-e1bf468f8f2a")
-  )
-  (label
-    "SCL"
-    (at 31.75 279.4 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "523ca38a-7045-536d-9e70-cd1dd46349a7")
+    (uuid "7e05a84e-b1fc-5ff7-bdc2-e4c3d7d37065")
   )
   (symbol
-    (lib_id "Connector_Generic:Conn_01x04")
-    (at 36.83 274.32 0)
+    (lib_id "Device:R")
+    (at 44.45 227.33 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "582f3d17-ee97-5f08-90e1-169668baa2ed")
+    (uuid "c55aec1c-ab76-51a5-9fbf-c0e220bd97b6")
     (property
       "Reference"
-      "J3"
-      (at 39.37 271.78 0)
+      "R35"
+      (at 46.99 224.155 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9179,8 +9912,8 @@
     )
     (property
       "Value"
-      "I2C TSL2591 #1"
-      (at 39.37 274.32 0)
+      "10k"
+      (at 46.99 226.695 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9190,8 +9923,8 @@
     )
     (property
       "Footprint"
-      "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
-      (at 36.83 274.32 0)
+      "Resistor_SMD:R_0603_1608Metric"
+      (at 44.45 227.33 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9202,7 +9935,7 @@
     (property
       "Datasheet"
       ""
-      (at 36.83 274.32 0)
+      (at 44.45 227.33 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9212,8 +9945,8 @@
     )
     (property
       "Description"
-      "JST-XH: 1 GND, 2 3V3, 3 SDA, 4 SCL"
-      (at 36.83 274.32 0)
+      ""
+      (at 44.45 227.33 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9223,8 +9956,248 @@
     )
     (property
       "LCSC"
-      "C144395"
-      (at 36.83 274.32 0)
+      "C25804"
+      (at 44.45 227.33 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "ae3f1e29-c3f7-5ff5-9545-482f50de2e50")
+    )
+    (pin
+      "2"
+      (uuid "bd3690cd-eb8a-5980-af08-a90fb14e3057")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "R35")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SYS"
+    (at 99.06 220.98 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "07532b51-a315-525c-99c8-f503746b892a")
+  )
+  (label
+    "SYS_SW"
+    (at 88.9 223.52 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "b5239451-1e27-5f7a-bf8c-8e1a1e2c864f")
+  )
+  (no_connect
+    (at 99.06 226.06)
+    (uuid "13976ec6-bd29-5d39-8b7e-9f1899b24dc9")
+  )
+  (symbol
+    (lib_id "Switch:SW_SPDT")
+    (at 93.98 223.52 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "0711148f-0751-5c96-91fc-1570c7d81c9a")
+    (property
+      "Reference"
+      "SW3"
+      (at 88.98 205.71 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "POWER"
+      (at 88.98 208.25 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Button_Switch_SMD:SW_SPDT_Shouhan_MSK12C02"
+      (at 93.98 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 93.98 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "Power switch; charging still works when off"
+      (at 93.98 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C431540"
+      (at 93.98 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "38801efc-8452-5ff1-830f-8066e1570957")
+    )
+    (pin
+      "2"
+      (uuid "2be4acc4-c521-518b-a158-79541066be0c")
+    )
+    (pin
+      "3"
+      (uuid "3c5d2eaf-afb7-5dc5-8838-2fd8b92ca3db")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "SW3")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "DK_5V"
+    (at 135.89 220.98 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "fdc6bfae-789b-5b02-bfb8-e1bf468f8f2a")
+  )
+  (label
+    "SYS_SW"
+    (at 143.51 220.98 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "523ca38a-7045-536d-9e70-cd1dd46349a7")
+  )
+  (symbol
+    (lib_id "Device:D_Schottky")
+    (at 139.7 220.98 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "582f3d17-ee97-5f08-90e1-169668baa2ed")
+    (property
+      "Reference"
+      "D3"
+      (at 134.7 205.71 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "SS34"
+      (at 134.7 208.25 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Diode_SMD:D_SMA"
+      (at 139.7 220.98 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 139.7 220.98 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "Into the Zero 5V pin; stops a PC on the Zero USB-C pushing into SYS"
+      (at 139.7 220.98 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C8678"
+      (at 139.7 220.98 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9240,117 +10213,42 @@
       "2"
       (uuid "27569f72-6b78-5153-b4a1-8918427c9756")
     )
-    (pin
-      "3"
-      (uuid "81de8917-d7ac-534f-81de-ecbffd100c13")
-    )
-    (pin
-      "4"
-      (uuid "d789e661-8b71-5c56-8fb1-b50e003a8757")
-    )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "J3")
+          (reference "D3")
           (unit 1)
         )
       )
     )
   )
-  (global_label
-    "GND"
-    (shape passive)
-    (at 76.2 271.78 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right)
-    )
-    (uuid "deec1c7c-3d0b-5d47-a676-f7a399750919")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 76.2 271.78 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-  )
-  (global_label
-    "+3V3"
-    (shape passive)
-    (at 76.2 274.32 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right)
-    )
-    (uuid "609a5975-3c78-5225-bc79-d8425b8eb361")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 76.2 274.32 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-  )
-  (label
-    "SDA"
-    (at 76.2 276.86 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "2c3c216e-734c-56a7-9b97-7b1ec8c2e791")
-  )
-  (label
-    "SCL"
-    (at 76.2 279.4 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "b0c521b0-6e79-5847-a5b0-161932ef64ed")
-  )
   (symbol
-    (lib_id "Connector_Generic:Conn_01x04")
-    (at 81.28 274.32 0)
+    (lib_id "power:+3V3")
+    (at 165.1 223.52 0)
     (unit 1)
     (exclude_from_sim no)
-    (in_bom yes)
-    (on_board yes)
+    (in_bom no)
+    (on_board no)
     (dnp no)
-    (uuid "60ac269f-5dc8-56ee-b0af-3715db584eea")
+    (uuid "81de8917-d7ac-534f-81de-ecbffd100c13")
     (property
       "Reference"
-      "J4"
-      (at 83.82 271.78 0)
+      "#PWR022"
+      (at 165.1 223.52 0)
       (effects
         (font
           (size 1.27 1.27)
         )
         (justify left)
+        (hide yes)
       )
     )
     (property
       "Value"
-      "I2C MLX90614"
-      (at 83.82 274.32 0)
+      "+3V3"
+      (at 165.1 218.52 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9360,8 +10258,8 @@
     )
     (property
       "Footprint"
-      "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
-      (at 81.28 274.32 0)
+      ""
+      (at 165.1 223.52 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9372,7 +10270,86 @@
     (property
       "Datasheet"
       ""
-      (at 81.28 274.32 0)
+      (at 165.1 223.52 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "d789e661-8b71-5c56-8fb1-b50e003a8757")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR022")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "CHG_STAT1"
+    (at 165.1 231.14 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "deec1c7c-3d0b-5d47-a676-f7a399750919")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 165.1 227.33 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "609a5975-3c78-5225-bc79-d8425b8eb361")
+    (property
+      "Reference"
+      "R28"
+      (at 167.64 224.155 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "10k"
+      (at 167.64 226.695 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Resistor_SMD:R_0603_1608Metric"
+      (at 165.1 227.33 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 165.1 227.33 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9382,8 +10359,8 @@
     )
     (property
       "Description"
-      "JST-XH: 1 GND, 2 3V3, 3 SDA, 4 SCL"
-      (at 81.28 274.32 0)
+      ""
+      (at 165.1 227.33 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9393,8 +10370,81 @@
     )
     (property
       "LCSC"
-      "C144395"
-      (at 81.28 274.32 0)
+      "C25804"
+      (at 165.1 227.33 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "2c3c216e-734c-56a7-9b97-7b1ec8c2e791")
+    )
+    (pin
+      "2"
+      (uuid "b0c521b0-6e79-5847-a5b0-161932ef64ed")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "R28")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol
+    (lib_id "power:+3V3")
+    (at 15.24 256.54 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "60ac269f-5dc8-56ee-b0af-3715db584eea")
+    (property
+      "Reference"
+      "#PWR023"
+      (at 15.24 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "+3V3"
+      (at 15.24 251.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 15.24 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 15.24 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9406,110 +10456,41 @@
       "1"
       (uuid "2ff6fdc6-a6e5-5bc7-8781-bc154a129239")
     )
-    (pin
-      "2"
-      (uuid "b17fed49-9678-5662-b228-de7a9ae38bac")
-    )
-    (pin
-      "3"
-      (uuid "8a3ae0a8-ee99-5c3f-8455-962ba932ea01")
-    )
-    (pin
-      "4"
-      (uuid "48d2ed34-603b-528a-b820-1990a79d97cc")
-    )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "J4")
+          (reference "#PWR023")
           (unit 1)
         )
       )
     )
   )
-  (global_label
-    "GND"
-    (shape passive)
-    (at 120.65 271.78 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right)
-    )
-    (uuid "fbe7b106-1b6d-59e6-ac64-c0ac5b967a43")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 120.65 271.78 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-  )
-  (global_label
-    "+3V3"
-    (shape passive)
-    (at 120.65 274.32 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right)
-    )
-    (uuid "98cb1762-4d4b-51ba-bedc-dd3adc3afe99")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 120.65 274.32 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-  )
   (label
-    "SDA"
-    (at 120.65 276.86 180)
+    "CHG_STAT2"
+    (at 15.24 264.16 270)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify right bottom)
     )
-    (uuid "a6caf410-ecfb-5706-bb37-5d808b8f3e3a")
-  )
-  (label
-    "SCL"
-    (at 120.65 279.4 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "9f8ce584-4da5-5fe2-af09-10011dda513e")
+    (uuid "b17fed49-9678-5662-b228-de7a9ae38bac")
   )
   (symbol
-    (lib_id "Connector_Generic:Conn_01x04")
-    (at 125.73 274.32 0)
+    (lib_id "Device:R")
+    (at 15.24 260.35 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "edf59bc4-5daf-5182-b557-fb7ef3590df8")
+    (uuid "8a3ae0a8-ee99-5c3f-8455-962ba932ea01")
     (property
       "Reference"
-      "J5"
-      (at 128.27 271.78 0)
+      "R29"
+      (at 17.78 257.175 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9519,8 +10500,8 @@
     )
     (property
       "Value"
-      "I2C BME280"
-      (at 128.27 274.32 0)
+      "10k"
+      (at 17.78 259.715 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9530,8 +10511,8 @@
     )
     (property
       "Footprint"
-      "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
-      (at 125.73 274.32 0)
+      "Resistor_SMD:R_0603_1608Metric"
+      (at 15.24 260.35 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9542,7 +10523,7 @@
     (property
       "Datasheet"
       ""
-      (at 125.73 274.32 0)
+      (at 15.24 260.35 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9552,8 +10533,8 @@
     )
     (property
       "Description"
-      "JST-XH: 1 GND, 2 3V3, 3 SDA, 4 SCL"
-      (at 125.73 274.32 0)
+      ""
+      (at 15.24 260.35 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9563,8 +10544,182 @@
     )
     (property
       "LCSC"
-      "C144395"
-      (at 125.73 274.32 0)
+      "C25804"
+      (at 15.24 260.35 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "48d2ed34-603b-528a-b820-1990a79d97cc")
+    )
+    (pin
+      "2"
+      (uuid "fbe7b106-1b6d-59e6-ac64-c0ac5b967a43")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "R29")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol
+    (lib_id "power:+3V3")
+    (at 44.45 256.54 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "98cb1762-4d4b-51ba-bedc-dd3adc3afe99")
+    (property
+      "Reference"
+      "#PWR024"
+      (at 44.45 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "+3V3"
+      (at 44.45 251.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 44.45 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 44.45 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "a6caf410-ecfb-5706-bb37-5d808b8f3e3a")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR024")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "CHG_PG"
+    (at 44.45 264.16 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "9f8ce584-4da5-5fe2-af09-10011dda513e")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 44.45 260.35 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "edf59bc4-5daf-5182-b557-fb7ef3590df8")
+    (property
+      "Reference"
+      "R30"
+      (at 46.99 257.175 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "10k"
+      (at 46.99 259.715 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Resistor_SMD:R_0603_1608Metric"
+      (at 44.45 260.35 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 44.45 260.35 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      ""
+      (at 44.45 260.35 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C25804"
+      (at 44.45 260.35 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9580,29 +10735,45 @@
       "2"
       (uuid "2546951f-9cab-51b3-940d-be3cd94616a5")
     )
-    (pin
-      "3"
-      (uuid "534ce080-42b2-511e-9a53-68b51ffce11e")
-    )
-    (pin
-      "4"
-      (uuid "8b7d3843-4b77-5066-a6d3-216b93bab261")
-    )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "J5")
+          (reference "R30")
           (unit 1)
         )
       )
     )
   )
+  (text
+    "Waveshare ESP32-S3-Zero-M sockets"
+    (exclude_from_sim no)
+    (at 15.24 288.29 0)
+    (effects
+      (font
+        (size 2.54 2.54)
+        (bold yes)
+      )
+      (justify left bottom)
+    )
+    (uuid "534ce080-42b2-511e-9a53-68b51ffce11e")
+  )
+  (label
+    "DK_5V"
+    (at 31.75 297.18 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "8b7d3843-4b77-5066-a6d3-216b93bab261")
+  )
   (global_label
     "GND"
     (shape passive)
-    (at 166.37 271.78 180)
+    (at 31.75 299.72 180)
     (effects
       (font
         (size 1.27 1.27)
@@ -9613,7 +10784,7 @@
     (property
       "Intersheetrefs"
       "${INTERSHEET_REFS}"
-      (at 166.37 271.78 0)
+      (at 31.75 299.72 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9625,7 +10796,7 @@
   (global_label
     "+3V3"
     (shape passive)
-    (at 166.37 274.32 180)
+    (at 31.75 302.26 180)
     (effects
       (font
         (size 1.27 1.27)
@@ -9636,7 +10807,7 @@
     (property
       "Intersheetrefs"
       "${INTERSHEET_REFS}"
-      (at 166.37 274.32 0)
+      (at 31.75 302.26 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9646,8 +10817,8 @@
     )
   )
   (label
-    "SDA"
-    (at 166.37 276.86 180)
+    "BAT_ALRT"
+    (at 31.75 304.8 180)
     (effects
       (font
         (size 1.27 1.27)
@@ -9657,8 +10828,8 @@
     (uuid "de547dd4-a0c7-5e83-8ed4-fe445837bf83")
   )
   (label
-    "SCL"
-    (at 166.37 279.4 180)
+    "CHG_STAT1"
+    (at 31.75 307.34 180)
     (effects
       (font
         (size 1.27 1.27)
@@ -9667,19 +10838,56 @@
     )
     (uuid "4d076b5b-f1fe-526e-890f-0d90f776bef7")
   )
+  (no_connect
+    (at 31.75 309.88)
+    (uuid "3509c773-2eaa-5581-984c-2eca9a4127e8")
+  )
+  (label
+    "CHG_STAT2"
+    (at 31.75 312.42 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "7e0c937f-e5fc-5845-945f-42cf938990ad")
+  )
+  (label
+    "CHG_PG"
+    (at 31.75 314.96 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "403fa781-3535-5a99-a438-947a3aaec976")
+  )
+  (label
+    "AUX1"
+    (at 31.75 317.5 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "8adf42e8-6f95-5f7e-82e0-134e9bea9c29")
+  )
   (symbol
-    (lib_id "Connector_Generic:Conn_01x04")
-    (at 171.45 274.32 0)
+    (lib_id "Connector_Generic:Conn_01x09")
+    (at 36.83 307.34 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "3509c773-2eaa-5581-984c-2eca9a4127e8")
+    (uuid "3d45ad1e-4af1-5b2b-82cd-ab472d6da707")
     (property
       "Reference"
-      "J6"
-      (at 173.99 271.78 0)
+      "J11"
+      (at 39.37 300.99 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9689,8 +10897,8 @@
     )
     (property
       "Value"
-      "I2C OLED"
-      (at 173.99 274.32 0)
+      "Zero left"
+      (at 39.37 303.53 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9700,8 +10908,8 @@
     )
     (property
       "Footprint"
-      "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
-      (at 171.45 274.32 0)
+      "Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical"
+      (at 36.83 307.34 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9712,7 +10920,7 @@
     (property
       "Datasheet"
       ""
-      (at 171.45 274.32 0)
+      (at 36.83 307.34 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9722,8 +10930,8 @@
     )
     (property
       "Description"
-      "JST-XH: 1 GND, 2 3V3, 3 SDA, 4 SCL"
-      (at 171.45 274.32 0)
+      "Female 1x9 socket: Zero left column (5V, GND, 3V3, GP1-GP6), pin 1 at the USB end"
+      (at 36.83 307.34 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9733,8 +10941,8 @@
     )
     (property
       "LCSC"
-      "C144395"
-      (at 171.45 274.32 0)
+      "C22438159"
+      (at 36.83 307.34 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -9744,188 +10952,38 @@
     )
     (pin
       "1"
-      (uuid "7e0c937f-e5fc-5845-945f-42cf938990ad")
+      (uuid "1ec5882c-bb23-548e-ae00-22e378a63683")
     )
     (pin
       "2"
-      (uuid "403fa781-3535-5a99-a438-947a3aaec976")
+      (uuid "ce90e087-39f1-5b49-a794-ca54f24f2f0b")
     )
     (pin
       "3"
-      (uuid "8adf42e8-6f95-5f7e-82e0-134e9bea9c29")
+      (uuid "475027d1-dcf3-59ed-bedc-da5c36363baf")
     )
     (pin
       "4"
-      (uuid "3d45ad1e-4af1-5b2b-82cd-ab472d6da707")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "J6")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (global_label
-    "GND"
-    (shape passive)
-    (at 31.75 290.83 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right)
-    )
-    (uuid "1ec5882c-bb23-548e-ae00-22e378a63683")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 31.75 290.83 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-  )
-  (global_label
-    "+3V3"
-    (shape passive)
-    (at 31.75 293.37 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right)
-    )
-    (uuid "ce90e087-39f1-5b49-a794-ca54f24f2f0b")
-    (property
-      "Intersheetrefs"
-      "${INTERSHEET_REFS}"
-      (at 31.75 293.37 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-  )
-  (label
-    "SDA2"
-    (at 31.75 295.91 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "475027d1-dcf3-59ed-bedc-da5c36363baf")
-  )
-  (label
-    "SCL2"
-    (at 31.75 298.45 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "87d851ba-8bc9-5f6d-aece-b31032802098")
-  )
-  (symbol
-    (lib_id "Connector_Generic:Conn_01x04")
-    (at 36.83 293.37 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid "22f49951-69c7-5138-b7d5-792c059c3b9d")
-    (property
-      "Reference"
-      "J13"
-      (at 39.37 290.83 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Value"
-      "I2C-2 TSL2591 #2"
-      (at 39.37 293.37 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
-      (at 36.83 293.37 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 36.83 293.37 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Description"
-      "JST-XH, second I2C bus (GPIO10/11): 1 GND, 2 3V3, 3 SDA, 4 SCL"
-      (at 36.83 293.37 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "LCSC"
-      "C144395"
-      (at 36.83 293.37 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
+      (uuid "87d851ba-8bc9-5f6d-aece-b31032802098")
     )
     (pin
-      "1"
+      "5"
+      (uuid "22f49951-69c7-5138-b7d5-792c059c3b9d")
+    )
+    (pin
+      "6"
       (uuid "d3d345ff-54c4-52de-9352-e9916bb8f92b")
     )
     (pin
-      "2"
+      "7"
       (uuid "285c4a62-91b3-51fb-8312-dbb33306a3b8")
     )
     (pin
-      "3"
+      "8"
       (uuid "73545621-aa3f-5edd-83e1-842f0f7f1ad5")
     )
     (pin
-      "4"
+      "9"
       (uuid "f293f12e-41e0-5fe4-8c2a-199abba517a1")
     )
     (instances
@@ -9933,84 +10991,23 @@
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "J13")
+          (reference "J11")
           (unit 1)
         )
       )
     )
   )
-  (symbol
-    (lib_id "power:+3V3")
-    (at 59.69 299.72 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom no)
-    (on_board no)
-    (dnp no)
+  (no_connect
+    (at 76.2 297.18)
     (uuid "bf44c3cf-b4a1-53e8-87d8-ef96e0a17a98")
-    (property
-      "Reference"
-      "#PWR021"
-      (at 59.69 299.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-        (hide yes)
-      )
-    )
-    (property
-      "Value"
-      "+3V3"
-      (at 59.69 294.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      ""
-      (at 59.69 299.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 59.69 299.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "cf0c16aa-dc16-56c7-9faa-7bcaa1098215")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR021")
-          (unit 1)
-        )
-      )
-    )
+  )
+  (no_connect
+    (at 76.2 299.72)
+    (uuid "cf0c16aa-dc16-56c7-9faa-7bcaa1098215")
   )
   (label
-    "SDA2"
-    (at 59.69 307.34 270)
+    "GPS_RX"
+    (at 76.2 302.26 180)
     (effects
       (font
         (size 1.27 1.27)
@@ -10019,172 +11016,64 @@
     )
     (uuid "95cd30b8-001d-5ba3-be26-026ec9c94c4c")
   )
-  (symbol
-    (lib_id "Device:R")
-    (at 59.69 303.53 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
+  (label
+    "GPS_TX"
+    (at 76.2 304.8 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
     (uuid "0e1de592-1618-517c-ae11-1eb032ea1de0")
-    (property
-      "Reference"
-      "R20"
-      (at 62.23 300.355 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Value"
-      "4.7k"
-      (at 62.23 302.895 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      "Resistor_SMD:R_0603_1608Metric"
-      (at 59.69 303.53 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 59.69 303.53 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Description"
-      ""
-      (at 59.69 303.53 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "LCSC"
-      "C23162"
-      (at 59.69 303.53 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "5635d50b-6b90-59d0-98af-5a26854ba05e")
-    )
-    (pin
-      "2"
-      (uuid "b62d96b2-dc4e-5412-8021-f26f97fdec9e")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "R20")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (symbol
-    (lib_id "power:+3V3")
-    (at 88.9 299.72 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom no)
-    (on_board no)
-    (dnp no)
-    (uuid "d5b77835-adba-5645-9e7e-77d94f833c5c")
-    (property
-      "Reference"
-      "#PWR022"
-      (at 88.9 299.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-        (hide yes)
-      )
-    )
-    (property
-      "Value"
-      "+3V3"
-      (at 88.9 294.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      ""
-      (at 88.9 299.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 88.9 299.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "201a1749-987f-5d0c-b33e-776b56f05c43")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR022")
-          (unit 1)
-        )
-      )
-    )
   )
   (label
     "SCL2"
-    (at 88.9 307.34 270)
+    (at 76.2 307.34 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "5635d50b-6b90-59d0-98af-5a26854ba05e")
+  )
+  (label
+    "SDA2"
+    (at 76.2 309.88 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "b62d96b2-dc4e-5412-8021-f26f97fdec9e")
+  )
+  (label
+    "SCL"
+    (at 76.2 312.42 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "d5b77835-adba-5645-9e7e-77d94f833c5c")
+  )
+  (label
+    "SDA"
+    (at 76.2 314.96 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "201a1749-987f-5d0c-b33e-776b56f05c43")
+  )
+  (label
+    "AUX2"
+    (at 76.2 317.5 180)
     (effects
       (font
         (size 1.27 1.27)
@@ -10194,8 +11083,8 @@
     (uuid "58361eeb-0c3c-5a06-a583-ea9c7a1b8272")
   )
   (symbol
-    (lib_id "Device:R")
-    (at 88.9 303.53 0)
+    (lib_id "Connector_Generic:Conn_01x09")
+    (at 81.28 307.34 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
@@ -10204,8 +11093,8 @@
     (uuid "221bb696-c6a2-5f4a-a39b-061438621c73")
     (property
       "Reference"
-      "R21"
-      (at 91.44 300.355 0)
+      "J12"
+      (at 83.82 300.99 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -10215,8 +11104,8 @@
     )
     (property
       "Value"
-      "4.7k"
-      (at 91.44 302.895 0)
+      "Zero right"
+      (at 83.82 303.53 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -10226,8 +11115,8 @@
     )
     (property
       "Footprint"
-      "Resistor_SMD:R_0603_1608Metric"
-      (at 88.9 303.53 0)
+      "Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical"
+      (at 81.28 307.34 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -10238,7 +11127,7 @@
     (property
       "Datasheet"
       ""
-      (at 88.9 303.53 0)
+      (at 81.28 307.34 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -10248,8 +11137,8 @@
     )
     (property
       "Description"
-      ""
-      (at 88.9 303.53 0)
+      "Female 1x9 socket: Zero right column (TX, RX, GP13-GP7), pin 1 at the USB end"
+      (at 81.28 307.34 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -10259,8 +11148,8 @@
     )
     (property
       "LCSC"
-      "C23162"
-      (at 88.9 303.53 0)
+      "C22438159"
+      (at 81.28 307.34 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -10276,175 +11165,32 @@
       "2"
       (uuid "b2ea6a21-9f58-538a-b36e-81cb3afdc438")
     )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "R21")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (label
-    "SDA2"
-    (at 134.62 313.69 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "0d4b44f3-3e81-5881-a557-b0503a09e42b")
-  )
-  (symbol
-    (lib_id "power:GND")
-    (at 139.7 321.31 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom no)
-    (on_board no)
-    (dnp no)
-    (uuid "c4df7681-c46c-5c9c-85c2-5dd809a042bd")
-    (property
-      "Reference"
-      "#PWR023"
-      (at 139.7 321.31 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-        (hide yes)
-      )
-    )
-    (property
-      "Value"
-      "GND"
-      (at 139.7 326.31 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      ""
-      (at 139.7 321.31 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 139.7 321.31 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
+    (pin
+      "3"
+      (uuid "0d4b44f3-3e81-5881-a557-b0503a09e42b")
     )
     (pin
-      "1"
+      "4"
+      (uuid "c4df7681-c46c-5c9c-85c2-5dd809a042bd")
+    )
+    (pin
+      "5"
       (uuid "159b0c6b-bedd-539d-ba20-5b6dc71a29db")
     )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR023")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (label
-    "SCL2"
-    (at 134.62 316.23 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "2194acfe-ea54-5fac-b1c8-fc3df2214cf3")
-  )
-  (label
-    "SCL2"
-    (at 144.78 316.23 0)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify left bottom)
-    )
-    (uuid "b305548f-2326-55ba-9455-42c94cb156b1")
-  )
-  (symbol
-    (lib_id "power:+3V3")
-    (at 139.7 308.61 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom no)
-    (on_board no)
-    (dnp no)
-    (uuid "82820247-fcd3-58a6-9c19-72a401b5bf6d")
-    (property
-      "Reference"
-      "#PWR024"
-      (at 139.7 308.61 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-        (hide yes)
-      )
-    )
-    (property
-      "Value"
-      "+3V3"
-      (at 139.7 303.61 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      ""
-      (at 139.7 308.61 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 139.7 308.61 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
+    (pin
+      "6"
+      (uuid "2194acfe-ea54-5fac-b1c8-fc3df2214cf3")
     )
     (pin
-      "1"
+      "7"
+      (uuid "b305548f-2326-55ba-9455-42c94cb156b1")
+    )
+    (pin
+      "8"
+      (uuid "82820247-fcd3-58a6-9c19-72a401b5bf6d")
+    )
+    (pin
+      "9"
       (uuid "65c5f59e-f096-5a5c-861c-86f05e25849f")
     )
     (instances
@@ -10452,775 +11198,14 @@
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR024")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (label
-    "SDA2"
-    (at 144.78 313.69 0)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify left bottom)
-    )
-    (uuid "10a8178c-bc8d-57c3-a32a-5f67b189d168")
-  )
-  (symbol
-    (lib_id "Power_Protection:USBLC6-2SC6")
-    (at 139.7 313.69 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid "1e0c7766-7c98-569a-a246-91957430b284")
-    (property
-      "Reference"
-      "U7"
-      (at 134.7 293.34 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Value"
-      "USBLC6-2SC6"
-      (at 134.7 295.88 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      "Package_TO_SOT_SMD:SOT-23-6"
-      (at 139.7 313.69 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 139.7 313.69 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Description"
-      "I2C-2 ESD"
-      (at 139.7 313.69 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "LCSC"
-      "C7519"
-      (at 139.7 313.69 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "4aec6309-beff-5497-a95c-e5834fc7cfd1")
-    )
-    (pin
-      "2"
-      (uuid "9ef31077-e693-5c64-a7c8-554efdebfba7")
-    )
-    (pin
-      "3"
-      (uuid "3b3955d0-da4a-5812-832b-8b501876dddf")
-    )
-    (pin
-      "4"
-      (uuid "00c01193-6953-59c0-be08-a72676501834")
-    )
-    (pin
-      "5"
-      (uuid "b172abbb-21a6-58ab-93fc-771a7e8e3561")
-    )
-    (pin
-      "6"
-      (uuid "ea3cdd2d-dd26-5990-ad15-8ff9be01bd8f")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "U7")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (symbol
-    (lib_id "power:+3V3")
-    (at 165.1 299.72 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom no)
-    (on_board no)
-    (dnp no)
-    (uuid "8308da5d-dd8b-5a51-a81f-c9ea7a925112")
-    (property
-      "Reference"
-      "#PWR025"
-      (at 165.1 299.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-        (hide yes)
-      )
-    )
-    (property
-      "Value"
-      "+3V3"
-      (at 165.1 294.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      ""
-      (at 165.1 299.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 165.1 299.72 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "7c62d9f5-50cb-5153-8e08-b065ee9f25d4")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR025")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (label
-    "SDA"
-    (at 165.1 307.34 270)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "b244ac40-e783-5c5c-a727-7866a4a49e34")
-  )
-  (symbol
-    (lib_id "Device:R")
-    (at 165.1 303.53 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid "1498f6f2-75e7-569f-a665-b52fcf6e3b40")
-    (property
-      "Reference"
-      "R7"
-      (at 167.64 300.355 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Value"
-      "4.7k"
-      (at 167.64 302.895 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      "Resistor_SMD:R_0603_1608Metric"
-      (at 165.1 303.53 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 165.1 303.53 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Description"
-      ""
-      (at 165.1 303.53 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "LCSC"
-      "C23162"
-      (at 165.1 303.53 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "894587b3-1a29-5072-b9cd-a4ac0a45c0f3")
-    )
-    (pin
-      "2"
-      (uuid "019eac40-cd22-51bb-95fc-ce64a90dad65")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "R7")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (symbol
-    (lib_id "power:+3V3")
-    (at 15.24 345.44 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom no)
-    (on_board no)
-    (dnp no)
-    (uuid "d95495a0-b828-5620-b11e-2246b75bf7fc")
-    (property
-      "Reference"
-      "#PWR026"
-      (at 15.24 345.44 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-        (hide yes)
-      )
-    )
-    (property
-      "Value"
-      "+3V3"
-      (at 15.24 340.44 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      ""
-      (at 15.24 345.44 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 15.24 345.44 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "edb54741-5aa2-557a-b63d-e298e3804ebd")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR026")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (label
-    "SCL"
-    (at 15.24 353.06 270)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "80a8efe0-290e-50e1-a8df-5ce86696c8ce")
-  )
-  (symbol
-    (lib_id "Device:R")
-    (at 15.24 349.25 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid "f90ae888-1afa-5e36-bbae-74f0f36fc1dc")
-    (property
-      "Reference"
-      "R8"
-      (at 17.78 346.075 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Value"
-      "4.7k"
-      (at 17.78 348.615 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      "Resistor_SMD:R_0603_1608Metric"
-      (at 15.24 349.25 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 15.24 349.25 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Description"
-      ""
-      (at 15.24 349.25 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "LCSC"
-      "C23162"
-      (at 15.24 349.25 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "e63bed1e-315b-5646-aff9-dd0c35bd7429")
-    )
-    (pin
-      "2"
-      (uuid "88c902aa-de43-5f9f-b954-beba1fa192eb")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "R8")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (label
-    "SDA"
-    (at 59.69 359.41 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "03aeecff-2937-5491-97e0-afce485040d9")
-  )
-  (symbol
-    (lib_id "power:GND")
-    (at 64.77 367.03 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom no)
-    (on_board no)
-    (dnp no)
-    (uuid "8ac5cc23-a1b9-541e-8bf3-d9252acfca46")
-    (property
-      "Reference"
-      "#PWR027"
-      (at 64.77 367.03 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-        (hide yes)
-      )
-    )
-    (property
-      "Value"
-      "GND"
-      (at 64.77 372.03 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      ""
-      (at 64.77 367.03 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 64.77 367.03 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "31eb74b0-1a04-5825-9e18-b5cda3b55826")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR027")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (label
-    "SCL"
-    (at 59.69 361.95 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
-    (uuid "7744f0fb-2920-5d84-9df6-9b59fcc70f18")
-  )
-  (label
-    "SCL"
-    (at 69.85 361.95 0)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify left bottom)
-    )
-    (uuid "3d9d4b59-d58b-5d0c-b81d-dc2159b19223")
-  )
-  (symbol
-    (lib_id "power:+3V3")
-    (at 64.77 354.33 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom no)
-    (on_board no)
-    (dnp no)
-    (uuid "39ac0d37-4283-5b97-b274-6b25073a45e0")
-    (property
-      "Reference"
-      "#PWR028"
-      (at 64.77 354.33 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-        (hide yes)
-      )
-    )
-    (property
-      "Value"
-      "+3V3"
-      (at 64.77 349.33 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      ""
-      (at 64.77 354.33 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 64.77 354.33 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "a9bc50dc-61dc-5473-ae29-07054ff4c1bd")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR028")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (label
-    "SDA"
-    (at 69.85 359.41 0)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify left bottom)
-    )
-    (uuid "cc04bc2f-d1f5-51d0-bd66-555e80c4df47")
-  )
-  (symbol
-    (lib_id "Power_Protection:USBLC6-2SC6")
-    (at 64.77 359.41 0)
-    (unit 1)
-    (exclude_from_sim no)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid "e0165d51-8121-5fc6-9d17-130050fbdb8c")
-    (property
-      "Reference"
-      "U4"
-      (at 59.77 339.06 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Value"
-      "USBLC6-2SC6"
-      (at 59.77 341.6 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (justify left)
-      )
-    )
-    (property
-      "Footprint"
-      "Package_TO_SOT_SMD:SOT-23-6"
-      (at 64.77 359.41 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Datasheet"
-      ""
-      (at 64.77 359.41 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "Description"
-      "I2C ESD"
-      (at 64.77 359.41 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (property
-      "LCSC"
-      "C7519"
-      (at 64.77 359.41 0)
-      (effects
-        (font
-          (size 1.27 1.27)
-        )
-        (hide yes)
-      )
-    )
-    (pin
-      "1"
-      (uuid "e03e98e6-73ff-51a7-974a-d22e241669de")
-    )
-    (pin
-      "2"
-      (uuid "5c688f9c-4b19-5f37-9c1d-0470e7affef8")
-    )
-    (pin
-      "3"
-      (uuid "4929913e-a4bd-5c31-b62d-b604af095f41")
-    )
-    (pin
-      "4"
-      (uuid "62361864-9426-52e0-a2a6-e8cbdaf20922")
-    )
-    (pin
-      "5"
-      (uuid "11da3556-cc4f-5235-b4ac-b92fa7eeb93b")
-    )
-    (pin
-      "6"
-      (uuid "26c6f4b4-b315-508e-91cf-8fd5ff6cf390")
-    )
-    (instances
-      (project
-        "SQMeter-Hardware-Travel"
-        (path
-          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "U4")
+          (reference "J12")
           (unit 1)
         )
       )
     )
   )
   (text
-    "GPS (UART1)"
+    "I2C sensor ports (identical pinout)"
     (exclude_from_sim no)
     (at 238.76 25.4 0)
     (effects
@@ -11230,7 +11215,7 @@
       )
       (justify left bottom)
     )
-    (uuid "88ed8f23-24e8-59a8-aa58-25b168e33974")
+    (uuid "10a8178c-bc8d-57c3-a32a-5f67b189d168")
   )
   (global_label
     "GND"
@@ -11242,7 +11227,7 @@
       )
       (justify right)
     )
-    (uuid "b72f0cd4-2a15-545b-a4a6-b99aa309ed5a")
+    (uuid "1e0c7766-7c98-569a-a246-91957430b284")
     (property
       "Intersheetrefs"
       "${INTERSHEET_REFS}"
@@ -11265,7 +11250,7 @@
       )
       (justify right)
     )
-    (uuid "67355338-090c-5dcc-8d07-6a9ed99348df")
+    (uuid "4aec6309-beff-5497-a95c-e5834fc7cfd1")
     (property
       "Intersheetrefs"
       "${INTERSHEET_REFS}"
@@ -11279,7 +11264,7 @@
     )
   )
   (label
-    "GPS_TXO"
+    "SDA"
     (at 255.27 38.1 180)
     (effects
       (font
@@ -11287,10 +11272,10 @@
       )
       (justify right bottom)
     )
-    (uuid "c26f697d-25c8-50f1-8183-c9ca0d7b311b")
+    (uuid "9ef31077-e693-5c64-a7c8-554efdebfba7")
   )
   (label
-    "GPS_RXI"
+    "SCL"
     (at 255.27 40.64 180)
     (effects
       (font
@@ -11298,7 +11283,7 @@
       )
       (justify right bottom)
     )
-    (uuid "79f34d61-e23d-5582-908a-56df119a904f")
+    (uuid "3b3955d0-da4a-5812-832b-8b501876dddf")
   )
   (symbol
     (lib_id "Connector_Generic:Conn_01x04")
@@ -11308,10 +11293,10 @@
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "d22e7385-b1ec-5ba8-a37a-7f92edf5ca1c")
+    (uuid "00c01193-6953-59c0-be08-a72676501834")
     (property
       "Reference"
-      "J7"
+      "J3"
       (at 262.89 33.02 0)
       (effects
         (font
@@ -11322,7 +11307,7 @@
     )
     (property
       "Value"
-      "GPS"
+      "I2C TSL2591 #1"
       (at 262.89 35.56 0)
       (effects
         (font
@@ -11355,7 +11340,7 @@
     )
     (property
       "Description"
-      "JST-XH: 1 GND, 2 3V3, 3 GPS TX (to ESP RX), 4 GPS RX"
+      "JST-XH: 1 GND, 2 3V3, 3 SDA, 4 SCL"
       (at 260.35 35.56 0)
       (effects
         (font
@@ -11377,19 +11362,2162 @@
     )
     (pin
       "1"
-      (uuid "95025b91-2197-5739-87bf-c7bb730d7496")
+      (uuid "b172abbb-21a6-58ab-93fc-771a7e8e3561")
     )
     (pin
       "2"
-      (uuid "9a62b59f-2c27-5e7c-b1b1-a420e34ee772")
+      (uuid "ea3cdd2d-dd26-5990-ad15-8ff9be01bd8f")
     )
     (pin
       "3"
-      (uuid "23cc7164-f762-5d58-88e3-6d585285ef49")
+      (uuid "8308da5d-dd8b-5a51-a81f-c9ea7a925112")
     )
     (pin
       "4"
+      (uuid "7c62d9f5-50cb-5153-8e08-b065ee9f25d4")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "J3")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (global_label
+    "GND"
+    (shape passive)
+    (at 299.72 33.02 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "b244ac40-e783-5c5c-a727-7866a4a49e34")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 299.72 33.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (global_label
+    "+3V3"
+    (shape passive)
+    (at 299.72 35.56 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "1498f6f2-75e7-569f-a665-b52fcf6e3b40")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 299.72 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (label
+    "SDA"
+    (at 299.72 38.1 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "894587b3-1a29-5072-b9cd-a4ac0a45c0f3")
+  )
+  (label
+    "SCL"
+    (at 299.72 40.64 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "019eac40-cd22-51bb-95fc-ce64a90dad65")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x04")
+    (at 304.8 35.56 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "d95495a0-b828-5620-b11e-2246b75bf7fc")
+    (property
+      "Reference"
+      "J4"
+      (at 307.34 33.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "I2C MLX90614"
+      (at 307.34 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+      (at 304.8 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 304.8 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "JST-XH: 1 GND, 2 3V3, 3 SDA, 4 SCL"
+      (at 304.8 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C144395"
+      (at 304.8 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "edb54741-5aa2-557a-b63d-e298e3804ebd")
+    )
+    (pin
+      "2"
+      (uuid "80a8efe0-290e-50e1-a8df-5ce86696c8ce")
+    )
+    (pin
+      "3"
+      (uuid "f90ae888-1afa-5e36-bbae-74f0f36fc1dc")
+    )
+    (pin
+      "4"
+      (uuid "e63bed1e-315b-5646-aff9-dd0c35bd7429")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "J4")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (global_label
+    "GND"
+    (shape passive)
+    (at 344.17 33.02 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "88c902aa-de43-5f9f-b954-beba1fa192eb")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 344.17 33.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (global_label
+    "+3V3"
+    (shape passive)
+    (at 344.17 35.56 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "03aeecff-2937-5491-97e0-afce485040d9")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 344.17 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (label
+    "SDA"
+    (at 344.17 38.1 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "8ac5cc23-a1b9-541e-8bf3-d9252acfca46")
+  )
+  (label
+    "SCL"
+    (at 344.17 40.64 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "31eb74b0-1a04-5825-9e18-b5cda3b55826")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x04")
+    (at 349.25 35.56 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "7744f0fb-2920-5d84-9df6-9b59fcc70f18")
+    (property
+      "Reference"
+      "J5"
+      (at 351.79 33.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "I2C BME280"
+      (at 351.79 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+      (at 349.25 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 349.25 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "JST-XH: 1 GND, 2 3V3, 3 SDA, 4 SCL"
+      (at 349.25 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C144395"
+      (at 349.25 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "3d9d4b59-d58b-5d0c-b81d-dc2159b19223")
+    )
+    (pin
+      "2"
+      (uuid "39ac0d37-4283-5b97-b274-6b25073a45e0")
+    )
+    (pin
+      "3"
+      (uuid "a9bc50dc-61dc-5473-ae29-07054ff4c1bd")
+    )
+    (pin
+      "4"
+      (uuid "cc04bc2f-d1f5-51d0-bd66-555e80c4df47")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "J5")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (global_label
+    "GND"
+    (shape passive)
+    (at 389.89 33.02 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "e0165d51-8121-5fc6-9d17-130050fbdb8c")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 389.89 33.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (global_label
+    "+3V3"
+    (shape passive)
+    (at 389.89 35.56 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "e03e98e6-73ff-51a7-974a-d22e241669de")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 389.89 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (label
+    "SDA"
+    (at 389.89 38.1 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "5c688f9c-4b19-5f37-9c1d-0470e7affef8")
+  )
+  (label
+    "SCL"
+    (at 389.89 40.64 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "4929913e-a4bd-5c31-b62d-b604af095f41")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x04")
+    (at 394.97 35.56 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "62361864-9426-52e0-a2a6-e8cbdaf20922")
+    (property
+      "Reference"
+      "J6"
+      (at 397.51 33.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "I2C OLED"
+      (at 397.51 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+      (at 394.97 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 394.97 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "JST-XH: 1 GND, 2 3V3, 3 SDA, 4 SCL"
+      (at 394.97 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C144395"
+      (at 394.97 35.56 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "11da3556-cc4f-5235-b4ac-b92fa7eeb93b")
+    )
+    (pin
+      "2"
+      (uuid "26c6f4b4-b315-508e-91cf-8fd5ff6cf390")
+    )
+    (pin
+      "3"
+      (uuid "88ed8f23-24e8-59a8-aa58-25b168e33974")
+    )
+    (pin
+      "4"
+      (uuid "b72f0cd4-2a15-545b-a4a6-b99aa309ed5a")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "J6")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (global_label
+    "GND"
+    (shape passive)
+    (at 255.27 52.07 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "67355338-090c-5dcc-8d07-6a9ed99348df")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 255.27 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (global_label
+    "+3V3"
+    (shape passive)
+    (at 255.27 54.61 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "c26f697d-25c8-50f1-8183-c9ca0d7b311b")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 255.27 54.61 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (label
+    "SDA2"
+    (at 255.27 57.15 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "79f34d61-e23d-5582-908a-56df119a904f")
+  )
+  (label
+    "SCL2"
+    (at 255.27 59.69 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "d22e7385-b1ec-5ba8-a37a-7f92edf5ca1c")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x04")
+    (at 260.35 54.61 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "95025b91-2197-5739-87bf-c7bb730d7496")
+    (property
+      "Reference"
+      "J13"
+      (at 262.89 52.07 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "I2C-2 TSL2591 #2"
+      (at 262.89 54.61 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+      (at 260.35 54.61 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 260.35 54.61 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "JST-XH, second I2C bus (GPIO10/11): 1 GND, 2 3V3, 3 SDA, 4 SCL"
+      (at 260.35 54.61 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C144395"
+      (at 260.35 54.61 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "9a62b59f-2c27-5e7c-b1b1-a420e34ee772")
+    )
+    (pin
+      "2"
+      (uuid "23cc7164-f762-5d58-88e3-6d585285ef49")
+    )
+    (pin
+      "3"
       (uuid "84ed8dd0-bcf6-5e3a-923c-75cdfe6f87cf")
+    )
+    (pin
+      "4"
+      (uuid "4e6f4271-ce89-5c95-8a28-d686a4bb55f1")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "J13")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol
+    (lib_id "power:+3V3")
+    (at 283.21 62.23 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "566043d3-1001-5692-a061-8773c2e88ad3")
+    (property
+      "Reference"
+      "#PWR025"
+      (at 283.21 62.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "+3V3"
+      (at 283.21 57.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 283.21 62.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 283.21 62.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "8af301ff-ce7c-5b05-b0d9-90f724ea99b0")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR025")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SDA2"
+    (at 283.21 69.85 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "6f0cfe63-faec-5290-938c-74dfeb1e36ca")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 283.21 66.04 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "787d01e4-18e5-5c26-a6e1-a81376825ea7")
+    (property
+      "Reference"
+      "R20"
+      (at 285.75 62.865 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "4.7k"
+      (at 285.75 65.405 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Resistor_SMD:R_0603_1608Metric"
+      (at 283.21 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 283.21 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      ""
+      (at 283.21 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C23162"
+      (at 283.21 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "a731d3db-abe1-5edd-aaa5-8ae9308c83a5")
+    )
+    (pin
+      "2"
+      (uuid "b4a97ac5-4f40-59e4-8c5a-65dfd0736a22")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "R20")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol
+    (lib_id "power:+3V3")
+    (at 312.42 62.23 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "f2871de6-2ce4-58ad-8c24-184d52cb558c")
+    (property
+      "Reference"
+      "#PWR026"
+      (at 312.42 62.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "+3V3"
+      (at 312.42 57.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 312.42 62.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 312.42 62.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "9d9cf559-2876-5f0e-9b23-16d0fe4dc17c")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR026")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SCL2"
+    (at 312.42 69.85 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "17adce64-e9ab-580e-8bdd-392f54562e53")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 312.42 66.04 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "d3b69a1b-852a-50d0-bbfe-1764c98a4b48")
+    (property
+      "Reference"
+      "R21"
+      (at 314.96 62.865 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "4.7k"
+      (at 314.96 65.405 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Resistor_SMD:R_0603_1608Metric"
+      (at 312.42 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 312.42 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      ""
+      (at 312.42 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C23162"
+      (at 312.42 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "2d139b24-fd41-59cc-9942-a62de311e3bc")
+    )
+    (pin
+      "2"
+      (uuid "77465d17-da4e-57c2-8f1e-60c63aa65f89")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "R21")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SDA2"
+    (at 358.14 74.93 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "efc64543-9736-5fc7-9307-cc699f9a0a82")
+  )
+  (symbol
+    (lib_id "power:GND")
+    (at 363.22 82.55 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "2d007d5c-e624-56a1-9099-8d4114932e1d")
+    (property
+      "Reference"
+      "#PWR027"
+      (at 363.22 82.55 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "GND"
+      (at 363.22 87.55 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 363.22 82.55 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 363.22 82.55 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "ade74b84-27ba-5544-b5cb-c7f6d2512acb")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR027")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SCL2"
+    (at 358.14 77.47 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "bb09231e-35cf-5bcd-afa6-b5f9ea2df31c")
+  )
+  (label
+    "SCL2"
+    (at 368.3 77.47 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "b7da0362-75b8-55fb-97a8-743748ddf5d3")
+  )
+  (symbol
+    (lib_id "power:+3V3")
+    (at 363.22 69.85 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "eb2bd43c-718d-521b-a037-4a3446c12dc2")
+    (property
+      "Reference"
+      "#PWR028"
+      (at 363.22 69.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "+3V3"
+      (at 363.22 64.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 363.22 69.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 363.22 69.85 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "4add3d06-ce02-534e-9b46-fa712d730da4")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR028")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SDA2"
+    (at 368.3 74.93 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "a19558e4-1eed-59cb-8ef1-3de7dafdbab6")
+  )
+  (symbol
+    (lib_id "Power_Protection:USBLC6-2SC6")
+    (at 363.22 74.93 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "cdcdbf6e-7d5d-5163-a965-644383bd728e")
+    (property
+      "Reference"
+      "U7"
+      (at 358.22 54.58 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "USBLC6-2SC6"
+      (at 358.22 57.12 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Package_TO_SOT_SMD:SOT-23-6"
+      (at 363.22 74.93 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 363.22 74.93 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "I2C-2 ESD"
+      (at 363.22 74.93 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C7519"
+      (at 363.22 74.93 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "946dbf5b-db7b-50ef-9718-284a3b77ecf6")
+    )
+    (pin
+      "2"
+      (uuid "8fcec3d4-04b6-5f3e-9641-136a692b3596")
+    )
+    (pin
+      "3"
+      (uuid "ef746c85-8bb2-52d5-bf25-de2a49be9001")
+    )
+    (pin
+      "4"
+      (uuid "e0952463-f637-5803-982a-6a5f567893c1")
+    )
+    (pin
+      "5"
+      (uuid "75ab89a5-2bea-5a77-b7a0-74b07679b804")
+    )
+    (pin
+      "6"
+      (uuid "bd3ec20c-5ada-5236-96b6-1cf4876e3764")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "U7")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol
+    (lib_id "power:+3V3")
+    (at 388.62 62.23 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "ee6cbdc4-eca2-54a2-9889-2b140966fba9")
+    (property
+      "Reference"
+      "#PWR029"
+      (at 388.62 62.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "+3V3"
+      (at 388.62 57.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 388.62 62.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 388.62 62.23 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "4eba6144-44aa-5667-84b3-fb1cef3e2143")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR029")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SDA"
+    (at 388.62 69.85 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "027bdccb-6e2a-5437-8df6-d42d442317b1")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 388.62 66.04 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "c2be3c90-eea2-5dc4-a8fb-6871c6702f37")
+    (property
+      "Reference"
+      "R7"
+      (at 391.16 62.865 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "4.7k"
+      (at 391.16 65.405 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Resistor_SMD:R_0603_1608Metric"
+      (at 388.62 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 388.62 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      ""
+      (at 388.62 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C23162"
+      (at 388.62 66.04 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "7032dc1e-d5cb-5e05-b589-02d3489ac1cd")
+    )
+    (pin
+      "2"
+      (uuid "f96e54a5-2bb8-52f8-a266-63537d428d32")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "R7")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (symbol
+    (lib_id "power:+3V3")
+    (at 238.76 107.95 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "b110d2d5-79bd-5dfc-ba2c-944dc90aac24")
+    (property
+      "Reference"
+      "#PWR030"
+      (at 238.76 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "+3V3"
+      (at 238.76 102.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 238.76 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 238.76 107.95 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "e4a2384e-8ce4-50d0-95f8-53df4aec7af0")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR030")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SCL"
+    (at 238.76 115.57 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "98211434-14d6-5d7c-aeb4-a12dbfe6cb58")
+  )
+  (symbol
+    (lib_id "Device:R")
+    (at 238.76 111.76 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "2dc33482-d4e9-56b7-9105-b874b02f9016")
+    (property
+      "Reference"
+      "R8"
+      (at 241.3 108.585 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "4.7k"
+      (at 241.3 111.125 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Resistor_SMD:R_0603_1608Metric"
+      (at 238.76 111.76 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 238.76 111.76 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      ""
+      (at 238.76 111.76 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C23162"
+      (at 238.76 111.76 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "9faa7c75-c5c8-5bda-b746-aa905a86b260")
+    )
+    (pin
+      "2"
+      (uuid "8fb2879e-0ed9-5b54-8d5f-46d198a66df5")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "R8")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SDA"
+    (at 283.21 120.65 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "ac04337b-78dd-54a6-bf9b-28b305df39ec")
+  )
+  (symbol
+    (lib_id "power:GND")
+    (at 288.29 128.27 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "cc787d56-e5a2-5d37-b227-967ef65bd504")
+    (property
+      "Reference"
+      "#PWR031"
+      (at 288.29 128.27 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "GND"
+      (at 288.29 133.27 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 288.29 128.27 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 288.29 128.27 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "c4bf9014-623b-5bb7-b19c-bad0a7b05886")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR031")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SCL"
+    (at 283.21 123.19 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "18a2cbb4-e090-56b1-8cb0-ffee17771279")
+  )
+  (label
+    "SCL"
+    (at 293.37 123.19 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "eed2e8bf-26a5-5f96-b888-1e2e4dd9c786")
+  )
+  (symbol
+    (lib_id "power:+3V3")
+    (at 288.29 115.57 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "7608279e-31ac-501f-bd68-bd55b7d2b18c")
+    (property
+      "Reference"
+      "#PWR032"
+      (at 288.29 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "+3V3"
+      (at 288.29 110.57 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 288.29 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 288.29 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "1370f93a-cf83-5c53-867d-31b0fdc7e446")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#PWR032")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "SDA"
+    (at 293.37 120.65 0)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify left bottom)
+    )
+    (uuid "f9f70d93-49d4-55a1-87d9-5d6281977c42")
+  )
+  (symbol
+    (lib_id "Power_Protection:USBLC6-2SC6")
+    (at 288.29 120.65 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "5a2ad040-7607-5c33-bfe1-d6f33fc1a797")
+    (property
+      "Reference"
+      "U4"
+      (at 283.29 100.3 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "USBLC6-2SC6"
+      (at 283.29 102.84 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Package_TO_SOT_SMD:SOT-23-6"
+      (at 288.29 120.65 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 288.29 120.65 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "I2C ESD"
+      (at 288.29 120.65 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C7519"
+      (at 288.29 120.65 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "27bd03c8-aef1-5853-8f8a-65b7686d3c43")
+    )
+    (pin
+      "2"
+      (uuid "da1adcba-b7d3-5f75-93f5-7cb59098d18d")
+    )
+    (pin
+      "3"
+      (uuid "b22c6636-b9fa-54a0-b286-f99d8e8294e0")
+    )
+    (pin
+      "4"
+      (uuid "4628bf65-e8f3-5d4d-93a7-5d90a748e34e")
+    )
+    (pin
+      "5"
+      (uuid "3093227b-3db5-5e63-9e8b-82361b1e2abf")
+    )
+    (pin
+      "6"
+      (uuid "e9de7f5a-3398-578c-8262-fde238ad7e38")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "U4")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (text
+    "GPS (UART1)"
+    (exclude_from_sim no)
+    (at 238.76 153.67 0)
+    (effects
+      (font
+        (size 2.54 2.54)
+        (bold yes)
+      )
+      (justify left bottom)
+    )
+    (uuid "ed9a9a4f-cabe-5dfe-9169-03f1f3fe0d99")
+  )
+  (global_label
+    "GND"
+    (shape passive)
+    (at 255.27 161.29 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "a48ce5f2-25fb-582e-89fd-73fbc55ddce2")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 255.27 161.29 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (global_label
+    "+3V3"
+    (shape passive)
+    (at 255.27 163.83 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right)
+    )
+    (uuid "6cf8701e-8b25-53a0-9c34-5c3dba324fe0")
+    (property
+      "Intersheetrefs"
+      "${INTERSHEET_REFS}"
+      (at 255.27 163.83 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+  )
+  (label
+    "GPS_TXO"
+    (at 255.27 166.37 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "4446eb4a-8f50-5c49-a11f-8b29d64515f8")
+  )
+  (label
+    "GPS_RXI"
+    (at 255.27 168.91 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "7fb06848-6a56-56e5-a8f4-353e84a85d95")
+  )
+  (symbol
+    (lib_id "Connector_Generic:Conn_01x04")
+    (at 260.35 163.83 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (dnp no)
+    (uuid "1f3daa8d-e179-52fb-8c35-977e2ea62611")
+    (property
+      "Reference"
+      "J7"
+      (at 262.89 161.29 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Value"
+      "GPS"
+      (at 262.89 163.83 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+      (at 260.35 163.83 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 260.35 163.83 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Description"
+      "JST-XH: 1 GND, 2 3V3, 3 GPS TX (to ESP RX), 4 GPS RX"
+      (at 260.35 163.83 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C144395"
+      (at 260.35 163.83 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "028c1ee6-fe01-5c26-b1f8-d8cb600257ee")
+    )
+    (pin
+      "2"
+      (uuid "476ffe85-224e-527a-b749-4524faec1022")
+    )
+    (pin
+      "3"
+      (uuid "8c578642-92cb-563a-bf34-09e0c7f79595")
+    )
+    (pin
+      "4"
+      (uuid "540d1713-490b-5b21-a9e6-37f70a804263")
     )
     (instances
       (project
@@ -11404,39 +13532,39 @@
   )
   (label
     "GPS_TXO"
-    (at 283.21 43.18 90)
+    (at 283.21 171.45 90)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify left bottom)
     )
-    (uuid "4e6f4271-ce89-5c95-8a28-d686a4bb55f1")
+    (uuid "79b71b52-7c25-515b-acdf-5e605c93d2a9")
   )
   (label
     "GPS_RX"
-    (at 283.21 50.8 270)
+    (at 283.21 179.07 270)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify right bottom)
     )
-    (uuid "566043d3-1001-5692-a061-8773c2e88ad3")
+    (uuid "00d58472-f258-5bbc-8e17-bcd7e87e34f7")
   )
   (symbol
     (lib_id "Device:R")
-    (at 283.21 46.99 0)
+    (at 283.21 175.26 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "8af301ff-ce7c-5b05-b0d9-90f724ea99b0")
+    (uuid "effe211d-e141-5796-a9ab-8c4d2f499827")
     (property
       "Reference"
       "R9"
-      (at 285.75 43.815 0)
+      (at 285.75 172.085 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11447,7 +13575,7 @@
     (property
       "Value"
       "100"
-      (at 285.75 46.355 0)
+      (at 285.75 174.625 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11458,7 +13586,7 @@
     (property
       "Footprint"
       "Resistor_SMD:R_0603_1608Metric"
-      (at 283.21 46.99 0)
+      (at 283.21 175.26 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11469,7 +13597,7 @@
     (property
       "Datasheet"
       ""
-      (at 283.21 46.99 0)
+      (at 283.21 175.26 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11480,7 +13608,7 @@
     (property
       "Description"
       ""
-      (at 283.21 46.99 0)
+      (at 283.21 175.26 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11491,7 +13619,7 @@
     (property
       "LCSC"
       "C22775"
-      (at 283.21 46.99 0)
+      (at 283.21 175.26 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11501,11 +13629,11 @@
     )
     (pin
       "1"
-      (uuid "6f0cfe63-faec-5290-938c-74dfeb1e36ca")
+      (uuid "6f9bee61-2025-56b9-bf3b-c5cbb4aa9f2b")
     )
     (pin
       "2"
-      (uuid "787d01e4-18e5-5c26-a6e1-a81376825ea7")
+      (uuid "62d3b340-97eb-58af-97e0-51fe77eae9d6")
     )
     (instances
       (project
@@ -11520,39 +13648,39 @@
   )
   (label
     "GPS_TX"
-    (at 312.42 43.18 90)
+    (at 312.42 171.45 90)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify left bottom)
     )
-    (uuid "a731d3db-abe1-5edd-aaa5-8ae9308c83a5")
+    (uuid "5f0b9771-4fc4-50ea-944f-e68448788482")
   )
   (label
     "GPS_RXI"
-    (at 312.42 50.8 270)
+    (at 312.42 179.07 270)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify right bottom)
     )
-    (uuid "b4a97ac5-4f40-59e4-8c5a-65dfd0736a22")
+    (uuid "856731cd-0d1d-516d-bdfb-73b1aa9e880a")
   )
   (symbol
     (lib_id "Device:R")
-    (at 312.42 46.99 0)
+    (at 312.42 175.26 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "f2871de6-2ce4-58ad-8c24-184d52cb558c")
+    (uuid "77e2cbe0-5466-545f-85a6-fb7b76541f0c")
     (property
       "Reference"
       "R10"
-      (at 314.96 43.815 0)
+      (at 314.96 172.085 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11563,7 +13691,7 @@
     (property
       "Value"
       "100"
-      (at 314.96 46.355 0)
+      (at 314.96 174.625 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11574,7 +13702,7 @@
     (property
       "Footprint"
       "Resistor_SMD:R_0603_1608Metric"
-      (at 312.42 46.99 0)
+      (at 312.42 175.26 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11585,7 +13713,7 @@
     (property
       "Datasheet"
       ""
-      (at 312.42 46.99 0)
+      (at 312.42 175.26 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11596,7 +13724,7 @@
     (property
       "Description"
       ""
-      (at 312.42 46.99 0)
+      (at 312.42 175.26 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11607,7 +13735,7 @@
     (property
       "LCSC"
       "C22775"
-      (at 312.42 46.99 0)
+      (at 312.42 175.26 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11617,11 +13745,11 @@
     )
     (pin
       "1"
-      (uuid "9d9cf559-2876-5f0e-9b23-16d0fe4dc17c")
+      (uuid "32861ef6-20b0-5ab9-96b3-108caed91ac1")
     )
     (pin
       "2"
-      (uuid "17adce64-e9ab-580e-8bdd-392f54562e53")
+      (uuid "960a1faf-4bfb-58a1-be9b-9d80822b4d4c")
     )
     (instances
       (project
@@ -11637,7 +13765,7 @@
   (text
     "Aux GPIO + mounting"
     (exclude_from_sim no)
-    (at 238.76 76.2 0)
+    (at 238.76 204.47 0)
     (effects
       (font
         (size 2.54 2.54)
@@ -11645,23 +13773,23 @@
       )
       (justify left bottom)
     )
-    (uuid "d3b69a1b-852a-50d0-bbfe-1764c98a4b48")
+    (uuid "1181e6c8-e4c2-51c2-ae78-e529fd030d9a")
   )
   (global_label
     "GND"
     (shape passive)
-    (at 255.27 83.82 180)
+    (at 255.27 212.09 180)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify right)
     )
-    (uuid "2d139b24-fd41-59cc-9942-a62de311e3bc")
+    (uuid "813ba793-9e70-5a11-9708-c4890cf3fd81")
     (property
       "Intersheetrefs"
       "${INTERSHEET_REFS}"
-      (at 255.27 83.82 0)
+      (at 255.27 212.09 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11673,18 +13801,18 @@
   (global_label
     "+3V3"
     (shape passive)
-    (at 255.27 86.36 180)
+    (at 255.27 214.63 180)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify right)
     )
-    (uuid "77465d17-da4e-57c2-8f1e-60c63aa65f89")
+    (uuid "c76168ed-6524-507d-b3ef-52f27b920258")
     (property
       "Intersheetrefs"
       "${INTERSHEET_REFS}"
-      (at 255.27 86.36 0)
+      (at 255.27 214.63 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11695,39 +13823,39 @@
   )
   (label
     "AUX1"
-    (at 255.27 88.9 180)
+    (at 255.27 217.17 180)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify right bottom)
     )
-    (uuid "efc64543-9736-5fc7-9307-cc699f9a0a82")
+    (uuid "a187d227-2af3-54c1-b320-4b30be0c174e")
   )
   (label
     "AUX2"
-    (at 255.27 91.44 180)
+    (at 255.27 219.71 180)
     (effects
       (font
         (size 1.27 1.27)
       )
       (justify right bottom)
     )
-    (uuid "2d007d5c-e624-56a1-9099-8d4114932e1d")
+    (uuid "3f0102ee-beef-57de-9366-761653f33a67")
   )
   (symbol
     (lib_id "Connector_Generic:Conn_01x04")
-    (at 260.35 86.36 0)
+    (at 260.35 214.63 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "ade74b84-27ba-5544-b5cb-c7f6d2512acb")
+    (uuid "16e27a6f-6de1-5a58-9fd0-a8648d271f6d")
     (property
       "Reference"
       "J10"
-      (at 262.89 83.82 0)
+      (at 262.89 212.09 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11738,7 +13866,7 @@
     (property
       "Value"
       "AUX"
-      (at 262.89 86.36 0)
+      (at 262.89 214.63 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11749,7 +13877,7 @@
     (property
       "Footprint"
       "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
-      (at 260.35 86.36 0)
+      (at 260.35 214.63 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11760,7 +13888,7 @@
     (property
       "Datasheet"
       ""
-      (at 260.35 86.36 0)
+      (at 260.35 214.63 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11771,7 +13899,7 @@
     (property
       "Description"
       "JST-XH: 1 GND, 2 3V3, 3 IO6, 4 IO7"
-      (at 260.35 86.36 0)
+      (at 260.35 214.63 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11782,7 +13910,7 @@
     (property
       "LCSC"
       "C144395"
-      (at 260.35 86.36 0)
+      (at 260.35 214.63 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11792,19 +13920,19 @@
     )
     (pin
       "1"
-      (uuid "bb09231e-35cf-5bcd-afa6-b5f9ea2df31c")
+      (uuid "5f703153-c1e9-5dc8-96b6-07e85b5addcf")
     )
     (pin
       "2"
-      (uuid "b7da0362-75b8-55fb-97a8-743748ddf5d3")
+      (uuid "2b224895-11e6-5973-9887-3c406392f73d")
     )
     (pin
       "3"
-      (uuid "eb2bd43c-718d-521b-a037-4a3446c12dc2")
+      (uuid "b78efaef-492c-56bf-97ad-47b73df17a54")
     )
     (pin
       "4"
-      (uuid "4add3d06-ce02-534e-9b46-fa712d730da4")
+      (uuid "9b6d8993-ddb0-5094-945f-013537c98e06")
     )
     (instances
       (project
@@ -11819,17 +13947,17 @@
   )
   (symbol
     (lib_id "Mechanical:MountingHole")
-    (at 287.02 87.63 0)
+    (at 287.02 215.9 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "a19558e4-1eed-59cb-8ef1-3de7dafdbab6")
+    (uuid "078ed5aa-d1a0-579b-84ff-ae26af46cc6e")
     (property
       "Reference"
       "H1"
-      (at 289.56 84.63 0)
+      (at 289.56 212.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11840,7 +13968,7 @@
     (property
       "Value"
       "M3"
-      (at 289.56 90.63 0)
+      (at 289.56 218.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11851,7 +13979,7 @@
     (property
       "Footprint"
       "MountingHole:MountingHole_3.2mm_M3"
-      (at 287.02 87.63 0)
+      (at 287.02 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11862,7 +13990,7 @@
     (property
       "Datasheet"
       ""
-      (at 287.02 87.63 0)
+      (at 287.02 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11873,7 +14001,7 @@
     (property
       "Description"
       ""
-      (at 287.02 87.63 0)
+      (at 287.02 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11894,17 +14022,17 @@
   )
   (symbol
     (lib_id "Mechanical:MountingHole")
-    (at 297.18 87.63 0)
+    (at 297.18 215.9 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "cdcdbf6e-7d5d-5163-a965-644383bd728e")
+    (uuid "9191b512-1bd4-5ffb-8e6d-8a75a66865e3")
     (property
       "Reference"
       "H2"
-      (at 299.72 84.63 0)
+      (at 299.72 212.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11915,7 +14043,7 @@
     (property
       "Value"
       "M3"
-      (at 299.72 90.63 0)
+      (at 299.72 218.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11926,7 +14054,7 @@
     (property
       "Footprint"
       "MountingHole:MountingHole_3.2mm_M3"
-      (at 297.18 87.63 0)
+      (at 297.18 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11937,7 +14065,7 @@
     (property
       "Datasheet"
       ""
-      (at 297.18 87.63 0)
+      (at 297.18 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11948,7 +14076,7 @@
     (property
       "Description"
       ""
-      (at 297.18 87.63 0)
+      (at 297.18 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11969,17 +14097,17 @@
   )
   (symbol
     (lib_id "Mechanical:MountingHole")
-    (at 308.61 87.63 0)
+    (at 308.61 215.9 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "946dbf5b-db7b-50ef-9718-284a3b77ecf6")
+    (uuid "526119b7-8919-5355-a622-15acb5171056")
     (property
       "Reference"
       "H3"
-      (at 311.15 84.63 0)
+      (at 311.15 212.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -11990,7 +14118,7 @@
     (property
       "Value"
       "M3"
-      (at 311.15 90.63 0)
+      (at 311.15 218.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12001,7 +14129,7 @@
     (property
       "Footprint"
       "MountingHole:MountingHole_3.2mm_M3"
-      (at 308.61 87.63 0)
+      (at 308.61 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12012,7 +14140,7 @@
     (property
       "Datasheet"
       ""
-      (at 308.61 87.63 0)
+      (at 308.61 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12023,7 +14151,7 @@
     (property
       "Description"
       ""
-      (at 308.61 87.63 0)
+      (at 308.61 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12044,17 +14172,17 @@
   )
   (symbol
     (lib_id "Mechanical:MountingHole")
-    (at 320.04 87.63 0)
+    (at 320.04 215.9 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom yes)
     (on_board yes)
     (dnp no)
-    (uuid "8fcec3d4-04b6-5f3e-9641-136a692b3596")
+    (uuid "4f3e92c4-24f9-5391-aded-4c5f3fc2db8a")
     (property
       "Reference"
       "H4"
-      (at 322.58 84.63 0)
+      (at 322.58 212.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12065,7 +14193,7 @@
     (property
       "Value"
       "M3"
-      (at 322.58 90.63 0)
+      (at 322.58 218.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12076,7 +14204,7 @@
     (property
       "Footprint"
       "MountingHole:MountingHole_3.2mm_M3"
-      (at 320.04 87.63 0)
+      (at 320.04 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12087,7 +14215,7 @@
     (property
       "Datasheet"
       ""
-      (at 320.04 87.63 0)
+      (at 320.04 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12098,7 +14226,7 @@
     (property
       "Description"
       ""
-      (at 320.04 87.63 0)
+      (at 320.04 215.9 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12120,7 +14248,7 @@
   (text
     "Power flags"
     (exclude_from_sim no)
-    (at 238.76 113.03 0)
+    (at 238.76 241.3 0)
     (effects
       (font
         (size 2.54 2.54)
@@ -12128,21 +14256,21 @@
       )
       (justify left bottom)
     )
-    (uuid "ef746c85-8bb2-52d5-bf25-de2a49be9001")
+    (uuid "c8b99799-f03d-5d03-8d7b-9308cf55fb37")
   )
   (symbol
     (lib_id "power:PWR_FLAG")
-    (at 243.84 128.27 0)
+    (at 243.84 256.54 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom no)
     (on_board no)
     (dnp no)
-    (uuid "e0952463-f637-5803-982a-6a5f567893c1")
+    (uuid "a2619eba-ba13-5709-80d4-e0bf1aeaf758")
     (property
       "Reference"
       "#FLG01"
-      (at 243.84 128.27 0)
+      (at 243.84 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12154,7 +14282,7 @@
     (property
       "Value"
       "PWR_FLAG"
-      (at 243.84 124.27 0)
+      (at 243.84 252.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12165,7 +14293,7 @@
     (property
       "Footprint"
       ""
-      (at 243.84 128.27 0)
+      (at 243.84 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12176,7 +14304,7 @@
     (property
       "Datasheet"
       ""
-      (at 243.84 128.27 0)
+      (at 243.84 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12186,7 +14314,7 @@
     )
     (pin
       "1"
-      (uuid "75ab89a5-2bea-5a77-b7a0-74b07679b804")
+      (uuid "6480a849-d7de-57e6-b5c7-ab92f0f729c5")
     )
     (instances
       (project
@@ -12201,17 +14329,17 @@
   )
   (symbol
     (lib_id "power:GND")
-    (at 243.84 128.27 0)
+    (at 243.84 256.54 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom no)
     (on_board no)
     (dnp no)
-    (uuid "bd3ec20c-5ada-5236-96b6-1cf4876e3764")
+    (uuid "c8de45ba-9067-5f2b-9d2f-f34766d74a9a")
     (property
       "Reference"
-      "#PWR029"
-      (at 243.84 128.27 0)
+      "#PWR033"
+      (at 243.84 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12223,7 +14351,7 @@
     (property
       "Value"
       "GND"
-      (at 243.84 133.27 0)
+      (at 243.84 261.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12234,7 +14362,7 @@
     (property
       "Footprint"
       ""
-      (at 243.84 128.27 0)
+      (at 243.84 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12245,7 +14373,7 @@
     (property
       "Datasheet"
       ""
-      (at 243.84 128.27 0)
+      (at 243.84 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12255,14 +14383,14 @@
     )
     (pin
       "1"
-      (uuid "ee6cbdc4-eca2-54a2-9889-2b140966fba9")
+      (uuid "dad9a389-4bb4-51f2-9c90-5b3bcc79a07b")
     )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR029")
+          (reference "#PWR033")
           (unit 1)
         )
       )
@@ -12270,17 +14398,17 @@
   )
   (symbol
     (lib_id "power:PWR_FLAG")
-    (at 269.24 128.27 0)
+    (at 269.24 256.54 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom no)
     (on_board no)
     (dnp no)
-    (uuid "4eba6144-44aa-5667-84b3-fb1cef3e2143")
+    (uuid "24f6f77f-c83c-5b1c-a8eb-eb8c4ac22f00")
     (property
       "Reference"
       "#FLG02"
-      (at 269.24 128.27 0)
+      (at 269.24 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12292,7 +14420,7 @@
     (property
       "Value"
       "PWR_FLAG"
-      (at 269.24 124.27 0)
+      (at 269.24 252.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12303,7 +14431,7 @@
     (property
       "Footprint"
       ""
-      (at 269.24 128.27 0)
+      (at 269.24 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12314,7 +14442,7 @@
     (property
       "Datasheet"
       ""
-      (at 269.24 128.27 0)
+      (at 269.24 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12324,7 +14452,7 @@
     )
     (pin
       "1"
-      (uuid "027bdccb-6e2a-5437-8df6-d42d442317b1")
+      (uuid "40632d4c-d957-566e-a4b0-0e8e149c4538")
     )
     (instances
       (project
@@ -12339,17 +14467,17 @@
   )
   (symbol
     (lib_id "power:VBUS")
-    (at 269.24 128.27 0)
+    (at 269.24 256.54 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom no)
     (on_board no)
     (dnp no)
-    (uuid "c2be3c90-eea2-5dc4-a8fb-6871c6702f37")
+    (uuid "255170c6-ea21-5013-a799-e892b15c0e95")
     (property
       "Reference"
-      "#PWR030"
-      (at 269.24 128.27 0)
+      "#PWR034"
+      (at 269.24 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12361,7 +14489,7 @@
     (property
       "Value"
       "VBUS"
-      (at 269.24 123.27 0)
+      (at 269.24 251.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12372,7 +14500,7 @@
     (property
       "Footprint"
       ""
-      (at 269.24 128.27 0)
+      (at 269.24 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12383,7 +14511,7 @@
     (property
       "Datasheet"
       ""
-      (at 269.24 128.27 0)
+      (at 269.24 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12393,14 +14521,14 @@
     )
     (pin
       "1"
-      (uuid "7032dc1e-d5cb-5e05-b589-02d3489ac1cd")
+      (uuid "42f1c2ad-6e5a-5f08-8a15-5bd62103b327")
     )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR030")
+          (reference "#PWR034")
           (unit 1)
         )
       )
@@ -12408,17 +14536,17 @@
   )
   (symbol
     (lib_id "power:PWR_FLAG")
-    (at 293.37 128.27 0)
+    (at 293.37 256.54 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom no)
     (on_board no)
     (dnp no)
-    (uuid "f96e54a5-2bb8-52f8-a266-63537d428d32")
+    (uuid "f9527440-baf4-5ee5-b7a1-f8bce21030c8")
     (property
       "Reference"
       "#FLG03"
-      (at 293.37 128.27 0)
+      (at 293.37 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12430,7 +14558,7 @@
     (property
       "Value"
       "PWR_FLAG"
-      (at 293.37 124.27 0)
+      (at 293.37 252.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12441,7 +14569,7 @@
     (property
       "Footprint"
       ""
-      (at 293.37 128.27 0)
+      (at 293.37 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12452,7 +14580,7 @@
     (property
       "Datasheet"
       ""
-      (at 293.37 128.27 0)
+      (at 293.37 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12462,7 +14590,7 @@
     )
     (pin
       "1"
-      (uuid "b110d2d5-79bd-5dfc-ba2c-944dc90aac24")
+      (uuid "0b6a4962-0a88-5808-8e60-1301e82b972c")
     )
     (instances
       (project
@@ -12477,17 +14605,17 @@
   )
   (symbol
     (lib_id "power:+3V3")
-    (at 293.37 128.27 0)
+    (at 293.37 256.54 0)
     (unit 1)
     (exclude_from_sim no)
     (in_bom no)
     (on_board no)
     (dnp no)
-    (uuid "e4a2384e-8ce4-50d0-95f8-53df4aec7af0")
+    (uuid "3a2cbddb-4089-5c73-9531-6aca2b294bdc")
     (property
       "Reference"
-      "#PWR031"
-      (at 293.37 128.27 0)
+      "#PWR035"
+      (at 293.37 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12499,7 +14627,7 @@
     (property
       "Value"
       "+3V3"
-      (at 293.37 123.27 0)
+      (at 293.37 251.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12510,7 +14638,7 @@
     (property
       "Footprint"
       ""
-      (at 293.37 128.27 0)
+      (at 293.37 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12521,7 +14649,7 @@
     (property
       "Datasheet"
       ""
-      (at 293.37 128.27 0)
+      (at 293.37 256.54 0)
       (effects
         (font
           (size 1.27 1.27)
@@ -12531,18 +14659,178 @@
     )
     (pin
       "1"
-      (uuid "98211434-14d6-5d7c-aeb4-a12dbfe6cb58")
+      (uuid "eff0a5cb-e6db-5e13-9edc-287c65b91777")
     )
     (instances
       (project
         "SQMeter-Hardware-Travel"
         (path
           "/45cc58ee-1e4c-5e16-a481-82523769ab48"
-          (reference "#PWR031")
+          (reference "#PWR035")
           (unit 1)
         )
       )
     )
+  )
+  (symbol
+    (lib_id "power:PWR_FLAG")
+    (at 318.77 256.54 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "887905fe-556f-597f-966a-48267c6c099a")
+    (property
+      "Reference"
+      "#FLG04"
+      (at 318.77 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "PWR_FLAG"
+      (at 318.77 252.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 318.77 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 318.77 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "1eb89421-56c3-586d-82cb-d0b44b8d1085")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#FLG04")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "DW_VCC"
+    (at 318.77 256.54 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "a15ddb46-a2db-5a2a-8d0f-723b47dce93b")
+  )
+  (symbol
+    (lib_id "power:PWR_FLAG")
+    (at 344.17 256.54 0)
+    (unit 1)
+    (exclude_from_sim no)
+    (in_bom no)
+    (on_board no)
+    (dnp no)
+    (uuid "650106b4-5cd8-535e-9653-0e160150445b")
+    (property
+      "Reference"
+      "#FLG05"
+      (at 344.17 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+        (hide yes)
+      )
+    )
+    (property
+      "Value"
+      "PWR_FLAG"
+      (at 344.17 252.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (justify left)
+      )
+    )
+    (property
+      "Footprint"
+      ""
+      (at 344.17 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "Datasheet"
+      ""
+      (at 344.17 256.54 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (pin
+      "1"
+      (uuid "ece05b5b-b627-59d6-93c0-d7080c6b987e")
+    )
+    (instances
+      (project
+        "SQMeter-Hardware-Travel"
+        (path
+          "/45cc58ee-1e4c-5e16-a481-82523769ab48"
+          (reference "#FLG05")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (label
+    "BAT_N"
+    (at 344.17 256.54 270)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
+    (uuid "114817cf-ce31-51b6-bd97-da6aab7222d0")
   )
   (sheet_instances
     (path

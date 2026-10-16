@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "SQMeter")(type "KiCad")(uri "${KIPRJMOD}/../generator/SQMeter.kicad_sym")(options "")(descr "SQMeter project symbols"))
+)

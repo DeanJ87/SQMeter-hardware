@@ -24,7 +24,7 @@ GPIO1-13). The ETH board's W5500 owns GPIO9-14, so it has its own:
 | I2C-2 SDA / SCL (TSL2591 #2) | 10 / 11 | 10 / 11 | 41 / 42 |
 | GPS TX / RX (ESP side) | 12 / 13 | 12 / 13 | 47 / 48 |
 | AUX | 6, 7 | 6, 7 | 39, 40 |
-| Battery voltage / 2 (ADC1) | - | 1 | - |
+| Fuel gauge alert (MAX17048 ALRT, active low) | - | 1 | - |
 | Charger STAT1 / STAT2 / PG (open drain, active low) | - | 2 / 4 / 5 | - |
 | Status LED | 47 (module only) | Zero RGB 21 | ETH RGB 21 |
 
@@ -34,9 +34,14 @@ GPIO1-13). The ETH board's W5500 owns GPIO9-14, so it has its own:
   through a Schottky and give 3V3 back for the sensors.
 - **ETH:** PoE (or the ETH board's USB-C) gives 5 V on its VBUS pin; we feed its VSYS pin (after its own
   diode) from the 12 V buck, so the two never fight. On PoE the RG-15 gets 12.6 V from an MT3608 boost.
-- **Travel:** USB-C (5.1 k CC pull-downs, max 500 mA) into an MCP73871 power-path charger: runs the system
-  while charging, 500 mA charge, charges only between about 3 and 44 C (NTC on the board). The power
-  switch cuts the system but not charging. The Zero's own USB-C stays inside for recovery flashing.
+- **Travel:** sized for a 1S2P 18650 pack (~7 Ah). USB-C into an MCP73871 power-path charger in adapter
+  mode (1.65 A input, backs off if the source sags below 4.55 V): runs the system while charging, 833 mA
+  charge (~9 h from empty), safety timer off (it would expire before a 7 Ah pack is full), charges only
+  between about 3 and 44 C (NTC on the board). DW01A + two AO3400A protect bare cells (over-charge,
+  over-discharge, short). A MAX17048 fuel gauge on the main I2C bus (0x36) reports state of charge %, cell
+  voltage and charge/discharge rate; the charger's STAT1/STAT2/PG pins give USB present / charging /
+  charged / fault. The power switch cuts the system but not charging. The Zero's own USB-C stays inside for
+  recovery flashing. Cells in parallel must be matched (same voltage) before connecting.
 
 All five I2C ports share one JST-XH pinout: **1 GND, 2 3V3, 3 SDA, 4 SCL**. The TSL2591's address is fixed (0x29), so a second
 one (SQM + SQM-L) goes on its own bus: the I2C-2 port.

@@ -1,0 +1,28 @@
+(kicad_symbol_lib
+	(version 20251024)
+	(generator "sqmeter_generator")
+	(symbol "MAX17048"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U" (at 0 8.89 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "MAX17048" (at 0 -11.43 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "1-cell Li-ion ModelGauge fuel gauge, I2C address 0x36, TDFN-8 2x2" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "MAX17048_0_1"
+			(rectangle (start -7.62 6.35) (end 7.62 -6.35) (stroke (width 0.254) (type default)) (fill (type background)))
+		)
+		(symbol "MAX17048_1_1"
+			(pin passive line (at -10.16 3.81 0) (length 2.54) (name "VDD" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -10.16 1.27 0) (length 2.54) (name "CELL" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -10.16 -1.27 0) (length 2.54) (name "CTG" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin input line (at -10.16 -3.81 0) (length 2.54) (name "QSTRT" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			(pin bidirectional line (at 10.16 3.81 180) (length 2.54) (name "SDA" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+			(pin input line (at 10.16 1.27 180) (length 2.54) (name "SCL" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+			(pin open_collector line (at 10.16 -1.27 180) (length 2.54) (name "~{ALRT}" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+			(pin power_in line (at -1.27 -8.89 90) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 1.27 -8.89 90) (length 2.54) (name "EP" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+		)
+	)
+)

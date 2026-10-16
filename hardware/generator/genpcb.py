@@ -98,10 +98,13 @@ if design.TRAVEL:
         # USB-C and power switch overhang the bottom edge (cable / slider reach through the case)
         'J2': (30, 62.6, 0), 'R2': (21.5, 58.5, 90), 'R3': (38.5, 58.5, 90), 'C14': (41, 54, 90),
         'U8': (47, 52, 0), 'R24': (41, 48.5, 90), 'R25': (44, 46.5, 0), 'R26': (52, 46.5, 0), 'R27': (53.5, 49.5, 90),
-        'C15': (55.5, 52.5, 90), 'C16': (55.5, 57, 90), 'TH1': (59, 54, 90), 'J21': (62, 60, 0),
+        'C15': (55.5, 52.5, 90), 'C16': (55.5, 57, 90), 'TH1': (58.5, 56.5, 90), 'J21': (70, 60, 0),
         'SW3': (14, 63.7, 0), 'D3': (8, 36, 90),
         'R28': (14, 34, 90), 'R29': (17, 34, 90), 'R30': (20, 34, 90),
-        'R31': (8, 44, 90), 'R32': (11, 44, 90), 'C18': (14, 44, 90),
+        # cell protection (DW01A + 2x AO3400A) by the battery connector, fuel gauge above it
+        'R33': (57.5, 47.5, 90), 'C21': (61, 47.5, 90), 'U10': (64.5, 47.5, 0), 'R34': (69, 48, 90),
+        'Q2': (60.5, 52.5, 0), 'Q3': (65, 52.5, 0),
+        'U11': (57.5, 40, 0), 'C22': (61, 40, 0), 'R36': (57.5, 43.5, 0), 'R35': (54, 40, 90),
         'H1': (4, 4, 0), 'H2': (81.5, 10.5, 0), 'H3': (4, 62, 0), 'H4': (81, 62, 0),
     })
 LOCKUP = (42, 31) if design.TRAVEL else (55, 38 if design.PLUGIN else 36.5)
@@ -171,7 +174,7 @@ def main(out, netfile):
             n = p['pins'].get(pad.GetNumber())
             if n:
                 n = pinnet[(p['ref'], pad.GetNumber())]
-                if n == 'GND' and p['ref'].startswith('J'):
+                if n == 'GND' and (p['ref'].startswith('J') or p['ref'] == 'U8'):
                     pad.SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)  # edge connectors: spokes get starved
                 pad.SetNet(net(n))
         inter(fp.Reference(), 1.0)
@@ -196,18 +199,31 @@ def main(out, netfile):
         t.SetLocked(True); v.SetLocked(True)
         board.Add(t); board.Add(v)
 
-    # MCP73871: SEL (3) and TE (9) are tied low but sit between signal pins the pour can't get past.
-    # SEL gets a stub into the GND exposed pad, TE a short link to its neighbour VSS (10).
+    # MCP73871 (0.5 mm pitch QFN): short thin stubs out of its power pins so the wide VBUS / SYS / VBAT tracks
+    # can meet them outside the pad row; SEL (3) and PROG2 (4) are both VBUS, so link them too.
     u8 = board.FindFootprintByReference('U8')
     if u8:
         c = u8.GetPosition()
         pads = {p.GetNumber(): p for p in u8.Pads()}
-        pp = pads['3'].GetPosition()
-        links = [(pp, pcbnew.VECTOR2I(int(c.x + (pp.x - c.x) * 0.5), int(c.y + (pp.y - c.y) * 0.5))),
-                 (pads['9'].GetPosition(), pads['10'].GetPosition())]
+        links = [(pads['3'].GetPosition(), pads['4'].GetPosition())]
+        for num, pad in pads.items():
+            if pad.GetNetname() in ('VBUS', '/SYS', '/VBAT') and num != '21':
+                pp = pad.GetPosition(); dx, dy = pp.x - c.x, pp.y - c.y
+                step = (mm(1.0) if dx > 0 else -mm(1.0), 0) if abs(dx) > abs(dy) else (0, mm(1.0) if dy > 0 else -mm(1.0))
+                links.append((pp, pcbnew.VECTOR2I(pp.x + step[0], pp.y + step[1])))
+        u11 = board.FindFootprintByReference('U11')
+        if u11:  # MAX17048: CTG (1), GND (4), QSTRT (6) are ground but boxed in by signal pins -> into the EP
+            gc = u11.GetPosition()
+            for p in u11.Pads():
+                if p.GetNumber() in ('1', '4', '6'):
+                    pp = p.GetPosition()
+                    tt = pcbnew.PCB_TRACK(board); tt.SetStart(pp)
+                    tt.SetEnd(pcbnew.VECTOR2I(int(gc.x + (pp.x - gc.x) * 0.3), pp.y)); tt.SetWidth(mm(0.15))
+                    tt.SetLayer(pcbnew.F_Cu); tt.SetNet(p.GetNet()); tt.SetLocked(True); board.Add(tt)
         for a, b in links:
-            t = pcbnew.PCB_TRACK(board); t.SetStart(a); t.SetEnd(b); t.SetWidth(mm(0.15))
-            t.SetLayer(pcbnew.F_Cu); t.SetNet(pads['3'].GetNet()); t.SetLocked(True); board.Add(t)
+            t = pcbnew.PCB_TRACK(board); t.SetStart(a); t.SetEnd(b); t.SetWidth(mm(0.25))
+            t.SetLayer(pcbnew.F_Cu); t.SetNet(next(p for p in pads.values() if p.GetPosition() == a).GetNet())
+            t.SetLocked(True); board.Add(t)
 
     # silkscreen pin labels: ref -> (names, offset from pad (mm), text angle)
     for ref, (names, off, ang, title) in pinlabels().items():
@@ -390,7 +406,7 @@ def pinlabels():
         labels.update({
             'J6': top(I2C, 'OLED'),
             'J7': (['GND', '3V3', 'GPS TX', 'GPS RX'], DOWN, 270, ('GPS', (3.75, 12.4, 0))),
-            'J21': (['BAT+', 'GND'], (0, -2.6), 90, ('BATTERY', (8.5, 1.5, 0))),
+            'J21': (['BAT+', 'BAT-'], (0, -2.6), 90, ('1S BATTERY', (-9.5, 2.5, 0))),
             'J2': (None, None, 0, ('USB-C 5V', (3, -4.5, 0))),
             'SW3': (None, None, 0, ('POWER', (2.5, -3.5, 0))),
         })

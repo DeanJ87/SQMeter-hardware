@@ -342,10 +342,29 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
+        "track_width": 0.4,
         "tuning_profile": "",
         "via_diameter": 0.6,
         "via_drill": 0.3,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.2,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Battery",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.5,
+        "tuning_profile": "",
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
         "wire_width": 6
       }
     ],
@@ -402,6 +421,26 @@
       {
         "netclass": "USBPower",
         "pattern": "VBUS"
+      },
+      {
+        "netclass": "Battery",
+        "pattern": "/SYS"
+      },
+      {
+        "netclass": "Battery",
+        "pattern": "/SYS_SW"
+      },
+      {
+        "netclass": "Battery",
+        "pattern": "/VBAT"
+      },
+      {
+        "netclass": "Battery",
+        "pattern": "/BAT_N"
+      },
+      {
+        "netclass": "Battery",
+        "pattern": "/BAT_FD"
       }
     ]
   },
@@ -419,13 +458,7 @@
     "bus_aliases": {},
     "legacy_lib_dir": "",
     "legacy_lib_list": [],
-    "top_level_sheets": [
-      {
-        "filename": "SQMeter-Hardware-Travel.kicad_sch",
-        "name": "SQMeter-Hardware-Travel",
-        "uuid": "00000000-0000-0000-0000-000000000000"
-      }
-    ]
+    "top_level_sheets": []
   },
   "sheets": [],
   "text_variables": {},

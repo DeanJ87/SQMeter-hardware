@@ -39,7 +39,7 @@ GPIO_MAP = {
     12: 'GPS_TX', 13: 'GPS_RX',      # UART to GPS
 }
 if TRAVEL:  # no RG-15 or wind: those pins report the battery and charger instead
-    GPIO_MAP.update({1: 'VBAT_ADC', 2: 'CHG_STAT1', 4: 'CHG_STAT2', 5: 'CHG_PG'})
+    GPIO_MAP.update({1: 'BAT_ALRT', 2: 'CHG_STAT1', 4: 'CHG_STAT2', 5: 'CHG_PG'})
 if ETH:     # W5500 owns GPIO9-14, SD card 4-7, octal PSRAM 33-37, USB 19/20, RGB LED 21
     GPIO_MAP = {1: 'WIND_DIR', 2: 'WIND_SPD', 15: 'RG_TX', 16: 'RG_RX', 17: 'SDA', 18: 'SCL',
                 39: 'AUX1', 40: 'AUX2', 41: 'SDA2', 42: 'SCL2', 47: 'GPS_TX', 48: 'GPS_RX'}
@@ -117,9 +117,13 @@ if ETH:
     ]))
 
 if TRAVEL:
-    # USB-C is the only way in: it charges a 1S Li-ion through an MCP73871 power-path charger that also
-    # runs the system (SYS), which goes through the power switch and a Schottky into the Zero's 5V pin.
-    # Values from the MCP73871 datasheet (DS20002090E).
+    # USB-C is the only way in: it charges a 1S (e.g. 1S2P 18650, ~7 Ah) Li-ion through an MCP73871 power-path
+    # charger that also runs the system (SYS), which goes through the power switch and a Schottky into the
+    # Zero's 5V pin. Values from the MCP73871 datasheet (DS20002090E):
+    #   SEL high = adapter mode (1.65 A input limit; VPCC backs charging off if the source sags below 4.55 V)
+    #   PROG1 1.2k = 833 mA charge (linear charger: ~1 W in the QFN, the practical ceiling)
+    #   TE high = safety timer off (a 7 Ah pack takes ~9 h, longer than the 6 h timer)
+    # DW01A + two AO3400A (low-side, common drain) protect bare cells; a MAX17048 reports state of charge.
     blocks.append(('USB-C charge input, MCP73871 Li-ion power path', [
         P('J2', 'Connector:USB_C_Receptacle_USB2.0_16P', 'USB-C 5V', 'Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12',
           {'A1': 'GND', 'A12': 'GND', 'B1': 'GND', 'B12': 'GND', 'A4': 'VBUS', 'A9': 'VBUS', 'B4': 'VBUS', 'B9': 'VBUS',
@@ -128,21 +132,39 @@ if TRAVEL:
         R('R2', '5.1k', 'CC1', 'GND', 'C23186'),
         R('R3', '5.1k', 'CC2', 'GND', 'C23186'),
         C('C14', '10u 25V', 'VBUS', 'GND', 'C15850', FP['C0805']),
-        P('U8', 'Battery_Management:MCP73871-2CA', 'MCP73871-2CA', 'Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm',
-          {'18': 'VBUS', '19': 'VBUS', '1': 'SYS', '20': 'SYS', '2': 'VPCC', '3': 'GND', '4': 'VBUS', '5': 'THERM',
-           '6': 'CHG_PG', '7': 'CHG_STAT2', '8': 'CHG_STAT1', '9': 'GND', '10': 'GND', '11': 'GND', '21': 'GND',
+        P('U8', 'Battery_Management:MCP73871-2CA', 'MCP73871-2CA', 'Package_DFN_QFN:QFN-20-1EP_4x4mm_P0.5mm_EP2.5x2.5mm_ThermalVias',
+          {'18': 'VBUS', '19': 'VBUS', '1': 'SYS', '20': 'SYS', '2': 'VPCC', '3': 'VBUS', '4': 'VBUS', '5': 'THERM',
+           '6': 'CHG_PG', '7': 'CHG_STAT2', '8': 'CHG_STAT1', '9': 'VBUS', '10': 'GND', '11': 'GND', '21': 'GND',
            '12': 'PROG3', '13': 'PROG1', '14': 'VBAT', '15': 'VBAT', '16': 'VBAT', '17': 'VBUS'}, 'C185603',
-          '4.20 V, 6 h timer. SEL low + PROG2 high: 500 mA USB limit. CE tied to IN.'),
+          '4.20 V. SEL high (adapter, 1.65 A in), TE high (timer off), CE tied to IN.'),
         R('R24', '270k', 'VBUS', 'VPCC', 'C22965'),     # VPCC 1.23 V -> backs off below 4.55 V in
         R('R25', '100k', 'VPCC', 'GND', 'C25803'),
-        R('R26', '2k', 'PROG1', 'GND', 'C22975'),        # 1000 V / 2k = 500 mA charge
-        R('R27', '20k', 'PROG3', 'GND', 'C4184'),        # 1000 V / 20k = 50 mA termination
+        R('R26', '1.2k', 'PROG1', 'GND', 'C22765'),      # 1000 V / 1.2k = 833 mA charge
+        R('R27', '10k', 'PROG3', 'GND', 'C25804'),       # 1000 V / 10k = 100 mA termination
         P('TH1', 'Device:Thermistor_NTC', '10k B3380', 'Resistor_SMD:R_0603_1608Metric', {'1': 'THERM', '2': 'GND'}, 'C13564',
           'Charge only between ~3 and ~44 C (50 uA into 10k NTC vs 1.24 V / 0.25 V trips)'),
         C('C15', '10u 25V', 'SYS', 'GND', 'C15850', FP['C0805']),
         C('C16', '10u 25V', 'VBAT', 'GND', 'C15850', FP['C0805']),
         P('J21', 'Connector_Generic:Conn_01x02', 'BATTERY', 'Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical',
-          {'1': 'VBAT', '2': 'GND'}, 'C131337', 'JST-PH: 1 = BAT+, 2 = GND. 1S Li-ion with its own protection circuit; check lead polarity'),
+          {'1': 'VBAT', '2': 'BAT_N'}, 'C131337',
+          'JST-PH: 1 = BAT+, 2 = BAT-. 1S only (cells in parallel must be matched). Check lead polarity'),
+        # Cell protection: over-charge, over-discharge, short circuit (low side: BAT- -> Q2 -> Q3 -> GND)
+        R('R33', '100', 'VBAT', 'DW_VCC', 'C22775'),
+        C('C21', '100n', 'DW_VCC', 'BAT_N', 'C14663'),
+        P('U10', 'Battery_Management:DW01A', 'DW01A', 'Package_TO_SOT_SMD:SOT-23-6',
+          {'1': 'DW_OD', '2': 'DW_CS', '3': 'DW_OC', '4': None, '5': 'DW_VCC', '6': 'BAT_N'}, 'C351410', '1S Li-ion protection'),
+        R('R34', '1k', 'DW_CS', 'GND', 'C21190'),
+        P('Q2', 'Transistor_FET:AO3400A', 'AO3400A', 'Package_TO_SOT_SMD:SOT-23', {'1': 'DW_OD', '2': 'BAT_N', '3': 'BAT_FD'}, 'C20917',
+          'Discharge switch'),
+        P('Q3', 'Transistor_FET:AO3400A', 'AO3400A', 'Package_TO_SOT_SMD:SOT-23', {'1': 'DW_OC', '2': 'GND', '3': 'BAT_FD'}, 'C20917',
+          'Charge switch'),
+        # Fuel gauge on the main I2C bus (0x36): state of charge %, cell voltage, charge/discharge rate
+        P('U11', 'SQMeter:MAX17048', 'MAX17048', 'Package_DFN_QFN:TDFN-8-1EP_2x2mm_P0.5mm_EP0.8x1.2mm',
+          {'1': 'GND', '2': 'GAUGE_V', '3': 'GAUGE_V', '4': 'GND', '5': 'BAT_ALRT', '6': 'GND', '7': 'SCL', '8': 'SDA', '9': 'GND'},
+          'C2682616', 'MAX17048G+T10 fuel gauge'),
+        R('R36', '0', 'VBAT', 'GAUGE_V', 'C21189'),      # separate thin net into the 2x2 mm gauge
+        C('C22', '100n', 'GAUGE_V', 'GND', 'C14663'),
+        R('R35', '10k', '+3V3', 'BAT_ALRT', 'C25804'),
         P('SW3', 'Switch:SW_SPDT', 'POWER', 'Button_Switch_SMD:SW_SPDT_Shouhan_MSK12C02',
           {'1': 'SYS', '2': 'SYS_SW', '3': None}, 'C431540', 'Power switch; charging still works when off'),
         P('D3', 'Device:D_Schottky', 'SS34', 'Diode_SMD:D_SMA', {'1': 'DK_5V', '2': 'SYS_SW'}, 'C8678',
@@ -150,9 +172,6 @@ if TRAVEL:
         R('R28', '10k', '+3V3', 'CHG_STAT1', 'C25804'),
         R('R29', '10k', '+3V3', 'CHG_STAT2', 'C25804'),
         R('R30', '10k', '+3V3', 'CHG_PG', 'C25804'),
-        R('R31', '100k', 'VBAT', 'VBAT_ADC', 'C25803'),  # VBAT / 2 -> ADC (4.2 V -> 2.1 V)
-        R('R32', '100k', 'VBAT_ADC', 'GND', 'C25803'),
-        C('C18', '100n', 'VBAT_ADC', 'GND', 'C14663'),
     ]))
 
 
@@ -312,5 +331,5 @@ blocks.append(('Aux GPIO + mounting', [
       f'JST-XH: 1 GND, 2 3V3, 3 IO{AUX_GPIO[0]}, 4 IO{AUX_GPIO[1]}'),
 ] + [P(f'H{n}', 'Mechanical:MountingHole', 'M3', 'MountingHole:MountingHole_3.2mm_M3', {}) for n in range(1, 5)]))
 
-FLAGS = (['GND', 'VBUS', '+3V3'] if TRAVEL else ['GND', '+12V', '+3V3', '+5V', 'VBUS'] if ETH
+FLAGS = (['GND', 'VBUS', '+3V3', 'DW_VCC', 'BAT_N'] if TRAVEL else ['GND', '+12V', '+3V3', '+5V', 'VBUS'] if ETH
          else ['GND', '+12V', '+3V3', '+5V'] if PLUGIN else ['GND', '+12V', '+3V3', 'VBUS'])

@@ -2,9 +2,11 @@ import copy, os
 from sexp import parse, find, find1, Sym
 SYMDIR='/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols'
 _cache={}
+LOCALDIR=os.path.dirname(os.path.abspath(__file__))  # project symbols (SQMeter.kicad_sym)
 def lib(name):
     if name not in _cache:
-        _cache[name]=parse(open(f'{SYMDIR}/{name}.kicad_sym').read())[0]
+        local=f'{LOCALDIR}/{name}.kicad_sym'
+        _cache[name]=parse(open(local if os.path.exists(local) else f'{SYMDIR}/{name}.kicad_sym').read())[0]
     return _cache[name]
 def raw(lib_id):
     l,n=lib_id.split(':')

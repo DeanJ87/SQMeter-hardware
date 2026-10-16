@@ -187,10 +187,10 @@ def layout():
         px, py = g(fx + 5 + i * 25), g(y + 15)
         instance('power:PWR_FLAG', f'#FLG{i + 1:02d}', 'PWR_FLAG', px, py, 0, [('Footprint', ''), ('Datasheet', '')], ['1'],
                  ref_at=(px, py), val_at=(px, py - 4), hide_ref=True)
-        power_symbol(net, px, py, (0, 1) if net == 'GND' else (0, -1))
-        if net != 'GND':
-            # flag points up, power symbol also up -> move power symbol to a stub below via label-free trick: stack same point
-            pass
+        if net in design.POWER_NETS:
+            power_symbol(net, px, py, (0, 1) if net == 'GND' else (0, -1))
+        else:  # plain named net (e.g. a protection IC's own supply): flag it through a label
+            label(net, px, py, (0, 1))
 
 
 def main(out):
