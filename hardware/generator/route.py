@@ -172,8 +172,26 @@ def remove_stubs(board, max_len=1.0):
             board.Remove(t); removed += 1
 
 
-def main(path, stage, side):
+def center(board, page=(297.0, 210.0)):
+    """Move the finished board to the middle of the A4 sheet (generated at the page origin)."""
+    off = pcbnew.VECTOR2I(mm((page[0] - W) / 2), mm((page[1] - H) / 2))
+    items = list(board.GetFootprints()) + list(board.GetDrawings()) + list(board.GetTracks()) + list(board.Zones())
+    for it in items:
+        it.Move(off)
+    ds = board.GetDesignSettings()
+    ds.SetAuxOrigin(ds.GetAuxOrigin() + off)
+
+
+def main(path, stage, side=None):
     board = pcbnew.LoadBoard(path)
+    if stage == 'center':
+        center(board)
+        pcbnew.SaveBoard(path, board)
+        board = pcbnew.LoadBoard(path)          # fresh connectivity, then refill the pours in place
+        board.BuildConnectivity()
+        pcbnew.ZONE_FILLER(board).Fill(board.Zones())
+        pcbnew.SaveBoard(path, board)
+        return
     if stage == 'export':
         if not any(z.GetNetname() == 'GND' for z in board.Zones()):
             add_gnd_zones(board)
