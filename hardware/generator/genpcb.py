@@ -52,7 +52,7 @@ PLACE = {
     'J13': (109, 4.5, 0), 'R20': (99, 18.5, 90), 'R21': (102, 18.5, 90), 'U7': (106, 21, 90),
     # I2C ports, right edge
     'J3': (120.5, 27, 90), 'J4': (120.5, 41, 90), 'J5': (120.5, 55, 90), 'J6': (120.5, 69, 90),
-    'R7': (106, 38, 90), 'R8': (109, 38, 90), 'U4': (107.5, 45, 90),
+    'R7': (106, 38, 90), 'R8': (109, 38, 90), 'U4': (104, 44, 90),
     # mounting
     'H1': (4, 4, 0), 'H2': (121.5, 11.5, 0), 'H3': (4, 78, 0), 'H4': (121, 78, 0),
 }
@@ -142,6 +142,7 @@ def main(out, netfile):
                 if n == 'GND' and p['ref'].startswith('J'):
                     pad.SetLocalZoneConnection(pcbnew.ZONE_CONNECTION_FULL)  # edge connectors: spokes get starved
                 pad.SetNet(net(n))
+        inter(fp.Reference(), 1.0)
         if p['ref'] in HIDE_REF:
             fp.Reference().SetVisible(False)
         board.Add(fp)
@@ -169,21 +170,23 @@ def main(out, netfile):
         for pad in fp.Pads():
             i = int(pad.GetNumber()) - 1
             pos = pad.GetPosition()
-            txt(board, names[i], pcbnew.ToMM(pos.x) + off[0], pcbnew.ToMM(pos.y) + off[1], ang, 0.9,
+            txt(board, names[i], pcbnew.ToMM(pos.x) + off[0], pcbnew.ToMM(pos.y) + off[1], ang, 1.2,
                 'right' if off[0] < 0 else ('left' if ang in (90, 270) else 'center'))
         if title:
             bb = fp.GetBoundingBox(False)
             tx, ty, tang = title[1]
-            txt(board, title[0], tx, ty, tang, 1.1, 'center')
+            txt(board, title[0], tx, ty, tang, 1.3, 'center')
     ty = 38 if design.PLUGIN else 36.5
     lockup(board, 55, ty, 7.0)
-    txt(board, f'Rev {design.HW_REV}  {design.VARIANT_LABEL}', 55, ty + 6.2, 0, 1.2, 'center')
+    txt(board, f'Rev {design.HW_REV}  {design.VARIANT_LABEL}', 55, ty + 6.4, 0, 1.3, 'center')
     tb = board.GetTitleBlock()
     tb.SetTitle('SQMeter main board (' + design.VARIANT_LABEL + ')'); tb.SetRevision(design.HW_REV)
     tb.SetCompany('SQMeter'); tb.SetDate('2026-10-16')
     if design.PLUGIN:
         devkit_outline(board)
     pcbnew.SaveBoard(out, board)
+    colours(out)
+    silk_font(out)
 
 
 def devkit_outline(board):
@@ -209,6 +212,59 @@ def devkit_outline(board):
     board.Add(z)
 
 
+STACKUP = """		(stackup
+			(layer "F.SilkS" (type "Top Silk Screen") (color "White"))
+			(layer "F.Paste" (type "Top Solder Paste"))
+			(layer "F.Mask" (type "Top Solder Mask") (color "Black") (thickness 0.01))
+			(layer "F.Cu" (type "copper") (thickness 0.035))
+			(layer "dielectric 1" (type "core") (thickness 1.51) (material "FR4") (epsilon_r 4.5) (loss_tangent 0.02))
+			(layer "B.Cu" (type "copper") (thickness 0.035))
+			(layer "B.Mask" (type "Bottom Solder Mask") (color "Black") (thickness 0.01))
+			(layer "B.Paste" (type "Bottom Solder Paste"))
+			(layer "B.SilkS" (type "Bottom Silk Screen") (color "White"))
+			(copper_finish "HAL lead-free")
+			(dielectric_constraints no)
+		)
+"""
+
+
+def colours(path):
+    """1.6 mm 2-layer stackup with black solder mask and white silkscreen (on brand; free at JLC for 2-layer).
+    This only sets KiCad's 3D view; the real colours are picked on the JLC order form. pcbnew's Python
+    bindings don't expose the stackup, so it's written into the saved file."""
+    s = open(path).read()
+    if '(stackup' not in s:
+        i = s.index('(setup') + len('(setup')
+        s = s[:i] + '\n' + STACKUP + s[i:].lstrip('\n')
+        open(path, 'w').write(s)
+
+
+def silk_font(path):
+    """Set every silkscreen text (board text and footprint references) in Inter Bold and turn on font
+    embedding. pcbnew's Python bindings can't set a TrueType face, so this edits the saved file; route.py's
+    final save then embeds the font file in the board, so it opens the same without Inter installed."""
+    from sexp import parse, dump, Sym, find, find1
+    tree = parse(open(path).read())[0]
+
+    def walk(node):
+        for e in node:
+            if isinstance(e, list) and e:
+                walk(e)
+        layer = find1(node, 'layer')
+        eff = find1(node, 'effects')
+        if layer and layer[1] in ('F.SilkS', 'B.SilkS') and eff:
+            font = find1(eff, 'font')
+            if font and not find1(font, 'face'):
+                font[:] = [e for e in font if not (isinstance(e, list) and e and e[0] in ('thickness', 'bold'))]
+                font.insert(1, [Sym('face'), FONT])
+                font.append([Sym('bold'), Sym('yes')])
+    walk(tree)
+    for e in tree:
+        if isinstance(e, list) and e and e[0] == 'embedded_fonts':
+            e[1] = Sym('yes')
+    open(path, 'w').write(dump(tree) + '\n')
+
+
 def lockup(board, cx, cy, height):
     """SQMeter brand lockup (mark + name in Inter) from brand_silk.json, centred on (cx, cy)."""
     import json, os
@@ -231,12 +287,25 @@ def lockup(board, cx, cy, height):
         board.Add(s)
 
 
+# Silkscreen type: Inter (the brand font) in bold. JLC prints 0.15 mm lines and 1 mm text at minimum;
+# Measured on plotted gerbers: Inter Bold at 1.0 mm keeps its stems above 0.15 mm (a 0.15 mm opening
+# removes ~2% of area, all corners and tips); 1.2 mm leaves margin. Regular would print patchy.
+# KiCad's text_thickness DRC flags every size of the variable Inter font, so it's ignored (netclasses.py).
+FONT, MIN_SIZE = 'Inter', 1.2
+
+
+def inter(t, size):
+    size = max(size, MIN_SIZE)
+    t.SetUnresolvedFontName(FONT); t.SetBold(True)
+    t.SetTextSize(pcbnew.VECTOR2I(mm(size), mm(size)))
+
+
 def txt(board, s, x, y, ang, size, just):
     t = pcbnew.PCB_TEXT(board)
     t.SetText(s); t.SetLayer(pcbnew.F_SilkS)
     t.SetPosition(pcbnew.VECTOR2I(mm(x), mm(y)))
     t.SetTextAngleDegrees(ang)
-    t.SetTextSize(pcbnew.VECTOR2I(mm(size), mm(size))); t.SetTextThickness(mm(size * 0.15))
+    inter(t, size)
     t.SetHorizJustify({'left': pcbnew.GR_TEXT_H_ALIGN_LEFT, 'right': pcbnew.GR_TEXT_H_ALIGN_RIGHT,
                        'center': pcbnew.GR_TEXT_H_ALIGN_CENTER}[just])
     board.Add(t)
@@ -254,9 +323,9 @@ PINLABELS = {
     'J10': (['GND', '3V3', 'IO6', 'IO7'], (0, 4.6), 270, ('AUX', (99.25, 14.2, 0))),
     'J13': (I2C, (0, 4.6), 270, ('I2C-2', (112.75, 14.2, 0))),
     'J3': (I2C, (-3.6, 0), 0, ('TSL2591 #1', (110.5, 17.5, 0))),
-    'J4': (I2C, (-3.6, 0), 0, ('MLX90614', (113.5, 31.5, 0))),
-    'J5': (I2C, (-3.6, 0), 0, ('BME280', (113.5, 45.5, 0))),
-    'J6': (I2C, (-3.6, 0), 0, ('I2C SPARE', (113.5, 59.5, 0))),
+    'J4': (I2C, (-3.6, 0), 0, ('MLX90614', (111, 31.5, 0))),
+    'J5': (I2C, (-3.6, 0), 0, ('BME280', (111, 45.5, 0))),
+    'J6': (I2C, (-3.6, 0), 0, ('I2C SPARE', (111, 59.5, 0))),
 }
 
 

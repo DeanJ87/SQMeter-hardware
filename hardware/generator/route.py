@@ -190,6 +190,7 @@ def main(path, stage, side=None):
         board = pcbnew.LoadBoard(path)          # fresh connectivity, then refill the pours in place
         board.BuildConnectivity()
         pcbnew.ZONE_FILLER(board).Fill(board.Zones())
+        board.EmbedFonts()                      # Inter goes inside the board file (see genpcb.silk_font)
         pcbnew.SaveBoard(path, board)
         return
     if stage == 'export':

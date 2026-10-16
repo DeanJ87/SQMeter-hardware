@@ -11,5 +11,8 @@ ns['classes'] = [base, cls('Power', 0.6, 0.2), cls('Supply3V3', 0.4, 0.2, 0.6, 0
 ns['netclass_patterns'] = [{'netclass': 'Power', 'pattern': p} for p in ('+12V', '/VIN_RAW', '/VIN_F', '/RG_PWR', '/SW', '+5V', '/DK_5V')] + \
     [{'netclass': 'Supply3V3', 'pattern': p} for p in ('+3V3', 'GND')] + \
     [{'netclass': 'USB', 'pattern': p} for p in ('/USB_DP', '/USB_DN')] + [{'netclass': 'USBPower', 'pattern': 'VBUS'}]
+# KiCad's TrueType stroke check flags every size of the variable Inter font; stroke widths were measured
+# on the plotted gerbers instead (see genpcb.py, FONT).
+d['board']['design_settings'].setdefault('rule_severities', {})['text_thickness'] = 'ignore'
 json.dump(d, open(f, 'w'), indent=2)
 print('classes:', [c['name'] for c in ns['classes']])
