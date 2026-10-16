@@ -7,7 +7,7 @@
   (title_block
     (title "SQMeter main board")
     (date "2026-10-16")
-    (rev "v1.0-draft")
+    (rev "A")
     (company "SQMeter")
     (comment 1 "ESP32-S3-WROOM-1, 12 V input, JST-XH I2C ports")
   )

@@ -20,6 +20,11 @@ ZERO = VARIANT == 'zero'
 PLUGIN = DEVKIT or ZERO      # MCU is an off-the-shelf board on sockets
 NAME = 'SQMeter-Hardware' + {'module': '', 'devkit': '-DevKit', 'zero': '-Zero'}[VARIANT]
 
+# Hardware revision of the board, independent of any firmware version. Bump it whenever the copper changes;
+# it goes on the silkscreen, in the KiCad title blocks and in the fab file names.
+HW_REV = 'A'
+VARIANT_LABEL = {'module': 'ESP32-S3 module', 'devkit': 'DevKitC-1', 'zero': 'S3-Zero'}[VARIANT]
+
 # One GPIO map for every variant. Limited by the ESP32-S3-Zero, whose 2.54 mm headers only carry
 # GPIO1-13 (+43/44 console): GPIO3 is a strapping pin, so 1,2,4-13 are the twelve usable pins.
 GPIO_MAP = {

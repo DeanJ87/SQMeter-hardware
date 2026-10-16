@@ -7,7 +7,7 @@
   (title_block
     (title "SQMeter main board (DevKitC-1 variant)")
     (date "2026-10-16")
-    (rev "v1.0-draft")
+    (rev "A")
     (company "SQMeter")
     (comment 1 "ESP32-S3-DevKitC-1 on sockets, 12 V input, JST-XH I2C ports")
   )

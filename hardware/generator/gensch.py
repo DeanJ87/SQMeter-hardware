@@ -197,7 +197,7 @@ def main(out):
     layout()
     sch = [Sym('kicad_sch'), [Sym('version'), 20250114], [Sym('generator'), 'eeschema'], [Sym('generator_version'), '9.0'],
            [Sym('uuid'), ROOT], [Sym('paper'), 'A2'],
-           [Sym('title_block'), [Sym('title'), 'SQMeter main board' + (' (DevKitC-1 variant)' if design.DEVKIT else '')], [Sym('date'), '2026-10-16'], [Sym('rev'), 'v1.0-draft'],
+           [Sym('title_block'), [Sym('title'), 'SQMeter main board' + (' (DevKitC-1 variant)' if design.DEVKIT else '')], [Sym('date'), '2026-10-16'], [Sym('rev'), design.HW_REV],
             [Sym('company'), 'SQMeter'], [Sym('comment'), 1, ('ESP32-S3-DevKitC-1 on sockets' if design.DEVKIT else 'ESP32-S3-WROOM-1') + ', 12 V input, JST-XH I2C ports']],
            [Sym('lib_symbols')] + [flat(l) for l in sorted(lib_ids)]]
     sch += items

@@ -13,7 +13,7 @@ SKIP = ('H', 'TP', 'JP')  # mounting holes, test pads, solder jumpers: nothing t
 def main(path, out):
     board = pcbnew.LoadBoard(path)
     origin = board.GetDesignSettings().GetAuxOrigin()
-    name = os.path.splitext(os.path.basename(path))[0]
+    name = os.path.basename(out.rstrip('/'))  # <project>-rev<X>
     bom = OrderedDict()
     rows = []
     fps = sorted(board.GetFootprints(), key=lambda f: (f.GetReference().rstrip('0123456789'), int(''.join(c for c in f.GetReference() if c.isdigit()) or 0)))

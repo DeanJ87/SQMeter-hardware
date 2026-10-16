@@ -175,9 +175,12 @@ def main(out, netfile):
             bb = fp.GetBoundingBox(False)
             tx, ty, tang = title[1]
             txt(board, title[0], tx, ty, tang, 1.1, 'center')
-    ty = 39 if design.PLUGIN else 34.5
-    txt(board, 'SQMeter v1.0' + {'module': '', 'devkit': ' DevKit', 'zero': ' Zero'}[design.VARIANT], 55, ty, 0, 1.5, 'center')
-    txt(board, 'I2C ports: 1 GND  2 3V3  3 SDA  4 SCL', 55, ty + 3, 0, 1.0, 'center')
+    ty = 38 if design.PLUGIN else 36.5
+    lockup(board, 55, ty, 7.0)
+    txt(board, f'Rev {design.HW_REV}  {design.VARIANT_LABEL}', 55, ty + 6.2, 0, 1.2, 'center')
+    tb = board.GetTitleBlock()
+    tb.SetTitle('SQMeter main board (' + design.VARIANT_LABEL + ')'); tb.SetRevision(design.HW_REV)
+    tb.SetCompany('SQMeter'); tb.SetDate('2026-10-16')
     if design.PLUGIN:
         devkit_outline(board)
     pcbnew.SaveBoard(out, board)
@@ -204,6 +207,28 @@ def devkit_outline(board):
     for x, y in ((x1 - DK['ant'], y0), (x1, y0), (x1, y1), (x1 - DK['ant'], y1)):
         o.Append(mm(x), mm(y))
     board.Add(z)
+
+
+def lockup(board, cx, cy, height):
+    """SQMeter brand lockup (mark + name in Inter) from brand_silk.json, centred on (cx, cy)."""
+    import json, os
+    data = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'brand_silk.json')))
+    k = height / data['height']
+    x0, y0 = cx - data['width'] * k / 2, cy - height / 2
+    def chain(pts):
+        c = pcbnew.SHAPE_LINE_CHAIN()
+        for x, y in pts[:-1]:
+            c.Append(mm(x0 + x * k), mm(y0 + y * k))
+        c.SetClosed(True)
+        return c
+    for p in data['polygons']:
+        ps = pcbnew.SHAPE_POLY_SET()
+        ps.AddOutline(chain(p['outline']))
+        for h in p['holes']:
+            ps.AddHole(chain(h))
+        s = pcbnew.PCB_SHAPE(board); s.SetShape(pcbnew.SHAPE_T_POLY); s.SetLayer(pcbnew.F_SilkS)
+        s.SetPolyShape(ps); s.SetFilled(True); s.SetWidth(0)
+        board.Add(s)
 
 
 def txt(board, s, x, y, ang, size, just):
