@@ -15,8 +15,9 @@ The map is limited by the Zero, whose 2.54 mm headers carry only GPIO1-13:
 |---|---|
 | RG-15 TX / RX (ESP side) | 1 / 2 |
 | Wind vane (ADC1) / anemometer | 4 / 5 |
-| AUX | 6, 7, 10, 11 |
-| I2C SDA / SCL | 8 / 9 |
+| AUX | 6, 7 |
+| I2C SDA / SCL (TSL2591 #1, MLX90614, BME280, spare) | 8 / 9 |
+| I2C-2 SDA / SCL (TSL2591 #2) | 10 / 11 |
 | GPS TX / RX (ESP side) | 12 / 13 |
 | Status LED (module board only) | 47 |
 
@@ -24,7 +25,8 @@ The plug-in variants feed the dev board's 5V pin from a 5 V buck through a Schot
 from the dev board's LDO for the sensors. USB and 12 V can be connected at the same time: the Schottky
 stops the buck pushing into a PC, and the PC's 5 V keeps it reverse-biased.
 
-All four I2C ports share one JST-XH pinout: **1 GND, 2 3V3, 3 SDA, 4 SCL**.
+All five I2C ports share one JST-XH pinout: **1 GND, 2 3V3, 3 SDA, 4 SCL**. The TSL2591's address is fixed (0x29), so a second
+one (SQM + SQM-L) goes on its own bus: the I2C-2 port.
 
 ## Files
 

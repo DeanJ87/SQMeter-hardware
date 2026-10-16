@@ -25,7 +25,8 @@ NAME = 'SQMeter-Hardware' + {'module': '', 'devkit': '-DevKit', 'zero': '-Zero'}
 GPIO_MAP = {
     1: 'RG_TX', 2: 'RG_RX',          # UART to RG-15
     4: 'WIND_DIR', 5: 'WIND_SPD',    # vane must be ADC1 (GPIO1-10)
-    6: 'AUX1', 7: 'AUX2', 10: 'AUX3', 11: 'AUX4',
+    6: 'AUX1', 7: 'AUX2',
+    10: 'SDA2', 11: 'SCL2',          # second I2C bus: a second TSL2591 (both are fixed at 0x29)
     8: 'SDA', 9: 'SCL',
     12: 'GPS_TX', 13: 'GPS_RX',      # UART to GPS
 }
@@ -64,7 +65,7 @@ blocks.append(('12 V input, protection, ' + ('5V buck to dev board' if PLUGIN el
     P('D1', 'Device:D_TVS', 'SMBJ18CA', 'Diode_SMD:D_SMB', {'1': 'VIN_F', '2': 'GND'}, 'C78413', 'Bidirectional TVS'),
     P('Q1', 'Transistor_FET:AO3401A', 'AO3401A', 'Package_TO_SOT_SMD:SOT-23', {'1': 'Q1_G', '2': '+12V', '3': 'VIN_F'}, 'C15127',
       'Reverse-polarity protection'),
-    P('D2', 'Device:D_Zener', 'BZT52C10', 'Diode_SMD:D_SOD-123', {'1': '+12V', '2': 'Q1_G'}, 'C173431', 'Vgs clamp'),
+    R('R19', '10k', '+12V', 'Q1_G', 'C25804'),  # R19/R1 divider: Vgs = -Vin/2, inside the FET's 12 V limit up to 24 V in
     R('R1', '10k', 'Q1_G', 'GND', 'C25804'),
     (P('D3', 'Device:D_Schottky', 'SS34', 'Diode_SMD:D_SMA', {'1': 'DK_5V', '2': '+5V'}, 'C8678',
        'Dev board USB can\'t back-feed the buck; buck can\'t push into a PC') if PLUGIN else
@@ -166,8 +167,14 @@ else:
 XH4 = 'Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical'
 i2c = [P(f'J{n}', 'Connector_Generic:Conn_01x04', name, XH4, {'1': 'GND', '2': '+3V3', '3': 'SDA', '4': 'SCL'}, 'C144395',
          'JST-XH: 1 GND, 2 3V3, 3 SDA, 4 SCL')
-       for n, name in ((3, 'I2C TSL2591'), (4, 'I2C MLX90614'), (5, 'I2C BME280'), (6, 'I2C SPARE'))]
+       for n, name in ((3, 'I2C TSL2591 #1'), (4, 'I2C MLX90614'), (5, 'I2C BME280'), (6, 'I2C SPARE'))]
 blocks.append(('I2C sensor ports (identical pinout)', i2c + [
+    P('J13', 'Connector_Generic:Conn_01x04', 'I2C-2 TSL2591 #2', XH4, {'1': 'GND', '2': '+3V3', '3': 'SDA2', '4': 'SCL2'}, 'C144395',
+      'JST-XH, second I2C bus (GPIO10/11): 1 GND, 2 3V3, 3 SDA, 4 SCL'),
+    R('R20', '4.7k', '+3V3', 'SDA2', 'C23162'),
+    R('R21', '4.7k', '+3V3', 'SCL2', 'C23162'),
+    P('U7', 'Power_Protection:USBLC6-2SC6', 'USBLC6-2SC6', 'Package_TO_SOT_SMD:SOT-23-6',
+      {'1': 'SDA2', '6': 'SDA2', '3': 'SCL2', '4': 'SCL2', '2': 'GND', '5': '+3V3'}, 'C7519', 'I2C-2 ESD'),
     R('R7', '4.7k', '+3V3', 'SDA', 'C23162'),
     R('R8', '4.7k', '+3V3', 'SCL', 'C23162'),
     P('U4', 'Power_Protection:USBLC6-2SC6', 'USBLC6-2SC6', 'Package_TO_SOT_SMD:SOT-23-6',
@@ -211,9 +218,9 @@ blocks.append(('Wind: anemometer + vane', [
 
 # ── Aux + mechanical ──────────────────────────────────────────────────────────
 blocks.append(('Aux GPIO + mounting', [
-    P('J10', 'Connector_Generic:Conn_01x06', 'AUX', 'Connector_JST:JST_XH_B6B-XH-A_1x06_P2.50mm_Vertical',
-      {'1': 'GND', '2': '+3V3', '3': 'AUX1', '4': 'AUX2', '5': 'AUX3', '6': 'AUX4'}, 'C144397',
-      'JST-XH: 1 GND, 2 3V3, 3 IO6, 4 IO7, 5 IO10, 6 IO11'),
+    P('J10', 'Connector_Generic:Conn_01x04', 'AUX', XH4,
+      {'1': 'GND', '2': '+3V3', '3': 'AUX1', '4': 'AUX2'}, 'C144395',
+      'JST-XH: 1 GND, 2 3V3, 3 IO6, 4 IO7'),
 ] + [P(f'H{n}', 'Mechanical:MountingHole', 'M3', 'MountingHole:MountingHole_3.2mm_M3', {}) for n in range(1, 5)]))
 
 FLAGS = ['GND', '+12V', '+3V3', '+5V'] if PLUGIN else ['GND', '+12V', '+3V3', 'VBUS']
