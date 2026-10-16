@@ -19,7 +19,7 @@ def netlist(path):
     return pinnet, uuids
 
 FPDIR = '/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints'
-W, H = 125.0, 82.0
+W, H = design.BOARD_SIZE
 mm = pcbnew.FromMM
 
 # ref: (x, y, rot)  -- origin top-left, y down
@@ -66,13 +66,45 @@ if design.DEVKIT:
     PLACE.update({'J11': (DK_PIN1_X, DK_Y1, 90), 'J12': (DK_PIN1_X, DK_Y1 + 22.86, 90)})
     DK = dict(x0=DK_X0, x1=DK_X0 + 62.865, y0=DK_Y1 - 1.27, y1=DK_Y1 - 1.27 + 25.4, ant=7.5,
               first={'J11': '22', 'J12': '22'}, title='ESP32-S3-DevKitC-1', tx=32)
-elif design.ZERO:
+elif design.ETH:
+    # Waveshare ESP32-S3-ETH drawing: 72.8 x 21 mm, rows 17.78 mm apart, pins 1/40 19.6 mm from the RJ45/USB
+    # end (2.54 mm inside the mounting hole). RJ45 + PoE module face up, so seen from above pins 21-40 run
+    # along the top (40 at the RJ45 end) and pins 1-20 along the bottom (1 at the RJ45 end).
+    EX0, EY = 0.5, 10.0
+    X1 = EX0 + 19.6
+    PLACE.update({'J11': (X1, EY + 17.78, 90), 'J12': (X1 + 19 * 2.54, EY, 90),
+                  # RG-15 boost, bottom left under the 12 V input
+                  'C20': (25, 69, 90), 'U9': (29, 69, 0), 'L2': (34.5, 69, 0), 'D5': (40, 69, 90), 'C19': (45.5, 69, 90),
+                  'R22': (29, 73.5, 0), 'R23': (29, 77, 0), 'D6': (44, 62, 0)})
+    DK = dict(x0=EX0, x1=EX0 + 72.8, y0=EY - 1.61, y1=EY + 17.78 + 1.61, ant=6.0,
+              first={'J11': '1', 'J12': '20'}, title='ESP32-S3-ETH', tx=44, end='<- RJ45 + PoE this end')
+if design.ZERO_SOCKETS:
     # Waveshare drawing: 18 x 23.5 mm, rows 15.24 mm apart, first pin 1.17 mm from the USB end.
     # Turned so USB faces the left edge: right column (TX..GP7) on top, left column (5V..GP6) below.
     ZX0, ZY = 1.2, 12.0
     PLACE.update({'J12': (ZX0 + 1.17, ZY, 90), 'J11': (ZX0 + 1.17, ZY + 15.24, 90)})
     DK = dict(x0=ZX0, x1=ZX0 + 23.5, y0=ZY - 1.38, y1=ZY + 15.24 + 1.38, ant=5.0,
               first={'J11': '1', 'J12': '1'}, title='ESP32-S3-Zero', tx=12)
+if design.TRAVEL:
+    # 85 x 62 mm: Zero on the left, sensor ports along the top and right, USB-C / charger / battery along the bottom.
+    PLACE = {k: v for k, v in PLACE.items() if k in ('J11', 'J12')}
+    PLACE.update({
+        'J7': (27, 4.5, 0), 'R9': (28, 21, 90), 'R10': (31, 21, 90),
+        'J10': (40.5, 4.5, 0),
+        'J13': (54, 4.5, 0), 'R20': (44, 18, 90), 'R21': (47, 18, 90), 'U7': (51, 19, 90),
+        'J6': (67.5, 4.5, 0),
+        'J3': (80.5, 27, 90), 'J4': (80.5, 40.5, 90), 'J5': (80.5, 54, 90),
+        'R7': (63, 28, 90), 'R8': (66, 28, 90), 'U4': (64.5, 34, 90),
+        # USB-C and power switch overhang the bottom edge (cable / slider reach through the case)
+        'J2': (30, 62.6, 0), 'R2': (21.5, 58.5, 90), 'R3': (38.5, 58.5, 90), 'C14': (41, 54, 90),
+        'U8': (47, 52, 0), 'R24': (41, 48.5, 90), 'R25': (44, 46.5, 0), 'R26': (52, 46.5, 0), 'R27': (53.5, 49.5, 90),
+        'C15': (55.5, 52.5, 90), 'C16': (55.5, 57, 90), 'TH1': (59, 54, 90), 'J21': (62, 60, 0),
+        'SW3': (14, 63.7, 0), 'D3': (8, 36, 90),
+        'R28': (14, 34, 90), 'R29': (17, 34, 90), 'R30': (20, 34, 90),
+        'R31': (8, 44, 90), 'R32': (11, 44, 90), 'C18': (14, 44, 90),
+        'H1': (4, 4, 0), 'H2': (81.5, 10.5, 0), 'H3': (4, 62, 0), 'H4': (81, 62, 0),
+    })
+LOCKUP = (42, 31) if design.TRAVEL else (55, 38 if design.PLUGIN else 36.5)
 
 
 def main(out, netfile):
@@ -164,10 +196,28 @@ def main(out, netfile):
         t.SetLocked(True); v.SetLocked(True)
         board.Add(t); board.Add(v)
 
+    # MCP73871: SEL (3) and TE (9) are tied low but sit between signal pins the pour can't get past.
+    # SEL gets a stub into the GND exposed pad, TE a short link to its neighbour VSS (10).
+    u8 = board.FindFootprintByReference('U8')
+    if u8:
+        c = u8.GetPosition()
+        pads = {p.GetNumber(): p for p in u8.Pads()}
+        pp = pads['3'].GetPosition()
+        links = [(pp, pcbnew.VECTOR2I(int(c.x + (pp.x - c.x) * 0.5), int(c.y + (pp.y - c.y) * 0.5))),
+                 (pads['9'].GetPosition(), pads['10'].GetPosition())]
+        for a, b in links:
+            t = pcbnew.PCB_TRACK(board); t.SetStart(a); t.SetEnd(b); t.SetWidth(mm(0.15))
+            t.SetLayer(pcbnew.F_Cu); t.SetNet(pads['3'].GetNet()); t.SetLocked(True); board.Add(t)
+
     # silkscreen pin labels: ref -> (names, offset from pad (mm), text angle)
-    for ref, (names, off, ang, title) in PINLABELS.items():
+    for ref, (names, off, ang, title) in pinlabels().items():
         fp = board.FindFootprintByReference(ref)
-        for pad in fp.Pads():
+        if fp is None:
+            continue
+        p1 = next((p.GetPosition() for p in fp.Pads() if p.GetNumber() in ('1', 'A1')), fp.GetPosition())
+        if title:
+            title = (title[0], (pcbnew.ToMM(p1.x) + title[1][0], pcbnew.ToMM(p1.y) + title[1][1], title[1][2]))
+        for pad in (fp.Pads() if names else []):
             i = int(pad.GetNumber()) - 1
             pos = pad.GetPosition()
             txt(board, names[i], pcbnew.ToMM(pos.x) + off[0], pcbnew.ToMM(pos.y) + off[1], ang, 1.2,
@@ -176,9 +226,9 @@ def main(out, netfile):
             bb = fp.GetBoundingBox(False)
             tx, ty, tang = title[1]
             txt(board, title[0], tx, ty, tang, 1.3, 'center')
-    ty = 38 if design.PLUGIN else 36.5
-    lockup(board, 55, ty, 7.0)
-    txt(board, f'Rev {design.HW_REV}  {design.VARIANT_LABEL}', 55, ty + 6.4, 0, 1.3, 'center')
+    lx, ty = LOCKUP
+    lockup(board, lx, ty, 7.0)
+    txt(board, f'Rev {design.HW_REV}  {design.VARIANT_LABEL}', lx, ty + 6.4, 0, 1.3, 'center')
     tb = board.GetTitleBlock()
     tb.SetTitle('SQMeter main board (' + design.VARIANT_LABEL + ')'); tb.SetRevision(design.HW_REV)
     tb.SetCompany('SQMeter'); tb.SetDate('2026-10-16')
@@ -199,7 +249,7 @@ def devkit_outline(board):
         s.SetStart(pcbnew.VECTOR2I(mm(a[0]), mm(a[1]))); s.SetEnd(pcbnew.VECTOR2I(mm(b[0]), mm(b[1]))); board.Add(s)
     cy = (y0 + y1) / 2
     txt(board, DK['title'], DK['tx'], cy - 1.5, 0, 1.3, 'center')
-    txt(board, '<- USB this end', DK['tx'], cy + 1.5, 0, 1.1, 'center')
+    txt(board, DK.get('end', '<- USB this end'), DK['tx'], cy + 1.5, 0, 1.1, 'center')
     txt(board, 'ANTENNA', x1 - DK['ant'] / 2, cy, 90, 1.0, 'center')
     z = pcbnew.ZONE(board)
     z.SetIsRuleArea(True); z.SetLayerSet(pcbnew.LSET.AllCuMask())
@@ -313,21 +363,38 @@ def txt(board, s, x, y, ang, size, just):
 
 I2C = ['GND', '3V3', 'SDA', 'SCL']
 # silkscreen titles/pin labels already identify these
-HIDE_REF = {'J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'H1', 'H2', 'H3', 'H4'}
-UP = ((0, -3.2), 90)      # vertical text above a horizontal pad row
-PINLABELS = {
-    'J1': (['+12V', 'GND'], (0, -3.6), 90, None),
-    'J8': (['GND', 'V+', 'RG TX', 'RG RX'], UP[0], 90, ('RG-15', (65.25, 55.5, 0))),
-    'J9': (['SPD', 'GND', 'DIR', 'GND', '3V3'], UP[0], 90, ('WIND', (89, 54.5, 0))),
-    'J7': (['GND', '3V3', 'GPS TX', 'GPS RX'], (0, 4.6), 270, ('GPS', (85.75, 22, 0))),
-    'J10': (['GND', '3V3', 'IO6', 'IO7'], (0, 4.6), 270, ('AUX', (99.25, 14.2, 0))),
-    'J13': (I2C, (0, 4.6), 270, ('I2C-2', (112.75, 14.2, 0))),
-    'J3': (I2C, (-3.6, 0), 0, ('TSL2591 #1', (110.5, 17.5, 0))),
-    'J4': (I2C, (-3.6, 0), 0, ('MLX90614', (111, 31.5, 0))),
-    'J5': (I2C, (-3.6, 0), 0, ('BME280', (111, 45.5, 0))),
-    'J6': (I2C, (-3.6, 0), 0, ('I2C SPARE', (111, 59.5, 0))),
-}
+HIDE_REF = {'J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'J13', 'J21', 'H1', 'H2', 'H3', 'H4'}
+UP = (0, -3.2)            # vertical text above a horizontal pad row
+DOWN = (0, 4.6)           # vertical text below a top-edge connector
+LEFT = (-3.6, 0)          # horizontal text left of a right-edge connector
 
+
+def pinlabels():
+    """ref -> (pin names or None, label offset from each pad, text angle, (title, (dx, dy, angle) from pin 1))."""
+    aux = ['GND', '3V3'] + [f'IO{g}' for g in design.AUX_GPIO]
+    top = lambda names, title: (names, DOWN, 270, (title, (3.75, 9.7, 0)))
+    right = lambda title, dx=-9.5: (I2C, LEFT, 0, (title, (dx, -9.5, 0)))
+    labels = {
+        'J1': (['+12V', 'GND'], (0, -3.6), 90, None),
+        'J8': (['GND', 'V+', 'RG TX', 'RG RX'], UP, 90, ('RG-15', (5.25, -17.5, 0))),
+        'J9': (['SPD', 'GND', 'DIR', 'GND', '3V3'], UP, 90, ('WIND', (7, -18.5, 0))),
+        'J7': (['GND', '3V3', 'GPS TX', 'GPS RX'], DOWN, 270, ('GPS', (3.75, 17.5, 0))),
+        'J10': top(aux, 'AUX'),
+        'J13': top(I2C, 'I2C-2'),
+        'J3': right('TSL2591 #1', -10),
+        'J4': right('MLX90614'),
+        'J5': right('BME280'),
+        'J6': right('I2C SPARE'),
+    }
+    if design.TRAVEL:
+        labels.update({
+            'J6': top(I2C, 'OLED'),
+            'J7': (['GND', '3V3', 'GPS TX', 'GPS RX'], DOWN, 270, ('GPS', (3.75, 12.4, 0))),
+            'J21': (['BAT+', 'GND'], (0, -2.6), 90, ('BATTERY', (8.5, 1.5, 0))),
+            'J2': (None, None, 0, ('USB-C 5V', (3, -4.5, 0))),
+            'SW3': (None, None, 0, ('POWER', (2.5, -3.5, 0))),
+        })
+    return labels
 
 if __name__ == '__main__':
     main(sys.argv[1], sys.argv[2])

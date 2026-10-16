@@ -3,7 +3,9 @@ import sys
 import pcbnew
 
 mm = pcbnew.FromMM
-W, H, INSET = 125.0, 82.0, 0.4
+import design
+W, H = design.BOARD_SIZE
+INSET = 0.4
 
 
 def keepouts(board):

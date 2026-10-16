@@ -1,30 +1,42 @@
 # KiCad Project
 
-KiCad 10 projects for the SQMeter main board. Three variants share everything except the ESP32:
+KiCad 10 projects for the SQMeter boards. All are hardware revision A (`HW_REV` in
+`../generator/design.py`), versioned separately from any firmware.
 
-| Project | ESP32 | Flash / PSRAM | Who it's for |
-|---------|-------|---------------|--------------|
-| `SQMeter-Hardware.kicad_pro` | ESP32-S3-WROOM-1-N16R8 soldered down, native USB-C on the board edge | 16 MB / 8 MB | JLCPCB fully assembled |
-| `SQMeter-Hardware-DevKit.kicad_pro` | ESP32-S3-DevKitC-1-N16R8 in two 1x22 sockets | 16 MB / 8 MB | Plug-in build; note the DevKit's red power LED is always on |
-| `SQMeter-Hardware-Zero.kicad_pro` | Waveshare ESP32-S3-Zero-M (pre-soldered headers) in two 1x9 sockets | 4 MB / 2 MB | Plug-in build, small, no always-on LED |
+| Project | ESP32 | Power in | For |
+|---------|-------|----------|-----|
+| `SQMeter-Hardware-ETH.kicad_pro` | Waveshare ESP32-S3-ETH (+ PoE Module B) on 2x20 sockets | PoE or 12 V | Permanent home installs: wired Ethernet, one cable |
+| `SQMeter-Hardware-Zero.kicad_pro` | Waveshare ESP32-S3-Zero-M on 2x9 sockets | 12 V | Cheap WiFi home board |
+| `SQMeter-Hardware-DevKit.kicad_pro` | ESP32-S3-DevKitC-1-N16R8 on 2x22 sockets | 12 V | WiFi home board, 16 MB flash (always-on red LED) |
+| `SQMeter-Hardware.kicad_pro` | ESP32-S3-WROOM-1-N16R8 soldered (JLC) | 12 V or USB-C | Fully assembled WiFi home board |
+| `SQMeter-Hardware-Travel.kicad_pro` | Waveshare ESP32-S3-Zero-M on 2x9 sockets | USB-C + 1S Li-ion | Portable unit, 85 x 66 mm, no field wiring |
 
-This is **hardware revision A** (`HW_REV` in `../generator/design.py`), versioned separately from any firmware.
-All variants wire the ESP32 the same way, so the same pin assignment applies to every board. It is
-limited by the Zero, whose 2.54 mm headers carry only GPIO1-13:
+### GPIO maps
 
-| Function | GPIO |
-|---|---|
-| RG-15 TX / RX (ESP side) | 1 / 2 |
-| Wind vane (ADC1) / anemometer | 4 / 5 |
-| AUX | 6, 7 |
-| I2C SDA / SCL (TSL2591 #1, MLX90614, BME280, spare) | 8 / 9 |
-| I2C-2 SDA / SCL (TSL2591 #2) | 10 / 11 |
-| GPS TX / RX (ESP side) | 12 / 13 |
-| Status LED (module board only) | 47 |
+Module, DevKit, Zero and Travel share one map (limited by the Zero, whose 2.54 mm headers carry only
+GPIO1-13). The ETH board's W5500 owns GPIO9-14, so it has its own:
 
-The plug-in variants feed the dev board's 5V pin from a 5 V buck through a Schottky and take 3V3 back
-from the dev board's LDO for the sensors. USB and 12 V can be connected at the same time: the Schottky
-stops the buck pushing into a PC, and the PC's 5 V keeps it reverse-biased.
+| Function | Module / DevKit / Zero | Travel | ETH |
+|---|---|---|---|
+| RG-15 TX / RX (ESP side) | 1 / 2 | - | 15 / 16 |
+| Wind vane (ADC1) / anemometer | 4 / 5 | - | 1 / 2 |
+| I2C SDA / SCL (TSL2591 #1, MLX90614, BME280, spare/OLED) | 8 / 9 | 8 / 9 | 17 / 18 |
+| I2C-2 SDA / SCL (TSL2591 #2) | 10 / 11 | 10 / 11 | 41 / 42 |
+| GPS TX / RX (ESP side) | 12 / 13 | 12 / 13 | 47 / 48 |
+| AUX | 6, 7 | 6, 7 | 39, 40 |
+| Battery voltage / 2 (ADC1) | - | 1 | - |
+| Charger STAT1 / STAT2 / PG (open drain, active low) | - | 2 / 4 / 5 | - |
+| Status LED | 47 (module only) | Zero RGB 21 | ETH RGB 21 |
+
+### Power
+
+- **12 V boards:** P-FET reverse protection, polyfuse, TVS, AP6320x buck. Plug-in boards are fed 5 V
+  through a Schottky and give 3V3 back for the sensors.
+- **ETH:** PoE (or the ETH board's USB-C) gives 5 V on its VBUS pin; we feed its VSYS pin (after its own
+  diode) from the 12 V buck, so the two never fight. On PoE the RG-15 gets 12.6 V from an MT3608 boost.
+- **Travel:** USB-C (5.1 k CC pull-downs, max 500 mA) into an MCP73871 power-path charger: runs the system
+  while charging, 500 mA charge, charges only between about 3 and 44 C (NTC on the board). The power
+  switch cuts the system but not charging. The Zero's own USB-C stays inside for recovery flashing.
 
 All five I2C ports share one JST-XH pinout: **1 GND, 2 3V3, 3 SDA, 4 SCL**. The TSL2591's address is fixed (0x29), so a second
 one (SQM + SQM-L) goes on its own bus: the I2C-2 port.
