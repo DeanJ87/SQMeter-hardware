@@ -9,7 +9,7 @@
     (date "2026-10-16")
     (rev "v1.0-draft")
     (company "SQMeter")
-    (comment 1 "ESP32-S3, 12 V input, JST-XH I2C ports")
+    (comment 1 "ESP32-S3-WROOM-1, 12 V input, JST-XH I2C ports")
   )
   (lib_symbols
     (symbol
@@ -7356,7 +7356,18 @@
     )
     (property
       "Description"
-      "Pluggable 5.08 mm: 1 = +12 V, 2 = GND"
+      "Pluggable 5.08 mm (2EDGRC): 1 = +12 V, 2 = GND"
+      (at 36.83 33.02 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C3697"
       (at 36.83 33.02 0)
       (effects
         (font
@@ -7428,7 +7439,7 @@
     )
     (property
       "Value"
-      "1.5A"
+      "1.5A 24V"
       (at 62.23 46.355 0)
       (effects
         (font
@@ -7461,7 +7472,18 @@
     )
     (property
       "Description"
-      ""
+      "SMD1812P150TF/24"
+      (at 59.69 46.99 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C32404"
       (at 59.69 46.99 0)
       (effects
         (font
@@ -7579,6 +7601,17 @@
     (property
       "Description"
       "Bidirectional TVS"
+      (at 109.22 41.91 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C78413"
       (at 109.22 41.91 0)
       (effects
         (font
@@ -7885,6 +7918,17 @@
     (property
       "Description"
       "Vgs clamp"
+      (at 35.56 76.2 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C173431"
       (at 35.56 76.2 0)
       (effects
         (font
@@ -8397,7 +8441,7 @@
     )
     (property
       "Footprint"
-      "Capacitor_SMD:CP_Elec_8x10.5"
+      "Capacitor_SMD:CP_Elec_8x10"
       (at 133.35 82.55 0)
       (effects
         (font
@@ -8419,7 +8463,18 @@
     )
     (property
       "Description"
-      ""
+      "BXJ 105C low-ESR"
+      (at 133.35 82.55 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C165636"
       (at 133.35 82.55 0)
       (effects
         (font
@@ -9399,7 +9454,7 @@
     )
     (property
       "Value"
-      "4.7u 3A"
+      "4.7u 3.3A"
       (at 133.35 114.935 0)
       (effects
         (font
@@ -9410,7 +9465,7 @@
     )
     (property
       "Footprint"
-      "Inductor_SMD:L_Bourns_SRN6045TA"
+      "Inductor_SMD:L_Sunlord_SWPA6045S"
       (at 130.81 115.57 0)
       (effects
         (font
@@ -9432,7 +9487,18 @@
     )
     (property
       "Description"
-      ""
+      "Sunlord SWPA6045S"
+      (at 130.81 115.57 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C78804"
       (at 130.81 115.57 0)
       (effects
         (font
@@ -10026,7 +10092,7 @@
     )
     (property
       "Value"
-      "0.5A"
+      "0.5A 24V"
       (at 17.78 147.955 0)
       (effects
         (font
@@ -10059,7 +10125,18 @@
     )
     (property
       "Description"
-      "RG-15 supply"
+      "RG-15 supply, SMD1206P050TF/24"
+      (at 15.24 148.59 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C492011"
       (at 15.24 148.59 0)
       (effects
         (font
@@ -13269,7 +13346,7 @@
     )
     (property
       "LCSC"
-      "C72043"
+      "C12624"
       (at 410.21 130.81 0)
       (effects
         (font
@@ -15645,7 +15722,18 @@
     )
     (property
       "Description"
-      "Pluggable 3.5 mm: 1 GND, 2 V+ (12 V), 3 RG TX, 4 RG RX"
+      "Pluggable 3.5 mm (15EDGRC): 1 GND, 2 V+ (12 V), 3 RG TX, 4 RG RX"
+      (at 259.08 327.66 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C5188297"
       (at 259.08 327.66 0)
       (effects
         (font
@@ -16364,7 +16452,18 @@
     )
     (property
       "Description"
-      "Pluggable 3.5 mm: 1 SPD, 2 GND, 3 DIR, 4 GND, 5 3V3 (pot vane excitation)"
+      "Pluggable 3.5 mm (15EDGRC): 1 SPD, 2 GND, 3 DIR, 4 GND, 5 3V3 (pot vane excitation)"
+      (at 474.98 38.1 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C5188298"
       (at 474.98 38.1 0)
       (effects
         (font
@@ -17842,6 +17941,17 @@
     (property
       "Description"
       "JST-XH: 1 GND, 2 3V3, 3 IO6, 4 IO7, 5 IO10, 6 IO11"
+      (at 474.98 134.62 0)
+      (effects
+        (font
+          (size 1.27 1.27)
+        )
+        (hide yes)
+      )
+    )
+    (property
+      "LCSC"
+      "C144397"
       (at 474.98 134.62 0)
       (effects
         (font

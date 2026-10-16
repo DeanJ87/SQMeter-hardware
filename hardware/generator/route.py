@@ -6,6 +6,18 @@ mm = pcbnew.FromMM
 W, H, INSET = 125.0, 82.0, 0.4
 
 
+def keepouts(board):
+    """Rule areas that forbid vias (board-level and inside footprints, e.g. module antennas)."""
+    zs = [z for z in board.Zones() if z.GetIsRuleArea() and z.GetDoNotAllowVias()]
+    for fp in board.GetFootprints():
+        zs += [z for z in fp.Zones() if z.GetIsRuleArea() and z.GetDoNotAllowVias()]
+    return [z.Outline() for z in zs]
+
+
+def blocked(board, pos):
+    return any(o.Contains(pos) for o in keepouts(board))
+
+
 def add_gnd_zones(board):
     gnd = board.FindNet('GND')
     for layer in (pcbnew.F_Cu, pcbnew.B_Cu):
@@ -42,7 +54,7 @@ def stitch(board, pitch=5.0, margin=0.75):
         x = 3.0
         while x < W - 2.5:
             pos = pcbnew.VECTOR2I(mm(x), mm(y))
-            ok = not (31 <= x <= 79 and y <= 8)  # antenna
+            ok = not blocked(board, pos)
             ok = ok and not any(c.Contains(pos) for c in court)
             ok = ok and not any(o.HitTest(pos, mm(margin)) for o in obstacles)
             if ok:
@@ -86,7 +98,7 @@ def stitch_islands(board):
                 xx = bb.GetLeft()
                 while xx < bb.GetRight() and not done:
                     pos = pcbnew.VECTOR2I(int(xx), int(yy))
-                    if frag.Contains(pos) and ofill.Contains(pos) and frag.Collide(pos, -mm(0.45)) and free(board, pos, 0.55):
+                    if frag.Contains(pos) and ofill.Contains(pos) and not blocked(board, pos) and free(board, pos, 0.55):
                         inner = pcbnew.SHAPE_POLY_SET(frag); inner.Deflate(mm(0.35), pcbnew.CORNER_STRATEGY_ROUND_ALL_CORNERS, mm(0.01))
                         if inner.Contains(pos):
                             v = pcbnew.PCB_VIA(board)
@@ -122,7 +134,7 @@ def fanout_islands(board):
                     a = k * math.pi / 8
                     pos = pcbnew.VECTOR2I(int(c.x + r * math.cos(a)), int(c.y + r * math.sin(a)))
                     others = [o for o in list(board.GetPads()) + list(board.GetTracks()) if o.GetNetname() != 'GND']
-                    if any(o.HitTest(pos, mm(0.55)) for o in others):
+                    if blocked(board, pos) or any(o.HitTest(pos, mm(0.55)) for o in others):
                         continue
                     t = pcbnew.PCB_TRACK(board); t.SetStart(c); t.SetEnd(pos); t.SetWidth(mm(0.4)); t.SetLayer(L); t.SetNet(gnd)
                     seg_ok = not any(o.HitTest(pcbnew.VECTOR2I((c.x + pos.x) // 2, (c.y + pos.y) // 2), mm(0.45)) for o in others)
@@ -134,6 +146,30 @@ def fanout_islands(board):
                 if placed:
                     break
     return n
+
+
+def remove_stubs(board, max_len=1.0):
+    """Delete short track segments with a free end (router leftovers)."""
+    removed = 0
+    while True:
+        items = list(board.GetTracks())
+        pads = list(board.GetPads())
+        gone = []
+        for t in items:
+            if isinstance(t, pcbnew.PCB_VIA) or t.GetLength() > mm(max_len):
+                continue
+            for end in (t.GetStart(), t.GetEnd()):
+                hit = any(p.GetNetCode() == t.GetNetCode() and p.HitTest(end) for p in pads) or any(
+                    o is not t and o.GetNetCode() == t.GetNetCode() and
+                    (o.HitTest(end, mm(0.01)) if isinstance(o, pcbnew.PCB_VIA) else
+                     end in (o.GetStart(), o.GetEnd()) or o.HitTest(end, mm(0.01)))
+                    for o in items)
+                if not hit:
+                    gone.append(t); break
+        if not gone:
+            return removed
+        for t in gone:
+            board.Remove(t); removed += 1
 
 
 def main(path, stage, side):
@@ -148,6 +184,7 @@ def main(path, stage, side):
     else:
         ok = pcbnew.ImportSpecctraSES(board, side)
         print('ses', ok)
+        print('stubs removed', remove_stubs(board))
         print('stitch vias', stitch(board))
         filler = pcbnew.ZONE_FILLER(board)
         filler.Fill(board.Zones())

@@ -1,4 +1,6 @@
-"""Build SQMeter-Hardware.kicad_pcb: outline, rules, footprints, nets, placement. Run with KiCad's bundled python."""
+"""Build the board: outline, rules, footprints, nets, placement. Run with KiCad's bundled python.
+
+SQM_VARIANT=devkit swaps the soldered ESP32 module for DevKitC-1 sockets (see design.py)."""
 import sys
 import pcbnew
 import design
@@ -53,6 +55,14 @@ PLACE = {
     'H1': (4, 4, 0), 'H2': (121, 4, 0), 'H3': (4, 78, 0), 'H4': (121, 78, 0),
 }
 
+# DevKitC-1 (Espressif DXF v1.1): 25.4 x 62.865 mm, header rows 22.86 mm apart, pins 2.54 mm,
+# first pin 7.96 mm from the USB end, pin 1 at the antenna end.
+DK_X0, DK_Y1 = 0.5, 10.0          # USB end at the left board edge; J1 row y
+DK_PIN1_X = DK_X0 + 7.96 + 21 * 2.54
+DK = dict(x0=DK_X0, x1=DK_X0 + 62.865, y0=DK_Y1 - 1.27, y1=DK_Y1 - 1.27 + 25.4)
+if design.DEVKIT:
+    PLACE.update({'J11': (DK_PIN1_X, DK_Y1, 90), 'J12': (DK_PIN1_X, DK_Y1 + 22.86, 90)})
+
 
 def main(out, netfile):
     pinnet, uuids = netlist(netfile)
@@ -65,6 +75,7 @@ def main(out, netfile):
     ds.m_MinThroughDrill = mm(0.3)
     ds.m_CopperEdgeClearance = mm(0.3)
     ds.m_HoleToHoleMin = mm(0.5)
+    ds.SetAuxOrigin(pcbnew.VECTOR2I(0, mm(H)))   # bottom-left corner: positive fab coordinates
     nc = ds.m_NetSettings.GetDefaultNetclass()
     nc.SetClearance(mm(0.2)); nc.SetTrackWidth(mm(0.25)); nc.SetViaDiameter(mm(0.6)); nc.SetViaDrill(mm(0.3))
 
@@ -89,6 +100,7 @@ def main(out, netfile):
         return nets[name]
 
     missing = [p['ref'] for p in design.parts if p['ref'] not in PLACE]
+    # parts that only exist in the other variant are simply not placed
     if missing:
         sys.exit(f'unplaced: {missing}')
     for p in design.parts:
@@ -103,6 +115,10 @@ def main(out, netfile):
         x, y, rot = PLACE[p['ref']]
         fp.SetPosition(pcbnew.VECTOR2I(mm(x), mm(y)))
         fp.SetOrientationDegrees(rot)
+        if p['ref'] in ('J11', 'J12'):  # pin 22 must sit toward the USB end (left)
+            pads = {pd.GetNumber(): pd.GetPosition().x for pd in fp.Pads()}
+            if pads['22'] > pads['1']:
+                fp.SetOrientationDegrees(rot + 180)
         for pad in fp.Pads():
             if pad.HasHole() and pad.GetDrillSize().x < mm(0.3):  # JLC standard min drill
                 pad.SetDrillSize(pcbnew.VECTOR2I(mm(0.3), mm(0.3))); pad.SetSize(pcbnew.VECTOR2I(mm(0.6), mm(0.6)))
@@ -119,6 +135,8 @@ def main(out, netfile):
     # pre-route: ESD chips have GND in the middle of a signal row -> stub + via outward before autorouting
     for ref in ('U2', 'U4', 'U5', 'U6'):
         fp = board.FindFootprintByReference(ref)
+        if fp is None:
+            continue
         c = fp.GetPosition()
         pad = next(p for p in fp.Pads() if p.GetNumber() == '2')
         pp = pad.GetPosition()
@@ -143,9 +161,35 @@ def main(out, netfile):
             bb = fp.GetBoundingBox(False)
             tx, ty, tang = title[1]
             txt(board, title[0], tx, ty, tang, 1.1, 'center')
-    txt(board, 'SQMeter v1.0', 55, 34.5, 0, 1.5, 'center')
-    txt(board, 'I2C ports: 1 GND  2 3V3  3 SDA  4 SCL', 55, 37.5, 0, 1.0, 'center')
+    ty = 39 if design.DEVKIT else 34.5
+    txt(board, 'SQMeter v1.0' + (' DevKit' if design.DEVKIT else ''), 55, ty, 0, 1.5, 'center')
+    txt(board, 'I2C ports: 1 GND  2 3V3  3 SDA  4 SCL', 55, ty + 3, 0, 1.0, 'center')
+    if design.DEVKIT:
+        devkit_outline(board)
     pcbnew.SaveBoard(out, board)
+
+
+def devkit_outline(board):
+    """Silkscreen footprint of the plugged-in DevKit plus a no-pour/no-via area under its antenna."""
+    x0, x1, y0, y1 = DK['x0'], DK['x1'], DK['y0'], DK['y1']
+    m = 0.6  # silk drawn just outside the real outline so it clears the socket silk
+    sx0, sx1, sy0, sy1 = max(x0 - m, 0.3), x1 + m, y0 - m, y1 + m
+    for a, b in (((sx0, sy0), (sx1, sy0)), ((sx1, sy0), (sx1, sy1)), ((sx1, sy1), (sx0, sy1)), ((sx0, sy1), (sx0, sy0))):
+        s = pcbnew.PCB_SHAPE(board); s.SetShape(pcbnew.SHAPE_T_SEGMENT); s.SetLayer(pcbnew.F_SilkS); s.SetWidth(mm(0.15))
+        s.SetStart(pcbnew.VECTOR2I(mm(a[0]), mm(a[1]))); s.SetEnd(pcbnew.VECTOR2I(mm(b[0]), mm(b[1]))); board.Add(s)
+    cy = (y0 + y1) / 2
+    txt(board, 'ESP32-S3-DevKitC-1', 32, cy - 1.5, 0, 1.5, 'center')
+    txt(board, '<- USB this end', 32, cy + 1.5, 0, 1.2, 'center')
+    txt(board, 'ANTENNA', x1 - 3.5, cy, 90, 1.0, 'center')
+    z = pcbnew.ZONE(board)
+    z.SetIsRuleArea(True); z.SetLayerSet(pcbnew.LSET.AllCuMask())
+    z.SetDoNotAllowZoneFills(True); z.SetDoNotAllowVias(True)
+    z.SetDoNotAllowTracks(False); z.SetDoNotAllowPads(False); z.SetDoNotAllowFootprints(False)
+    z.SetZoneName('DevKit antenna')
+    o = z.Outline(); o.NewOutline()
+    for x, y in ((x1 - 7.5, y0), (x1, y0), (x1, y1), (x1 - 7.5, y1)):
+        o.Append(mm(x), mm(y))
+    board.Add(z)
 
 
 def txt(board, s, x, y, ang, size, just):
@@ -161,7 +205,7 @@ def txt(board, s, x, y, ang, size, just):
 
 I2C = ['GND', '3V3', 'SDA', 'SCL']
 # silkscreen titles/pin labels already identify these
-HIDE_REF = {'J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'H1', 'H2', 'H3', 'H4'}
+HIDE_REF = {'J1', 'J2', 'J3', 'J4', 'J5', 'J6', 'J7', 'J8', 'J9', 'J10', 'J11', 'J12', 'H1', 'H2', 'H3', 'H4'}
 UP = ((0, -3.2), 90)      # vertical text above a horizontal pad row
 PINLABELS = {
     'J1': (['+12V', 'GND'], (0, -3.6), 90, None),

@@ -376,6 +376,14 @@
         "pattern": "/SW"
       },
       {
+        "netclass": "Power",
+        "pattern": "+5V"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "/DK_5V"
+      },
+      {
         "netclass": "Supply3V3",
         "pattern": "+3V3"
       },
