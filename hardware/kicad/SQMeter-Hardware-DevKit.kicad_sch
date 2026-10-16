@@ -5667,7 +5667,7 @@
     )
   )
   (text
-    "12 V input, protection, 5V buck to DevKit"
+    "12 V input, protection, 5V buck to dev board"
     (exclude_from_sim no)
     (at 15.24 25.4 0)
     (effects
@@ -6631,7 +6631,7 @@
     )
     (property
       "Description"
-      "Stops DevKit USB back-feeding the buck"
+      "Dev board USB can't back-feed the buck; buck can't push into a PC"
       (at 109.22 76.2 0)
       (effects
         (font
@@ -8671,48 +8671,20 @@
     )
     (uuid "b41d80ab-95cb-59d3-9326-df17d2fcfeba")
   )
-  (label
-    "RG_TX"
-    (at 31.75 203.2 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
+  (no_connect
+    (at 31.75 203.2)
     (uuid "fe9ec117-3373-5a80-a70c-516a760a8175")
   )
-  (label
-    "RG_RX"
-    (at 31.75 205.74 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
+  (no_connect
+    (at 31.75 205.74)
     (uuid "c52b5be9-0f57-57fc-bd4e-ea207871a5f9")
   )
-  (label
-    "GPS_TX"
-    (at 31.75 208.28 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
+  (no_connect
+    (at 31.75 208.28)
     (uuid "082d8d7b-3e3f-5ed5-8f07-9874880e68de")
   )
-  (label
-    "GPS_RX"
-    (at 31.75 210.82 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
+  (no_connect
+    (at 31.75 210.82)
     (uuid "4237fbf7-0a0d-5c5c-a18c-9fa5adfd2030")
   )
   (label
@@ -8767,12 +8739,26 @@
     )
     (uuid "8232b89d-aad7-5041-880b-6306655b1cfe")
   )
-  (no_connect
-    (at 31.75 228.6)
+  (label
+    "GPS_TX"
+    (at 31.75 228.6 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
     (uuid "0d9d5879-a2ec-5eff-a51a-5ac0ce422e60")
   )
-  (no_connect
-    (at 31.75 231.14)
+  (label
+    "GPS_RX"
+    (at 31.75 231.14 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
     (uuid "38aa1abc-9f97-5386-bf8d-85115bfefe2c")
   )
   (no_connect
@@ -8999,12 +8985,26 @@
     (at 76.2 190.5)
     (uuid "cbe61a19-bb87-5157-9f18-12d09c19a1d9")
   )
-  (no_connect
-    (at 76.2 193.04)
+  (label
+    "RG_TX"
+    (at 76.2 193.04 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
     (uuid "fd0225c5-e441-5f4c-b12d-b9f2cd4b24ef")
   )
-  (no_connect
-    (at 76.2 195.58)
+  (label
+    "RG_RX"
+    (at 76.2 195.58 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
     (uuid "be99aab1-8f8a-5c78-a64a-236274e4e8f1")
   )
   (no_connect

@@ -13,7 +13,7 @@ export SQM_VARIANT=${1:-${SQM_VARIANT:-module}}
 NAME=$(python3 -c 'import design; print(design.NAME)')
 echo "== variant $SQM_VARIANT -> $NAME"
 TMP=$(mktemp -d)
-q() { grep -vE 'Fontconfig|assert|Debug:|IMK' || true; }
+q() { grep -vE 'Fontconfig|assert|Debug:|IMK|Unable to revert' || true; }
 
 python3 gensch.py "$OUT/$NAME.kicad_sch"
 $K sch erc -o "$TMP/erc.rpt" "$OUT/$NAME.kicad_sch" 2>&1 | q | grep -i violation

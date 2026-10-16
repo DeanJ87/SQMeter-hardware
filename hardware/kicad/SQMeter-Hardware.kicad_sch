@@ -11412,48 +11412,20 @@
     )
     (uuid "8e7d010b-02b8-5479-8d42-fec3187ac62a")
   )
-  (label
-    "RG_TX"
-    (at 254 99.06 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
+  (no_connect
+    (at 254 99.06)
     (uuid "b2758884-e8dc-53ad-98f6-48388703fc21")
   )
-  (label
-    "RG_RX"
-    (at 254 101.6 180)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify right bottom)
-    )
+  (no_connect
+    (at 254 101.6)
     (uuid "b76336e5-e8d9-502a-acc3-7208324a81b5")
   )
-  (label
-    "GPS_TX"
-    (at 284.48 60.96 0)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify left bottom)
-    )
+  (no_connect
+    (at 284.48 60.96)
     (uuid "5ed2d797-6a89-53cd-ace8-42fc6dc35789")
   )
-  (label
-    "GPS_RX"
-    (at 284.48 63.5 0)
-    (effects
-      (font
-        (size 1.27 1.27)
-      )
-      (justify left bottom)
-    )
+  (no_connect
+    (at 284.48 63.5)
     (uuid "a69f4299-c43e-5836-9706-be358bb1485d")
   )
   (label
@@ -11530,12 +11502,26 @@
     )
     (uuid "cb340b49-009d-5d93-abb6-244554d978a6")
   )
-  (no_connect
-    (at 254 91.44)
+  (label
+    "GPS_TX"
+    (at 254 91.44 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
     (uuid "1c17b34d-238a-5dc0-92e2-c668854ca323")
   )
-  (no_connect
-    (at 254 93.98)
+  (label
+    "GPS_RX"
+    (at 254 93.98 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
     (uuid "22c9636c-e671-5d3c-be7c-892c57e89ec5")
   )
   (no_connect
@@ -11630,12 +11616,26 @@
     )
     (uuid "ee0258a2-470a-5385-b0d4-452b937101b2")
   )
-  (no_connect
-    (at 254 66.04)
+  (label
+    "RG_RX"
+    (at 254 66.04 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
     (uuid "13d1df0a-cd8d-5524-a049-3b8f33eedb34")
   )
-  (no_connect
-    (at 254 63.5)
+  (label
+    "RG_TX"
+    (at 254 63.5 180)
+    (effects
+      (font
+        (size 1.27 1.27)
+      )
+      (justify right bottom)
+    )
     (uuid "8326e6c9-df04-5c00-9dc5-f14098ec317b")
   )
   (symbol

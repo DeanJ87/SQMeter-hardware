@@ -5,16 +5,30 @@ Net None = no-connect. Power nets are drawn with power symbols.
 
 SQM_VARIANT selects the MCU block:
   module - ESP32-S3-WROOM-1 soldered down, native USB-C (JLC assembled)
-  devkit - ESP32-S3-DevKitC-1 plugged into 2x22 sockets (no fine-pitch soldering);
-           the board feeds the DevKit's 5V pin and takes 3V3 back from its LDO
-Both variants use the same GPIO map, so they run the same firmware.
+  devkit - ESP32-S3-DevKitC-1 (N16R8) plugged into 2x22 sockets
+  zero   - Waveshare ESP32-S3-Zero-M (pre-soldered headers) plugged into 2x9 sockets
+The plug-in variants feed the board's 5V into the dev board's 5V pin through a Schottky and take
+3V3 back from the dev board's LDO for the sensors. All variants share GPIO_MAP, so one firmware
+pin default fits every board.
 """
 import os
 
 VARIANT = os.environ.get('SQM_VARIANT', 'module')
-assert VARIANT in ('module', 'devkit'), VARIANT
+assert VARIANT in ('module', 'devkit', 'zero'), VARIANT
 DEVKIT = VARIANT == 'devkit'
-NAME = 'SQMeter-Hardware' + ('-DevKit' if DEVKIT else '')
+ZERO = VARIANT == 'zero'
+PLUGIN = DEVKIT or ZERO      # MCU is an off-the-shelf board on sockets
+NAME = 'SQMeter-Hardware' + {'module': '', 'devkit': '-DevKit', 'zero': '-Zero'}[VARIANT]
+
+# One GPIO map for every variant. Limited by the ESP32-S3-Zero, whose 2.54 mm headers only carry
+# GPIO1-13 (+43/44 console): GPIO3 is a strapping pin, so 1,2,4-13 are the twelve usable pins.
+GPIO_MAP = {
+    1: 'RG_TX', 2: 'RG_RX',          # UART to RG-15
+    4: 'WIND_DIR', 5: 'WIND_SPD',    # vane must be ADC1 (GPIO1-10)
+    6: 'AUX1', 7: 'AUX2', 10: 'AUX3', 11: 'AUX4',
+    8: 'SDA', 9: 'SCL',
+    12: 'GPS_TX', 13: 'GPS_RX',      # UART to GPS
+}
 
 POWER_NETS = {'GND': 'power:GND', '+3V3': 'power:+3V3', '+12V': 'power:+12V', 'VBUS': 'power:VBUS', '+5V': 'power:+5V'}
 
@@ -42,8 +56,8 @@ def C(ref, value, a, b, lcsc='', fp=FP['C']):
 
 
 # ── Power input ───────────────────────────────────────────────────────────────
-RAIL = '+5V' if DEVKIT else '+3V3'  # buck output
-blocks.append(('12 V input, protection, ' + ('5V buck to DevKit' if DEVKIT else '3V3 buck'), [
+RAIL = '+5V' if PLUGIN else '+3V3'  # buck output
+blocks.append(('12 V input, protection, ' + ('5V buck to dev board' if PLUGIN else '3V3 buck'), [
     P('J1', 'Connector_Generic:Conn_01x02', '12V IN', 'Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal',
       {'1': 'VIN_RAW', '2': 'GND'}, 'C3697', 'Pluggable 5.08 mm (2EDGRC): 1 = +12 V, 2 = GND'),
     P('F1', 'Device:Polyfuse', '1.5A 24V', 'Fuse:Fuse_1812_4532Metric', {'1': 'VIN_RAW', '2': 'VIN_F'}, 'C32404', 'SMD1812P150TF/24'),
@@ -53,24 +67,32 @@ blocks.append(('12 V input, protection, ' + ('5V buck to DevKit' if DEVKIT else 
     P('D2', 'Device:D_Zener', 'BZT52C10', 'Diode_SMD:D_SOD-123', {'1': '+12V', '2': 'Q1_G'}, 'C173431', 'Vgs clamp'),
     R('R1', '10k', 'Q1_G', 'GND', 'C25804'),
     (P('D3', 'Device:D_Schottky', 'SS34', 'Diode_SMD:D_SMA', {'1': 'DK_5V', '2': '+5V'}, 'C8678',
-       'Stops DevKit USB back-feeding the buck') if DEVKIT else
+       'Dev board USB can\'t back-feed the buck; buck can\'t push into a PC') if PLUGIN else
      P('D3', 'Device:D_Schottky', 'SS34', 'Diode_SMD:D_SMA', {'1': '+12V', '2': 'VBUS'}, 'C8678', 'USB power OR')),
     P('C1', 'Device:C_Polarized', '100u 35V', 'Capacitor_SMD:CP_Elec_8x10', {'1': '+12V', '2': 'GND'}, 'C165636', 'BXJ 105C low-ESR'),
     C('C2', '10u 25V', '+12V', 'GND', 'C15850', FP['C0805']),
     C('C3', '10u 25V', '+12V', 'GND', 'C15850', FP['C0805']),
     (P('U1', 'Regulator_Switching:AP63205WU', 'AP63205WU', 'Package_TO_SOT_SMD:TSOT-23-6',
-       {'1': '+5V', '2': '+12V', '3': '+12V', '4': 'GND', '5': 'SW', '6': 'BST'}, 'C2071056') if DEVKIT else
+       {'1': '+5V', '2': '+12V', '3': '+12V', '4': 'GND', '5': 'SW', '6': 'BST'}, 'C2071056') if PLUGIN else
      P('U1', 'Regulator_Switching:AP63203WU', 'AP63203WU', 'Package_TO_SOT_SMD:TSOT-23-6',
        {'1': '+3V3', '2': '+12V', '3': '+12V', '4': 'GND', '5': 'SW', '6': 'BST'}, 'C780769')),
     C('C4', '100n', 'BST', 'SW', 'C14663'),
-    P('L1', 'Device:L', '6.8u 3A' if DEVKIT else '4.7u 3.3A', 'Inductor_SMD:L_Sunlord_SWPA6045S', {'1': 'SW', '2': RAIL},
-      'C57254' if DEVKIT else 'C78804', 'Sunlord SWPA6045S'),
+    P('L1', 'Device:L', '6.8u 3A' if PLUGIN else '4.7u 3.3A', 'Inductor_SMD:L_Sunlord_SWPA6045S', {'1': 'SW', '2': RAIL},
+      'C57254' if PLUGIN else 'C78804', 'Sunlord SWPA6045S'),
     C('C5', '22u', RAIL, 'GND', 'C45783', FP['C0805']),
     C('C6', '22u', RAIL, 'GND', 'C45783', FP['C0805']),
     P('F2', 'Device:Polyfuse', '0.5A 24V', 'Fuse:Fuse_1206_3216Metric', {'1': '+12V', '2': 'RG_PWR'}, 'C492011', 'RG-15 supply, SMD1206P050TF/24'),
 ]))
 
-if not DEVKIT:
+def by_gpio(names, fixed):
+    """Header/module pin -> net, from a {pin: label} table where GPIO labels are ints."""
+    out = {}
+    for pin, label in names.items():
+        out[str(pin)] = fixed.get(label, GPIO_MAP.get(label)) if not isinstance(label, int) else GPIO_MAP.get(label)
+    return out
+
+
+if VARIANT == 'module':
     # ── USB-C ─────────────────────────────────────────────────────────────────────
     blocks.append(('USB-C (native USB, power + flashing)', [
         P('J2', 'Connector:USB_C_Receptacle_USB2.0_16P', 'USB-C', 'Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12',
@@ -83,18 +105,14 @@ if not DEVKIT:
           {'1': 'USB_DP', '6': 'USB_DP', '3': 'USB_DN', '4': 'USB_DN', '2': 'GND', '5': 'VBUS'}, 'C7519'),
     ]))
 
-    # ── ESP32-S3 ──────────────────────────────────────────────────────────────────
-    esp = {'1': 'GND', '40': 'GND', '41': 'GND', '2': '+3V3', '3': 'EN',
-           '27': 'BOOT', '13': 'USB_DN', '14': 'USB_DP',
-           '12': 'SDA', '17': 'SCL',
-           '11': 'GPS_RX', '10': 'GPS_TX',
-           '9': 'RG_RX', '8': 'RG_TX',
-           '5': 'WIND_SPD', '4': 'WIND_DIR',
-           '24': 'LED',
-           '6': 'AUX1', '7': 'AUX2', '18': 'AUX3', '19': 'AUX4',
-           '36': 'U0RXD', '37': 'U0TXD'}
-    for n in range(1, 42):
-        esp.setdefault(str(n), None)
+    # ── ESP32-S3 module ──────────────────────────────────────────────────────────
+    from libs import pins as _sym_pins
+    esp = {}
+    for p in _sym_pins('RF_Module:ESP32-S3-WROOM-1'):
+        nm = p['name']
+        esp[p['num']] = GPIO_MAP.get(int(nm[2:])) if nm.startswith('IO') and nm[2:].isdigit() else None
+    esp.update({'1': 'GND', '40': 'GND', '41': 'GND', '2': '+3V3', '3': 'EN', '27': 'BOOT',
+                '13': 'USB_DN', '14': 'USB_DP', '24': 'LED', '36': 'U0RXD', '37': 'U0TXD'})  # 24 = IO47
     blocks.append(('ESP32-S3', [
         P('U3', 'RF_Module:ESP32-S3-WROOM-1', 'ESP32-S3-WROOM-1-N16R8', 'RF_Module:ESP32-S3-WROOM-1', esp, 'C2913202'),
         C('C7', '10u', '+3V3', 'GND', 'C15850', FP['C0805']),
@@ -112,21 +130,36 @@ if not DEVKIT:
         P('TP4', 'Connector:TestPoint', '3V3', 'TestPoint:TestPoint_Pad_D1.5mm', {'1': '+3V3'}),
     ]))
 
-
-else:
+elif DEVKIT:
     # ── ESP32-S3-DevKitC-1 on sockets ───────────────────────────────────────
     # Header pinout per Espressif user guide v1.1 (J1 left, J3 right, pin 1 at the antenna end).
-    dk1 = {'1': '+3V3', '2': '+3V3', '3': None, '4': 'WIND_DIR', '5': 'WIND_SPD', '6': 'AUX1', '7': 'AUX2',
-           '8': 'RG_TX', '9': 'RG_RX', '10': 'GPS_TX', '11': 'GPS_RX', '12': 'SDA', '13': None, '14': None,
-           '15': 'SCL', '16': 'AUX3', '17': 'AUX4', '18': None, '19': None, '20': None, '21': 'DK_5V', '22': 'GND'}
-    dk3 = {str(n): None for n in range(1, 23)}
-    dk3.update({'21': 'GND', '22': 'GND'})  # pin 1 (G) sits under the antenna keepout; DevKit ties all G pins
+    PWR = {'3V3': '+3V3', '5V': 'DK_5V', 'G': 'GND', 'RST': None, 'TX': None, 'RX': None}
+    j1 = ['3V3', '3V3', 'RST', 4, 5, 6, 7, 15, 16, 17, 18, 8, 3, 46, 9, 10, 11, 12, 13, 14, '5V', 'G']
+    j3 = ['G', 'TX', 'RX', 1, 2, 42, 41, 40, 39, 38, 37, 36, 35, 0, 45, 48, 47, 21, 20, 19, 'G', 'G']
+    dk1 = by_gpio(dict(enumerate(j1, 1)), PWR)
+    dk3 = by_gpio(dict(enumerate(j3, 1)), PWR)
+    dk3['1'] = None  # G under the antenna keepout; the DevKit ties all its G pins together
     SOCK = 'Connector_PinSocket_2.54mm:PinSocket_1x22_P2.54mm_Vertical'
     blocks.append(('ESP32-S3-DevKitC-1 sockets', [
         P('J11', 'Connector_Generic:Conn_01x22', 'DevKitC-1 J1', SOCK, dk1, 'C41376161',
           'Female 1x22 socket for DevKitC-1 header J1 (3V3 ... 5V, G)'),
         P('J12', 'Connector_Generic:Conn_01x22', 'DevKitC-1 J3', SOCK, dk3, 'C41376161',
           'Female 1x22 socket for DevKitC-1 header J3 (G, TX, RX ... G, G)'),
+    ]))
+
+else:
+    # ── Waveshare ESP32-S3-Zero-M on sockets ────────────────────────────────
+    # Waveshare pinout (top view, USB-C at the top): left column 5V, GND, 3V3, GP1-GP6;
+    # right column TX(43), RX(44), GP13 ... GP7. Rows 15.24 mm apart, 2.54 mm pitch.
+    PWR = {'3V3': '+3V3', '5V': 'DK_5V', 'G': 'GND', 'TX': None, 'RX': None}
+    left = ['5V', 'G', '3V3', 1, 2, 3, 4, 5, 6]
+    right = ['TX', 'RX', 13, 12, 11, 10, 9, 8, 7]
+    SOCK = 'Connector_PinSocket_2.54mm:PinSocket_1x09_P2.54mm_Vertical'
+    blocks.append(('Waveshare ESP32-S3-Zero-M sockets', [
+        P('J11', 'Connector_Generic:Conn_01x09', 'Zero left', SOCK, by_gpio(dict(enumerate(left, 1)), PWR), 'C22438159',
+          'Female 1x9 socket: Zero left column (5V, GND, 3V3, GP1-GP6), pin 1 at the USB end'),
+        P('J12', 'Connector_Generic:Conn_01x09', 'Zero right', SOCK, by_gpio(dict(enumerate(right, 1)), PWR), 'C22438159',
+          'Female 1x9 socket: Zero right column (TX, RX, GP13-GP7), pin 1 at the USB end'),
     ]))
 
 # ── I2C sensor ports ──────────────────────────────────────────────────────────
@@ -183,4 +216,4 @@ blocks.append(('Aux GPIO + mounting', [
       'JST-XH: 1 GND, 2 3V3, 3 IO6, 4 IO7, 5 IO10, 6 IO11'),
 ] + [P(f'H{n}', 'Mechanical:MountingHole', 'M3', 'MountingHole:MountingHole_3.2mm_M3', {}) for n in range(1, 5)]))
 
-FLAGS = ['GND', '+12V', '+3V3', '+5V'] if DEVKIT else ['GND', '+12V', '+3V3', 'VBUS']
+FLAGS = ['GND', '+12V', '+3V3', '+5V'] if PLUGIN else ['GND', '+12V', '+3V3', 'VBUS']

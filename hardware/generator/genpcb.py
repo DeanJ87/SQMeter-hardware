@@ -59,9 +59,18 @@ PLACE = {
 # first pin 7.96 mm from the USB end, pin 1 at the antenna end.
 DK_X0, DK_Y1 = 0.5, 10.0          # USB end at the left board edge; J1 row y
 DK_PIN1_X = DK_X0 + 7.96 + 21 * 2.54
-DK = dict(x0=DK_X0, x1=DK_X0 + 62.865, y0=DK_Y1 - 1.27, y1=DK_Y1 - 1.27 + 25.4)
+# Outline of the plug-in board on our PCB: x0 = USB end, antenna at x1. 'first' = which socket pin sits left.
 if design.DEVKIT:
     PLACE.update({'J11': (DK_PIN1_X, DK_Y1, 90), 'J12': (DK_PIN1_X, DK_Y1 + 22.86, 90)})
+    DK = dict(x0=DK_X0, x1=DK_X0 + 62.865, y0=DK_Y1 - 1.27, y1=DK_Y1 - 1.27 + 25.4, ant=7.5,
+              first={'J11': '22', 'J12': '22'}, title='ESP32-S3-DevKitC-1', tx=32)
+elif design.ZERO:
+    # Waveshare drawing: 18 x 23.5 mm, rows 15.24 mm apart, first pin 1.17 mm from the USB end.
+    # Turned so USB faces the left edge: right column (TX..GP7) on top, left column (5V..GP6) below.
+    ZX0, ZY = 1.2, 12.0
+    PLACE.update({'J12': (ZX0 + 1.17, ZY, 90), 'J11': (ZX0 + 1.17, ZY + 15.24, 90)})
+    DK = dict(x0=ZX0, x1=ZX0 + 23.5, y0=ZY - 1.38, y1=ZY + 15.24 + 1.38, ant=5.0,
+              first={'J11': '1', 'J12': '1'}, title='ESP32-S3-Zero', tx=12)
 
 
 def main(out, netfile):
@@ -115,10 +124,13 @@ def main(out, netfile):
         x, y, rot = PLACE[p['ref']]
         fp.SetPosition(pcbnew.VECTOR2I(mm(x), mm(y)))
         fp.SetOrientationDegrees(rot)
-        if p['ref'] in ('J11', 'J12'):  # pin 22 must sit toward the USB end (left)
+        if design.PLUGIN and p['ref'] in ('J11', 'J12'):  # make DK['first'] the leftmost (USB-end) pin
             pads = {pd.GetNumber(): pd.GetPosition().x for pd in fp.Pads()}
-            if pads['22'] > pads['1']:
+            if pads[DK['first'][p['ref']]] != min(pads.values()):
                 fp.SetOrientationDegrees(rot + 180)
+                pads = {pd.GetNumber(): pd.GetPosition().x for pd in fp.Pads()}
+                # rotate about pin 1, keep pin 1 where PLACE put it
+                fp.SetPosition(pcbnew.VECTOR2I(mm(x), mm(y)))
         for pad in fp.Pads():
             if pad.HasHole() and pad.GetDrillSize().x < mm(0.3):  # JLC standard min drill
                 pad.SetDrillSize(pcbnew.VECTOR2I(mm(0.3), mm(0.3))); pad.SetSize(pcbnew.VECTOR2I(mm(0.6), mm(0.6)))
@@ -161,10 +173,10 @@ def main(out, netfile):
             bb = fp.GetBoundingBox(False)
             tx, ty, tang = title[1]
             txt(board, title[0], tx, ty, tang, 1.1, 'center')
-    ty = 39 if design.DEVKIT else 34.5
-    txt(board, 'SQMeter v1.0' + (' DevKit' if design.DEVKIT else ''), 55, ty, 0, 1.5, 'center')
+    ty = 39 if design.PLUGIN else 34.5
+    txt(board, 'SQMeter v1.0' + {'module': '', 'devkit': ' DevKit', 'zero': ' Zero'}[design.VARIANT], 55, ty, 0, 1.5, 'center')
     txt(board, 'I2C ports: 1 GND  2 3V3  3 SDA  4 SCL', 55, ty + 3, 0, 1.0, 'center')
-    if design.DEVKIT:
+    if design.PLUGIN:
         devkit_outline(board)
     pcbnew.SaveBoard(out, board)
 
@@ -178,16 +190,16 @@ def devkit_outline(board):
         s = pcbnew.PCB_SHAPE(board); s.SetShape(pcbnew.SHAPE_T_SEGMENT); s.SetLayer(pcbnew.F_SilkS); s.SetWidth(mm(0.15))
         s.SetStart(pcbnew.VECTOR2I(mm(a[0]), mm(a[1]))); s.SetEnd(pcbnew.VECTOR2I(mm(b[0]), mm(b[1]))); board.Add(s)
     cy = (y0 + y1) / 2
-    txt(board, 'ESP32-S3-DevKitC-1', 32, cy - 1.5, 0, 1.5, 'center')
-    txt(board, '<- USB this end', 32, cy + 1.5, 0, 1.2, 'center')
-    txt(board, 'ANTENNA', x1 - 3.5, cy, 90, 1.0, 'center')
+    txt(board, DK['title'], DK['tx'], cy - 1.5, 0, 1.3, 'center')
+    txt(board, '<- USB this end', DK['tx'], cy + 1.5, 0, 1.1, 'center')
+    txt(board, 'ANTENNA', x1 - DK['ant'] / 2, cy, 90, 1.0, 'center')
     z = pcbnew.ZONE(board)
     z.SetIsRuleArea(True); z.SetLayerSet(pcbnew.LSET.AllCuMask())
     z.SetDoNotAllowZoneFills(True); z.SetDoNotAllowVias(True)
     z.SetDoNotAllowTracks(False); z.SetDoNotAllowPads(False); z.SetDoNotAllowFootprints(False)
     z.SetZoneName('DevKit antenna')
     o = z.Outline(); o.NewOutline()
-    for x, y in ((x1 - 7.5, y0), (x1, y0), (x1, y1), (x1 - 7.5, y1)):
+    for x, y in ((x1 - DK['ant'], y0), (x1, y0), (x1, y1), (x1 - DK['ant'], y1)):
         o.Append(mm(x), mm(y))
     board.Add(z)
 
